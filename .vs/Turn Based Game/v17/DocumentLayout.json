@@ -1,0 +1,399 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|c:\\users\\nearn\\programming stuff\\turnbasedgame\\turn based game\\models\\interfaces\\stat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|solutionrelative:models\\interfaces\\stat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|c:\\users\\nearn\\programming stuff\\turnbasedgame\\turn based game\\models\\baseclasses\\commoner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|solutionrelative:models\\baseclasses\\commoner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|c:\\users\\nearn\\programming stuff\\turnbasedgame\\turn based game\\models\\baseclasses\\attack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|solutionrelative:models\\baseclasses\\attack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn_Based_Game.csproj|c:\\users\\nearn\\programming stuff\\turnbasedgame\\turn based game\\models\\interfaces\\iweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn_Based_Game.csproj|solutionrelative:models\\interfaces\\iweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|c:\\users\\nearn\\programming stuff\\turnbasedgame\\turn based game\\models\\interfaces\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|solutionrelative:models\\interfaces\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|c:\\users\\nearn\\programming stuff\\turnbasedgame\\turn based game\\models\\interfaces\\icreature.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|solutionrelative:models\\interfaces\\icreature.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|c:\\users\\nearn\\programming stuff\\turnbasedgame\\turn based game\\models\\interfaces\\iaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|solutionrelative:models\\interfaces\\iaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn_Based_Game.csproj|c:\\users\\nearn\\programming stuff\\turnbasedgame\\turn based game\\constants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn_Based_Game.csproj|solutionrelative:constants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|c:\\users\\nearn\\programming stuff\\turnbasedgame\\turn based game\\models\\interfaces\\ibonusaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|solutionrelative:models\\interfaces\\ibonusaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn_Based_Game.csproj|c:\\users\\nearn\\programming stuff\\turnbasedgame\\turn based game\\turn_based_game.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn_Based_Game.csproj|solutionrelative:turn_based_game.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|c:\\users\\nearn\\programming stuff\\turnbasedgame\\turn based game\\models\\interfaces\\imonster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|solutionrelative:models\\interfaces\\imonster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|c:\\users\\nearn\\programming stuff\\turnbasedgame\\turn based game\\components\\routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|solutionrelative:components\\routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|c:\\users\\nearn\\programming stuff\\turnbasedgame\\turn based game\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|solutionrelative:components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|c:\\users\\nearn\\programming stuff\\turnbasedgame\\turn based game\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|solutionrelative:components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|c:\\users\\nearn\\programming stuff\\turnbasedgame\\turn based game\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|solutionrelative:components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|c:\\users\\nearn\\programming stuff\\turnbasedgame\\turn based game\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|solutionrelative:components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|c:\\users\\nearn\\programming stuff\\turnbasedgame\\turn based game\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|solutionrelative:components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|c:\\users\\nearn\\programming stuff\\turnbasedgame\\turn based game\\wwwroot\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|solutionrelative:wwwroot\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|c:\\users\\nearn\\programming stuff\\turnbasedgame\\turn based game\\wwwroot\\bootstrap\\bootstrap.min.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|solutionrelative:wwwroot\\bootstrap\\bootstrap.min.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|c:\\users\\nearn\\programming stuff\\turnbasedgame\\turn based game\\wwwroot\\bootstrap\\bootstrap.min.css.map||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|solutionrelative:wwwroot\\bootstrap\\bootstrap.min.css.map||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|c:\\users\\nearn\\programming stuff\\turnbasedgame\\turn based game\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|c:\\users\\nearn\\programming stuff\\turnbasedgame\\turn based game\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE900F2F-0B5D-4EE1-BC5C-D143C755E11E}|Turn Based Game.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Properties\\launchSettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-03T04:09:43.108Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Constants.cs",
+              "DocumentMoniker": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Constants.cs",
+              "RelativeDocumentMoniker": "Constants.cs",
+              "ToolTip": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Constants.cs",
+              "RelativeToolTip": "Constants.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAcwCkAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T21:09:53.595Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IWeapon.cs",
+              "DocumentMoniker": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Models\\Interfaces\\IWeapon.cs",
+              "RelativeDocumentMoniker": "Models\\Interfaces\\IWeapon.cs",
+              "ToolTip": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Models\\Interfaces\\IWeapon.cs",
+              "RelativeToolTip": "Models\\Interfaces\\IWeapon.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T21:07:33.876Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Item.cs",
+              "DocumentMoniker": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Models\\Interfaces\\Item.cs",
+              "RelativeDocumentMoniker": "Models\\Interfaces\\Item.cs",
+              "ToolTip": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Models\\Interfaces\\Item.cs",
+              "RelativeToolTip": "Models\\Interfaces\\Item.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T21:06:28.474Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Attack.cs",
+              "DocumentMoniker": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Models\\BaseClasses\\Attack.cs",
+              "RelativeDocumentMoniker": "Models\\BaseClasses\\Attack.cs",
+              "ToolTip": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Models\\BaseClasses\\Attack.cs",
+              "RelativeToolTip": "Models\\BaseClasses\\Attack.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAA1wBoAAABtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T07:05:36.678Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Stat.cs",
+              "DocumentMoniker": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Models\\Interfaces\\Stat.cs",
+              "RelativeDocumentMoniker": "Models\\Interfaces\\Stat.cs",
+              "ToolTip": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Models\\Interfaces\\Stat.cs",
+              "RelativeToolTip": "Models\\Interfaces\\Stat.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAA9wBoAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T06:56:10.467Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IMonster.cs",
+              "DocumentMoniker": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Models\\Interfaces\\IMonster.cs",
+              "RelativeDocumentMoniker": "Models\\Interfaces\\IMonster.cs",
+              "ToolTip": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Models\\Interfaces\\IMonster.cs",
+              "RelativeToolTip": "Models\\Interfaces\\IMonster.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T06:26:47.174Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Commoner.cs",
+              "DocumentMoniker": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Models\\BaseClasses\\Commoner.cs",
+              "RelativeDocumentMoniker": "Models\\BaseClasses\\Commoner.cs",
+              "ToolTip": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Models\\BaseClasses\\Commoner.cs",
+              "RelativeToolTip": "Models\\BaseClasses\\Commoner.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABEAAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T06:23:13.341Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IBonusAction.cs",
+              "DocumentMoniker": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Models\\Interfaces\\IBonusAction.cs",
+              "RelativeDocumentMoniker": "Models\\Interfaces\\IBonusAction.cs",
+              "ToolTip": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Models\\Interfaces\\IBonusAction.cs",
+              "RelativeToolTip": "Models\\Interfaces\\IBonusAction.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T05:24:43.717Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IAction.cs",
+              "DocumentMoniker": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Models\\Interfaces\\IAction.cs",
+              "RelativeDocumentMoniker": "Models\\Interfaces\\IAction.cs",
+              "ToolTip": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Models\\Interfaces\\IAction.cs",
+              "RelativeToolTip": "Models\\Interfaces\\IAction.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAA9wBoAAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T05:23:46.005Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ICreature.cs",
+              "DocumentMoniker": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Models\\Interfaces\\ICreature.cs",
+              "RelativeDocumentMoniker": "Models\\Interfaces\\ICreature.cs",
+              "ToolTip": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Models\\Interfaces\\ICreature.cs",
+              "RelativeToolTip": "Models\\Interfaces\\ICreature.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA4AAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T04:56:45.621Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Turn_Based_Game.csproj",
+              "DocumentMoniker": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Turn_Based_Game.csproj",
+              "RelativeDocumentMoniker": "Turn_Based_Game.csproj",
+              "ToolTip": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Turn_Based_Game.csproj",
+              "RelativeToolTip": "Turn_Based_Game.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-08-03T04:56:04.597Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "bootstrap.min.css",
+              "DocumentMoniker": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\wwwroot\\bootstrap\\bootstrap.min.css",
+              "RelativeDocumentMoniker": "wwwroot\\bootstrap\\bootstrap.min.css",
+              "ToolTip": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\wwwroot\\bootstrap\\bootstrap.min.css",
+              "RelativeToolTip": "wwwroot\\bootstrap\\bootstrap.min.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-08-03T04:25:03.658Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Components\\_Imports.razor",
+              "RelativeDocumentMoniker": "Components\\_Imports.razor",
+              "ToolTip": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Components\\_Imports.razor",
+              "RelativeToolTip": "Components\\_Imports.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-03T04:08:57.536Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "app.css",
+              "DocumentMoniker": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\wwwroot\\app.css",
+              "RelativeDocumentMoniker": "wwwroot\\app.css",
+              "ToolTip": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\wwwroot\\app.css",
+              "RelativeToolTip": "wwwroot\\app.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-08-03T04:07:27.591Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Components\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "Components\\Layout\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Components\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "Components\\Layout\\MainLayout.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-03T04:06:55.005Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "Components\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "Components\\Layout\\NavMenu.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-03T04:06:50.668Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Routes.razor",
+              "DocumentMoniker": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Components\\Routes.razor",
+              "RelativeDocumentMoniker": "Components\\Routes.razor",
+              "ToolTip": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Components\\Routes.razor",
+              "RelativeToolTip": "Components\\Routes.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-03T04:06:45.253Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Home.razor",
+              "ToolTip": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Components\\Pages\\Home.razor",
+              "RelativeToolTip": "Components\\Pages\\Home.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-03T04:06:37.402Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T04:05:08.115Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Components\\App.razor",
+              "RelativeDocumentMoniker": "Components\\App.razor",
+              "ToolTip": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Components\\App.razor",
+              "RelativeToolTip": "Components\\App.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAABAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-03T03:55:45.774Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "bootstrap.min.css.map",
+              "DocumentMoniker": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+              "RelativeDocumentMoniker": "wwwroot\\bootstrap\\bootstrap.min.css.map",
+              "ToolTip": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+              "RelativeToolTip": "wwwroot\\bootstrap\\bootstrap.min.css.map",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-08-03T04:25:02.802Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

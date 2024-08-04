@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Turn_Based_Game.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Turn_Based_Game.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Turn_Based_Game.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Turn_Based_Game.props",
+      "PackagePath": "build\\Turn_Based_Game.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Turn_Based_Game.props",
+      "PackagePath": "buildMultiTargeting\\Turn_Based_Game.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Turn_Based_Game.props",
+      "PackagePath": "buildTransitive\\Turn_Based_Game.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

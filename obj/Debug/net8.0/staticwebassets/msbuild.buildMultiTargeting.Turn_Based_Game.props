@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Turn_Based_Game.props" />
+</Project>

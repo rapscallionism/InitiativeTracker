@@ -1,0 +1,29 @@
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\bin\Debug\net8.0\appsettings.json
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\bin\Debug\net8.0\Turn_Based_Game.staticwebassets.runtime.json
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\bin\Debug\net8.0\Turn_Based_Game.exe
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\bin\Debug\net8.0\Turn_Based_Game.deps.json
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\bin\Debug\net8.0\Turn_Based_Game.runtimeconfig.json
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\bin\Debug\net8.0\Turn_Based_Game.dll
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\bin\Debug\net8.0\Turn_Based_Game.pdb
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\obj\Debug\net8.0\Turn Based Game.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\obj\Debug\net8.0\Turn Based Game.AssemblyInfoInputs.cache
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\obj\Debug\net8.0\Turn Based Game.AssemblyInfo.cs
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\obj\Debug\net8.0\Turn Based Game.csproj.CoreCompileInputs.cache
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\obj\Debug\net8.0\Turn_Based_Game.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\obj\Debug\net8.0\staticwebassets\msbuild.Turn_Based_Game.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\obj\Debug\net8.0\staticwebassets\msbuild.build.Turn_Based_Game.props
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Turn_Based_Game.props
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Turn_Based_Game.props
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\obj\Debug\net8.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\obj\Debug\net8.0\scopedcss\Components\Layout\NavMenu.razor.rz.scp.css
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\obj\Debug\net8.0\scopedcss\bundle\Turn_Based_Game.styles.css
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\obj\Debug\net8.0\scopedcss\projectbundle\Turn_Based_Game.bundle.scp.css
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\obj\Debug\net8.0\Turn_Based_Game.dll
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\obj\Debug\net8.0\refint\Turn_Based_Game.dll
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\obj\Debug\net8.0\Turn_Based_Game.pdb
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\obj\Debug\net8.0\Turn Based Game.genruntimeconfig.cache
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn Based Game\obj\Debug\net8.0\ref\Turn_Based_Game.dll
