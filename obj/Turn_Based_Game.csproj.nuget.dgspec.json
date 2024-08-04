@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Turn_Based_Game.csproj": {}
+    "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn_Based_Game\\Turn_Based_Game.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Turn_Based_Game.csproj": {
+    "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn_Based_Game\\Turn_Based_Game.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Turn_Based_Game.csproj",
+        "projectUniqueName": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn_Based_Game\\Turn_Based_Game.csproj",
         "projectName": "Turn_Based_Game",
-        "projectPath": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\Turn_Based_Game.csproj",
+        "projectPath": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn_Based_Game\\Turn_Based_Game.csproj",
         "packagesPath": "C:\\Users\\nearn\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\obj\\",
+        "outputPath": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn_Based_Game\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\nearn\\AppData\\Roaming\\NuGet\\NuGet.Config",
