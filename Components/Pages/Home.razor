@@ -17,6 +17,7 @@
                 <th>Bonus Action</th>
                 <th>Reaction</th>
                 <th>Movement</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
@@ -47,6 +48,9 @@
                 @if (creature._hasMovement) { <td class="text-success"><button class="btn btn-primary" @onclick="creature.UseMovement">Yes</button></td> } else { 
                     <td class="text-danger"><button class="btn btn-danger" @onclick="creature.ResetMovement">No</button></td>
                 }
+                @if (creature._isDead == 1) { <td class="text-success"><a @onclick=creature.UpdateDeathStatus>Alive</a></td> } 
+                else if (creature._isDead == 0) { <td class="text-secondary"><a @onclick=creature.UpdateDeathStatus>Unconscious</a></td> }
+                else if (creature._isDead == -1) { <td class="text-danger"><a @onclick=creature.UpdateDeathStatus>Dead</a></td> }
                 </tr>
             }
         </tbody>
@@ -57,34 +61,49 @@
 @if (!_hasEncounterBegan) {
     <div class="container">
         <div class="row">
-            <div class="input-group col-5">
-                <label for="name">First Input:</label>
-                <input id="name" @bind="_nameValue" class="form-control col-5" />
+            <div class="col-5">
+                <label for="name">Creature Name:</label>
+                <input id="name" @bind="_nameValue" class="form-control" />
             </div>
-            <div class="input-group col-5">
-                <label for="initiative">Second Input:</label>
+            <div class="col-5">
+                <label for="initiative">Initiative Value:</label>
                 <input id="initiative" @bind="_initiativeValue" class="form-control" />
             </div>
-            <button @onclick="AddCreatureToInitiative" class="btn btn-primary col-2">+</button>
+            <button @onclick="AddCreatureToInitiative" class="btn btn-primary col-2">Add Creature</button>
         </div>
-        
+        <div class="row mt-3">
+            <button @onclick="OnBeginInitiative" class="btn btn-success begin-initiative-button col-2">Begin Initiative</button>
+        </div>
     </div>
-}
-
-@if (!_hasEncounterBegan)
-{
-    <button @onclick="OnBeginInitiative" class="btn btn-success begin-initiative-button">Begin Initiative</button>
 } else
 {
     <div class="container">
-        <div class="row">
-            <div class="col-6">
-                <button @onclick="OnBeginInitiative" class="btn btn-warning begin-initiative-button">End Initiative</button>
+        <div class="row justify-content-sm-between">
+            <div class="col-4">
+                <button @onclick="OnBeginInitiative" class="btn btn-danger begin-initiative-button">End Initiative</button>
             </div>
-            <div class="col-6">
+            <div class="col-4">
+                <button @onclick="() => _addingCreatureToMiddleOfInitiative = !_addingCreatureToMiddleOfInitiative" class="btn btn-warning begin-initiative-button">Add To Initiative</button>
+            </div>
+            <div class="col-4">
                 <button @onclick="NextTurn" class="btn btn-info begin-initiative-button">End Turn</button>
             </div>
         </div>
+        @if (_addingCreatureToMiddleOfInitiative)
+        {
+            <div class="row">
+                <div class="col-5">
+                    <label for="name">Creature Name:</label>
+                    <input id="name" @bind="_nameValue" class="form-control" />
+                </div>
+                <div class="col-5">
+                    <label for="initiative">Initiative Value:</label>
+                    <input id="initiative" @bind="_initiativeValue" class="form-control" />
+                </div>
+                <button @onclick="AddCreatureToInitiative" class="btn btn-primary col-2">Add Creature</button>
+            </div>
+        }
+        
     </div>
     
 }
@@ -102,6 +121,10 @@
 
     public List<Initiative> creaturesInEncounter = new List<Initiative>{
     };
+
+    public List<Initiative> deadCreatures = new List<Initiative>();
+
+    public bool _addingCreatureToMiddleOfInitiative = false;
 
     public void NextTurn()
     {
@@ -144,7 +167,23 @@
         _currentTurnIndex = 0;
     }
 
-    public class Initiative {
+
+    public List<Initiative> SortInitiative(List<Initiative> creaturesInInitiative)
+    {
+        // Create a copy of it
+        List<Initiative> sortedInitiative = creaturesInInitiative.ToList();
+
+        // Sort it 
+        sortedInitiative.Sort((firstObject, secondObject) => secondObject._initiative.CompareTo(firstObject._initiative));
+
+        // Return it 
+        sortedInitiative.ForEach((creature) => creature.Reset());
+
+        return sortedInitiative;
+    }
+
+    public class Initiative
+    {
         public string _name = "";
         public int _initiative = 0;
         public bool _isCurrentTurn = false;
@@ -152,10 +191,17 @@
         public bool _hasBonusAction = true;
         public bool _hasAction = true;
         public bool _hasReaction = true;
+        /// <summary>
+        ///     1 = Alive
+        ///     0 = Unconscious
+        ///     -1 = Dead
+        /// </summary>
+        public int _isDead = 1;
 
-        public Initiative() {}   
+        public Initiative() { }
 
-        public Initiative(string name, int initiative) {
+        public Initiative(string name, int initiative)
+        {
             _name = name;
             _initiative = initiative;
         }
@@ -208,23 +254,17 @@
             this._hasReaction = true;
         }
 
-
+        public void UpdateDeathStatus()
+        {
+            if (this._isDead == -1)
+            {
+                this._isDead = 1;
+            } else
+            {
+                this._isDead -= 1;
+            }
+        }
 
     }
-
-    public List<Initiative> SortInitiative(List<Initiative> creaturesInInitiative)
-    {
-        // Create a copy of it
-        List<Initiative> sortedInitiative = creaturesInInitiative.ToList();
-
-        // Sort it 
-        sortedInitiative.Sort((firstObject, secondObject) => secondObject._initiative.CompareTo(firstObject._initiative));
-
-        // Return it 
-        sortedInitiative.ForEach((creature) => creature.Reset());
-
-        return sortedInitiative;
-    }
-
 
 }
