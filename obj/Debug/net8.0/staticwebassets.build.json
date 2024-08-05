@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ZapcBKq9ZRZO3Rrw4y/wMY1u/aCegOK43+JvDYUPqqw=",
+  "Hash": "Ka8cTMpZauZ8vRFxYqFEz0APxU0F6X4hquqOj8DtP3k=",
   "Source": "Turn_Based_Game",
   "BasePath": "_content/Turn_Based_Game",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "Turn_Based_Game\\wwwroot",
       "Source": "Turn_Based_Game",
-      "ContentRoot": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn_Based_Game\\wwwroot\\",
       "BasePath": "_content/Turn_Based_Game",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Turn_Based_Game.styles.css",
+      "Identity": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn_Based_Game\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Turn_Based_Game.styles.css",
       "SourceId": "Turn_Based_Game",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn_Based_Game\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/Turn_Based_Game",
       "RelativePath": "Turn_Based_Game.styles.css",
       "AssetKind": "All",
@@ -33,13 +33,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Turn_Based_Game.styles.css"
+      "OriginalItemSpec": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn_Based_Game\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Turn_Based_Game.styles.css"
     },
     {
-      "Identity": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Turn_Based_Game.bundle.scp.css",
+      "Identity": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn_Based_Game\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Turn_Based_Game.bundle.scp.css",
       "SourceId": "Turn_Based_Game",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn_Based_Game\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/Turn_Based_Game",
       "RelativePath": "Turn_Based_Game.bundle.scp.css",
       "AssetKind": "All",
@@ -52,13 +52,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Turn_Based_Game.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn_Based_Game\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Turn_Based_Game.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\wwwroot\\app.css",
+      "Identity": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn_Based_Game\\wwwroot\\app.css",
       "SourceId": "Turn_Based_Game",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn_Based_Game\\wwwroot\\",
       "BasePath": "_content/Turn_Based_Game",
       "RelativePath": "app.css",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\app.css"
     },
     {
-      "Identity": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "Identity": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn_Based_Game\\wwwroot\\bootstrap\\bootstrap.min.css",
       "SourceId": "Turn_Based_Game",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn_Based_Game\\wwwroot\\",
       "BasePath": "_content/Turn_Based_Game",
       "RelativePath": "bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn_Based_Game\\wwwroot\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "Turn_Based_Game",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn_Based_Game\\wwwroot\\",
       "BasePath": "_content/Turn_Based_Game",
       "RelativePath": "bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\wwwroot\\favicon.png",
+      "Identity": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn_Based_Game\\wwwroot\\favicon.png",
       "SourceId": "Turn_Based_Game",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn Based Game\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nearn\\Programming Stuff\\TurnBasedGame\\Turn_Based_Game\\wwwroot\\",
       "BasePath": "_content/Turn_Based_Game",
       "RelativePath": "favicon.png",
       "AssetKind": "All",

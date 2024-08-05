@@ -1,12 +1,230 @@
 ﻿@page "/"
+@rendermode InteractiveServer
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Initiative Tracker</PageTitle>
 
-<h1>Hello, world!</h1>
+<div>
+    <h1 class="text-center">Initiative Tracker</h1>
+</div>
 
-Welcome to your new app.
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Creature</th>
+                <th>Initiative Order</th>
+                <th>Action</th>
+                <th>Bonus Action</th>
+                <th>Reaction</th>
+                <th>Movement</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Initiative creature in creaturesInEncounter) {
+                <tr>
+                @if (creature._isCurrentTurn)
+                {
+                    <td class="text-dark font-weight-bold">@creature._name</td>
+                        <td class="text-dark font-weight-bold">@creature._initiative</td>
+                }
+                else
+                {
+                    <td class="text-muted">@creature._name</td>
+                    <td class="text-muted">@creature._initiative</td>
+                }
+                @if (creature._hasAction) { <td class="text-success"><button class="btn btn-primary" @onclick="creature.UseAction">Yes</button></td> } else { 
+                    <td class="text-danger"><button class="btn btn-danger" @onclick="creature.ResetAction">No</button></td>
+                }
+                    
+                @if (creature._hasBonusAction) { <td class="text-success"><button class="btn btn-primary" @onclick="creature.UseBonusAction">Yes</button></td> } else { 
+                    <td class="text-danger"><button class="btn btn-danger" @onclick="creature.ResetBonusAction">No</button></td>
+                }
+                    
+                @if (creature._hasReaction) { <td class="text-success"><button class="btn btn-primary" @onclick="creature.UseReaction">Yes</button></td> } else { 
+                    <td class="text-danger"><button class="btn btn-danger" @onclick="creature.ResetReaction">No</button></td>
+                }
+                    
+                @if (creature._hasMovement) { <td class="text-success"><button class="btn btn-primary" @onclick="creature.UseMovement">Yes</button></td> } else { 
+                    <td class="text-danger"><button class="btn btn-danger" @onclick="creature.ResetMovement">No</button></td>
+                }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+@if (!_hasEncounterBegan) {
+    <div class="container">
+        <div class="row">
+            <div class="input-group col-5">
+                <label for="name">First Input:</label>
+                <input id="name" @bind="_nameValue" class="form-control col-5" />
+            </div>
+            <div class="input-group col-5">
+                <label for="initiative">Second Input:</label>
+                <input id="initiative" @bind="_initiativeValue" class="form-control" />
+            </div>
+            <button @onclick="AddCreatureToInitiative" class="btn btn-primary col-2">+</button>
+        </div>
+        
+    </div>
+}
+
+@if (!_hasEncounterBegan)
+{
+    <button @onclick="OnBeginInitiative" class="btn btn-success begin-initiative-button">Begin Initiative</button>
+} else
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <button @onclick="OnBeginInitiative" class="btn btn-warning begin-initiative-button">End Initiative</button>
+            </div>
+            <div class="col-6">
+                <button @onclick="NextTurn" class="btn btn-info begin-initiative-button">End Turn</button>
+            </div>
+        </div>
+    </div>
+    
+}
 
 
 @code {
+
+    public string _nameValue = "";
+
+    public int _initiativeValue = 0;
+
+    public bool _hasEncounterBegan = false;
+
+    public int _currentTurnIndex = -1;
+
+    public List<Initiative> creaturesInEncounter = new List<Initiative>{
+    };
+
+    public void NextTurn()
+    {
+        // Set the current creature's turn to false
+        creaturesInEncounter[_currentTurnIndex]._isCurrentTurn = false;
+        creaturesInEncounter[_currentTurnIndex].Reset();
+
+        // To Stop Out of Bounds Exceptions
+        try
+        {
+            _currentTurnIndex += 1;
+            creaturesInEncounter[_currentTurnIndex]._isCurrentTurn = true;
+        } catch (ArgumentOutOfRangeException)
+        {
+            _currentTurnIndex = 0;
+            creaturesInEncounter[_currentTurnIndex]._isCurrentTurn = true;
+        }
+
+        // Set the next creature's turn to false
+
+    }
+
+    public void AddCreatureToInitiative() {
+        // Grab the name value and the initiative values 
+        Initiative newInitiative = new Initiative(_nameValue, _initiativeValue);
+
+        // Add it to the initiative
+        creaturesInEncounter.Add(newInitiative);
+        // Reset the name value and initiative value
+        _nameValue = "";
+        _initiativeValue = 0;
+    }
+
+    public void OnBeginInitiative() {
+        _hasEncounterBegan = !_hasEncounterBegan;
+
+        creaturesInEncounter = SortInitiative(creaturesInEncounter);
+
+        creaturesInEncounter[0]._isCurrentTurn = true;
+        _currentTurnIndex = 0;
+    }
+
+    public class Initiative {
+        public string _name = "";
+        public int _initiative = 0;
+        public bool _isCurrentTurn = false;
+        public bool _hasMovement = true;
+        public bool _hasBonusAction = true;
+        public bool _hasAction = true;
+        public bool _hasReaction = true;
+
+        public Initiative() {}   
+
+        public Initiative(string name, int initiative) {
+            _name = name;
+            _initiative = initiative;
+        }
+
+        public void Reset()
+        {
+            _hasMovement = true;
+            _hasBonusAction = true;
+            _hasAction = true;
+            _hasReaction = true;
+        }
+
+        public void UseMovement()
+        {
+            this._hasMovement = false;
+        }
+
+        public void UseAction()
+        {
+            this._hasAction = false;
+        }
+
+        public void UseBonusAction()
+        {
+            this._hasBonusAction = false;
+        }
+
+        public void UseReaction()
+        {
+            this._hasReaction = false;
+        }
+
+        public void ResetMovement()
+        {
+            this._hasMovement = true;
+        }
+
+        public void ResetAction()
+        {
+            this._hasAction = true;
+        }
+
+        public void ResetBonusAction()
+        {
+            this._hasBonusAction = true;
+        }
+
+        public void ResetReaction()
+        {
+            this._hasReaction = true;
+        }
+
+
+
+    }
+
+    public List<Initiative> SortInitiative(List<Initiative> creaturesInInitiative)
+    {
+        // Create a copy of it
+        List<Initiative> sortedInitiative = creaturesInInitiative.ToList();
+
+        // Sort it 
+        sortedInitiative.Sort((firstObject, secondObject) => secondObject._initiative.CompareTo(firstObject._initiative));
+
+        // Return it 
+        sortedInitiative.ForEach((creature) => creature.Reset());
+
+        return sortedInitiative;
+    }
+
 
 }
