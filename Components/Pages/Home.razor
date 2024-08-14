@@ -59,8 +59,8 @@
                         <td class="text-danger">
                             <div class="row">
                                 <label for="Health">Current Health:</label>
-                                <input id="damageTaken" @bind="_currentHealth" class="col-1 form-control" />
-                                <button type="submit" @onclick="() => TakeDamage(creature, _currentHealth)" class="btn btn-primary col-3">Add Creature</button>
+                                <input id="damageTaken" @bind="_currentHealth" class="form-control w-25" />
+                                <button type="submit" @onclick="() => TakeDamage(creature, _currentHealth)" class="btn btn-primary col-3">Submit</button>
                             </div>
                         </td>
                     }
@@ -98,7 +98,7 @@
     <div class="container">
         <div class="row justify-content-sm-between">
             <div class="col-4">
-                <button @onclick="OnBeginInitiative" class="btn btn-danger begin-initiative-button">End Initiative</button>
+                <button @onclick="OnEndInitiative" class="btn btn-danger begin-initiative-button">End Initiative</button>
             </div>
             <div class="col-4">
                 <button @onclick="() => _addingCreatureToMiddleOfInitiative = !_addingCreatureToMiddleOfInitiative" class="btn btn-warning begin-initiative-button">Add To Initiative</button>
@@ -125,10 +125,20 @@
                 <button @onclick="AddCreatureToInitiative" class="btn btn-primary col-2">Add Creature</button>
             </div>
         }
-        
     </div>
-    
 }
+
+<div class="container pt-5">
+    @if (_hasEncounterEnded)
+    {
+        <div>@_totalNumberOfRoundsOfCombat round(s) of combat elapsed.</div>
+
+        @foreach (Initiative creature in creaturesInEncounter)
+        {
+            <div>@($"{creature._name} took a total of {creature._damageTaken} points of damage and healed a total of {creature._damageHealed} points of damage.")</div>
+        }
+    }
+</div>
 
 
 @code {
@@ -144,6 +154,10 @@
     public bool _isChangingHealth = false;
 
     public int _currentHealth = 0;
+
+    public bool _hasEncounterEnded = false;
+
+    public int _totalNumberOfRoundsOfCombat = 0;
 
     public List<Initiative> creaturesInEncounter = new List<Initiative>{
     };
@@ -165,6 +179,7 @@
             creaturesInEncounter[_currentTurnIndex]._isCurrentTurn = true;
         } catch (ArgumentOutOfRangeException)
         {
+            _totalNumberOfRoundsOfCombat += 1;
             _currentTurnIndex = 0;
             creaturesInEncounter[_currentTurnIndex]._isCurrentTurn = true;
         }
@@ -191,6 +206,13 @@
         _currentHealth = 0;
     }
 
+    public void OnEndInitiative()
+    {
+        // Loop through the creatures in the encounter and spit out the damage that they took
+        _hasEncounterBegan = !_hasEncounterBegan;
+        _hasEncounterEnded = true;
+    }
+
     public void OnBeginInitiative() {
         _hasEncounterBegan = !_hasEncounterBegan;
 
@@ -200,15 +222,32 @@
         _currentTurnIndex = 0;
     }
 
-    public void TakeDamage(Initiative creature, int damageTaken)
+    public void TakeDamage(Initiative creature, int newHealth)
     {
+        // Check if the creature took damage or was healed
+        if (newHealth > creature._currentHealth)
+        {
+            int damageAlreadyHealed = creature._damageHealed;
+            int newDamageHealed = newHealth - creature._currentHealth;
+            creature._damageHealed = damageAlreadyHealed + newDamageHealed;
+        } else if (newHealth < creature._currentHealth)
+        {
+            // Calculate the amount of damage taken; compare the current health vs. the input of the damage taken
+            int damageAlreadyTaken = creature._damageTaken;
+            int newDamageTaken = creature._currentHealth - newHealth;
+
+            // Update the names and damage taken as a part of the dictionary
+            creature._damageTaken = damageAlreadyTaken + newDamageTaken;
+        }
+
         // When the user clicks the field, it should turn it into an input field with a button beside it; tie the
         // input field value to the new damage taken
-        creature._currentHealth = damageTaken;
+        creature._currentHealth = newHealth;
         creature._isCurrentlyChangingHealth = !creature._isCurrentlyChangingHealth;
 
-        // Set the current health back down to 0 so it can set it for said creature
+        // Set the current health back down to 0 so it can set it for said creature and set the global variable back to false
         _currentHealth = 0;
+        _isChangingHealth = false;
     }
 
 
@@ -228,11 +267,17 @@
 
     public void setCurrentlyChangingHealth(Initiative creature)
     {
+        // If we're already changing the health of one creature, make it so that nothing happens if we happen to click on any other ones
+        if (_isChangingHealth) { return; }
+
         // Set the current health global value to the creature's current health
         _currentHealth = creature._currentHealth;
 
         // Make sure to set the boolean to its opposite now so it can display the input
         creature._isCurrentlyChangingHealth = !creature._isCurrentlyChangingHealth;
+
+        // Change the global setting health check
+        _isChangingHealth = true;
     }
 
     public class Initiative
@@ -252,6 +297,8 @@
         public int _isDead = 1;
         public int _currentHealth = 0;
         public bool _isCurrentlyChangingHealth = false;
+        public int _damageTaken = 0;
+        public int _damageHealed = 0;
 
         public Initiative() { }
 
