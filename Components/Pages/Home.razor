@@ -18,6 +18,7 @@
                 <th>Reaction</th>
                 <th>Movement</th>
                 <th>Status</th>
+                <th>Current Health</th>
             </tr>
         </thead>
         <tbody>
@@ -51,6 +52,19 @@
                 @if (creature._isDead == 1) { <td class="text-success"><a @onclick=creature.UpdateDeathStatus>Alive</a></td> } 
                 else if (creature._isDead == 0) { <td class="text-secondary"><a @onclick=creature.UpdateDeathStatus>Unconscious</a></td> }
                 else if (creature._isDead == -1) { <td class="text-danger"><a @onclick=creature.UpdateDeathStatus>Dead</a></td> }
+
+                    @if (!creature._isCurrentlyChangingHealth) { <td class="text-danger" @onclick="() => setCurrentlyChangingHealth(creature)">@creature._currentHealth</td> }
+                    else
+                    {
+                        <td class="text-danger">
+                            <div class="row">
+                                <label for="Health">Current Health:</label>
+                                <input id="damageTaken" @bind="_currentHealth" class="col-1 form-control" />
+                                <button type="submit" @onclick="() => TakeDamage(creature, _currentHealth)" class="btn btn-primary col-3">Add Creature</button>
+                            </div>
+                        </td>
+                    }
+                    
                 </tr>
             }
         </tbody>
@@ -61,15 +75,19 @@
 @if (!_hasEncounterBegan) {
     <div class="container">
         <div class="row">
-            <div class="col-5">
+            <div class="col-3">
                 <label for="name">Creature Name:</label>
                 <input id="name" @bind="_nameValue" class="form-control" />
             </div>
-            <div class="col-5">
+            <div class="col-3">
                 <label for="initiative">Initiative Value:</label>
                 <input id="initiative" @bind="_initiativeValue" class="form-control" />
             </div>
-            <button @onclick="AddCreatureToInitiative" class="btn btn-primary col-2">Add Creature</button>
+            <div class="col-3">
+                <label for="initiative">Current Health:</label>
+                <input id="initiative" @bind="_currentHealth" class="form-control" />
+            </div>
+            <button @onclick="AddCreatureToInitiative" class="btn sm btn-primary col-2">Add Creature</button>
         </div>
         <div class="row mt-3">
             <button @onclick="OnBeginInitiative" class="btn btn-success begin-initiative-button col-2">Begin Initiative</button>
@@ -92,13 +110,17 @@
         @if (_addingCreatureToMiddleOfInitiative)
         {
             <div class="row">
-                <div class="col-5">
+                <div class="col-3">
                     <label for="name">Creature Name:</label>
                     <input id="name" @bind="_nameValue" class="form-control" />
                 </div>
-                <div class="col-5">
+                <div class="col-3">
                     <label for="initiative">Initiative Value:</label>
                     <input id="initiative" @bind="_initiativeValue" class="form-control" />
+                </div>
+                <div class="col-3">
+                    <label for="initiative">Current Health:</label>
+                    <input id="initiative" @bind="_currentHealth" class="form-control" />
                 </div>
                 <button @onclick="AddCreatureToInitiative" class="btn btn-primary col-2">Add Creature</button>
             </div>
@@ -118,6 +140,10 @@
     public bool _hasEncounterBegan = false;
 
     public int _currentTurnIndex = -1;
+
+    public bool _isChangingHealth = false;
+
+    public int _currentHealth = 0;
 
     public List<Initiative> creaturesInEncounter = new List<Initiative>{
     };
@@ -148,14 +174,21 @@
     }
 
     public void AddCreatureToInitiative() {
+        // Ensure that Name Value and current health are empty or 0
+        if (_nameValue == "" || _currentHealth == 0)
+        {
+            return;
+        }
+
         // Grab the name value and the initiative values 
-        Initiative newInitiative = new Initiative(_nameValue, _initiativeValue);
+        Initiative newInitiative = new Initiative(_nameValue, _initiativeValue, _currentHealth);
 
         // Add it to the initiative
         creaturesInEncounter.Add(newInitiative);
         // Reset the name value and initiative value
         _nameValue = "";
         _initiativeValue = 0;
+        _currentHealth = 0;
     }
 
     public void OnBeginInitiative() {
@@ -165,6 +198,17 @@
 
         creaturesInEncounter[0]._isCurrentTurn = true;
         _currentTurnIndex = 0;
+    }
+
+    public void TakeDamage(Initiative creature, int damageTaken)
+    {
+        // When the user clicks the field, it should turn it into an input field with a button beside it; tie the
+        // input field value to the new damage taken
+        creature._currentHealth = damageTaken;
+        creature._isCurrentlyChangingHealth = !creature._isCurrentlyChangingHealth;
+
+        // Set the current health back down to 0 so it can set it for said creature
+        _currentHealth = 0;
     }
 
 
@@ -182,6 +226,15 @@
         return sortedInitiative;
     }
 
+    public void setCurrentlyChangingHealth(Initiative creature)
+    {
+        // Set the current health global value to the creature's current health
+        _currentHealth = creature._currentHealth;
+
+        // Make sure to set the boolean to its opposite now so it can display the input
+        creature._isCurrentlyChangingHealth = !creature._isCurrentlyChangingHealth;
+    }
+
     public class Initiative
     {
         public string _name = "";
@@ -197,13 +250,16 @@
         ///     -1 = Dead
         /// </summary>
         public int _isDead = 1;
+        public int _currentHealth = 0;
+        public bool _isCurrentlyChangingHealth = false;
 
         public Initiative() { }
 
-        public Initiative(string name, int initiative)
+        public Initiative(string name, int initiative, int currentHealth)
         {
             _name = name;
             _initiative = initiative;
+            _currentHealth = currentHealth;
         }
 
         public void Reset()
