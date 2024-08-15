@@ -35,3 +35,4 @@ C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn_Based_Game\obj\Debug\net8.0\
 C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn_Based_Game\obj\Debug\net8.0\Turn_Based_Game.pdb
 C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn_Based_Game\obj\Debug\net8.0\Turn_Based_Game.genruntimeconfig.cache
 C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn_Based_Game\obj\Debug\net8.0\ref\Turn_Based_Game.dll
+C:\Users\nearn\Programming Stuff\TurnBasedGame\Turn_Based_Game\obj\Debug\net8.0\Turn_Based_Game.sourcelink.json
