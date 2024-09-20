@@ -159,8 +159,14 @@
     }
 </div>
 
-
-
+@if(_unableToAddCreatureToInitiativeError)
+{
+    <div class="container pt-5">
+        <div class="alert alert-info mt-3">
+            Unable to add the creature to the initiative. Please double check all information is correct.
+        </div>
+    </div>
+}
 
 <div class="container pt-5">
     @if (_hasEncounterEnded)
@@ -187,11 +193,12 @@
     public int _totalNumberOfRoundsOfCombat = 0;
     public bool _addingCreatureToMiddleOfInitiative = false;
     public string _selectedCreature = "";
+    public bool _unableToAddCreatureToInitiativeError = false;
     public Monster _selectedMonster = new Monster("", 0, new CurrentHealth(0, 0));
 
     public List<Creature> creaturesInEncounter = new List<Creature>{};
     public List<Creature> deadCreatures = new List<Creature>();
-    public Dictionary<string, int> monsterNamesUniquenessDictionary = new Dictionary<string, int>();
+    public Dictionary<string, int> creatureNamesUniquenessDictionary = new Dictionary<string, int>();
 
     protected override void OnInitialized()
     {
@@ -214,6 +221,10 @@
         creaturesToAdd.Add(Vahgon);
         creaturesToAdd.Add(Bart);
         creaturesToAdd.Add(Tempo);
+        creatureNamesUniquenessDictionary.Add(Netari._name, 1);
+        creatureNamesUniquenessDictionary.Add(Vahgon._name, 1);
+        creatureNamesUniquenessDictionary.Add(Bart._name, 1);
+        creatureNamesUniquenessDictionary.Add(Tempo._name, 1);
         return creaturesToAdd;
     }
 
@@ -243,11 +254,25 @@
             return;
         }
 
+        // Check if that creature already exists in the table; if so, then reject it and raise an error
+        if (creatureNamesUniquenessDictionary.TryGetValue(_nameValue, out _))
+        {
+            _unableToAddCreatureToInitiativeError = true;
+            return;
+        } else
+        {
+            _unableToAddCreatureToInitiativeError = false;
+        }
+
+        // Keep track of the unique amount of names within the initiative order;
+        creatureNamesUniquenessDictionary.Add(_nameValue, 1);
+
         // Grab the name value and the initiative values 
         Creature newInitiative = new Creature(_nameValue, _initiativeValue, _currentHealth);
 
         // Add it to the initiative
         creaturesInEncounter.Add(newInitiative);
+
         // Reset the name value and initiative value
         _nameValue = "";
         _initiativeValue = 0;
@@ -352,8 +377,17 @@
         // initiative tracker
         int numberOfTimesTheMonsterIsInInitiative = 1;
         // Could honestly refactor/use the bottom logic for ensuring that names are unique in the encounter table
-        monsterNamesUniquenessDictionary.TryGetValue(_selectedMonster.Name, out numberOfTimesTheMonsterIsInInitiative);
-        _nameValue = _selectedMonster.Name + numberOfTimesTheMonsterIsInInitiative;
+        foreach( var creatureName in creatureNamesUniquenessDictionary)
+        {
+            Console.WriteLine(creatureName.Key);
+            Console.WriteLine(creatureName.Value);
+        }
+        // Weird edge case: if I add a goblin, click add monster to initiative, then add creature, and do it a couple of times, 
+        // then I attempt to add someone just named "Goblin" it will actually fail..
+        bool hasMonsterNameBeenUsed = creatureNamesUniquenessDictionary.TryGetValue(_selectedMonster.Name, out numberOfTimesTheMonsterIsInInitiative);
+        numberOfTimesTheMonsterIsInInitiative = hasMonsterNameBeenUsed ? numberOfTimesTheMonsterIsInInitiative + 1 : 1;
+        if (hasMonsterNameBeenUsed) { creatureNamesUniquenessDictionary[_selectedMonster.Name] += 1; } else { creatureNamesUniquenessDictionary.Add(_selectedMonster.Name, 1); }
+        _nameValue = _selectedMonster.Name + " " + numberOfTimesTheMonsterIsInInitiative;
         _initiativeValue = roll(1, 20) + _selectedMonster.InitiativeBonus;
 
         // Set the fields to the selected monster
