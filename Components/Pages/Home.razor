@@ -159,27 +159,17 @@
 @code {
 
     public string _nameValue = "";
-
     public int _initiativeValue = 0;
-
     public bool _hasEncounterBegan = false;
-
     public int _currentTurnIndex = -1;
-
     public bool _isChangingHealth = false;
-
     public int _currentHealth = 0;
-
     public bool _hasEncounterEnded = false;
-
     public int _totalNumberOfRoundsOfCombat = 0;
-
-    public List<Initiative> creaturesInEncounter = new List<Initiative>{
-    };
-
-    public List<Initiative> deadCreatures = new List<Initiative>();
-
     public bool _addingCreatureToMiddleOfInitiative = false;
+
+    public List<Initiative> creaturesInEncounter = new List<Initiative>{};
+    public List<Initiative> deadCreatures = new List<Initiative>();
 
     protected override void OnInitialized()
     {
@@ -218,9 +208,6 @@
             _currentTurnIndex = 0;
             creaturesInEncounter[_currentTurnIndex]._isCurrentTurn = true;
         }
-
-        // Set the next creature's turn to false
-
     }
 
     public void AddCreatureToInitiative() {
@@ -250,9 +237,7 @@
 
     public void OnBeginInitiative() {
         _hasEncounterBegan = !_hasEncounterBegan;
-
         creaturesInEncounter = SortInitiative(creaturesInEncounter);
-
         creaturesInEncounter[0]._isCurrentTurn = true;
         _currentTurnIndex = 0;
     }
