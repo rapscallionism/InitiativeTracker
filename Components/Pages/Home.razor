@@ -381,11 +381,6 @@
         // initiative tracker
         int numberOfTimesTheMonsterIsInInitiative = 1;
         // Could honestly refactor/use the bottom logic for ensuring that names are unique in the encounter table
-        foreach( var creatureName in creatureNamesUniquenessDictionary)
-        {
-            Console.WriteLine(creatureName.Key);
-            Console.WriteLine(creatureName.Value);
-        }
         // Weird edge case: if I add a goblin, click add monster to initiative, then add creature, and do it a couple of times, 
         // then I attempt to add someone just named "Goblin" it will actually fail..
         bool hasMonsterNameBeenUsed = creatureNamesUniquenessDictionary.TryGetValue(_selectedMonster.Name, out numberOfTimesTheMonsterIsInInitiative);
