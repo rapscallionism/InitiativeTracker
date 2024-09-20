@@ -23,7 +23,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (Initiative creature in creaturesInEncounter) {
+            @foreach (Creature creature in creaturesInEncounter) {
                 <tr>
                 @if (creature._isCurrentTurn)
                 {
@@ -149,7 +149,7 @@
     {
         <div>@_totalNumberOfRoundsOfCombat round(s) of combat elapsed.</div>
 
-        @foreach (Initiative creature in creaturesInEncounter)
+        @foreach (Creature creature in creaturesInEncounter)
         {
             <div>@($"{creature._name} took a total of {creature._damageTaken} points of damage and healed a total of {creature._damageHealed} points of damage.")</div>
         }
@@ -169,8 +169,8 @@
     public int _totalNumberOfRoundsOfCombat = 0;
     public bool _addingCreatureToMiddleOfInitiative = false;
 
-    public List<Initiative> creaturesInEncounter = new List<Initiative>{};
-    public List<Initiative> deadCreatures = new List<Initiative>();
+    public List<Creature> creaturesInEncounter = new List<Creature>{};
+    public List<Creature> deadCreatures = new List<Creature>();
 
     protected override void OnInitialized()
     {
@@ -182,13 +182,13 @@
         }
     }
 
-    public List<Initiative> AddTestCreatures()
+    public List<Creature> AddTestCreatures()
     {
-        Initiative Netari = new Initiative("Netari", 19, 37);
-        Initiative Vahgon = new Initiative("Vahgon", 21, 35);
-        Initiative Bart = new Initiative("Bart", 13, 27);
-        Initiative Tempo = new Initiative("Tempo", 20, 31);
-        List<Initiative> creaturesToAdd = new List<Initiative>();
+        Creature Netari = new Creature("Netari", 19, 37);
+        Creature Vahgon = new Creature("Vahgon", 21, 35);
+        Creature Bart = new Creature("Bart", 13, 27);
+        Creature Tempo = new Creature("Tempo", 20, 31);
+        List<Creature> creaturesToAdd = new List<Creature>();
         creaturesToAdd.Add(Netari);
         creaturesToAdd.Add(Vahgon);
         creaturesToAdd.Add(Bart);
@@ -223,7 +223,7 @@
         }
 
         // Grab the name value and the initiative values 
-        Initiative newInitiative = new Initiative(_nameValue, _initiativeValue, _currentHealth);
+        Creature newInitiative = new Creature(_nameValue, _initiativeValue, _currentHealth);
 
         // Add it to the initiative
         creaturesInEncounter.Add(newInitiative);
@@ -247,7 +247,7 @@
         _currentTurnIndex = 0;
     }
 
-    public void TakeDamage(Initiative creature, int newHealth)
+    public void TakeDamage(Creature creature, int newHealth)
     {
         // Check if the creature took damage or was healed
         if (newHealth > creature._currentHealth)
@@ -276,10 +276,10 @@
     }
 
 
-    public List<Initiative> SortInitiative(List<Initiative> creaturesInInitiative)
+    public List<Creature> SortInitiative(List<Creature> creaturesInInitiative)
     {
         // Create a copy of it
-        List<Initiative> sortedInitiative = creaturesInInitiative.ToList();
+        List<Creature> sortedInitiative = creaturesInInitiative.ToList();
 
         // Sort it 
         sortedInitiative.Sort((firstObject, secondObject) => secondObject._initiative.CompareTo(firstObject._initiative));
@@ -290,7 +290,7 @@
         return sortedInitiative;
     }
 
-    public void setCurrentlyChangingHealth(Initiative creature)
+    public void setCurrentlyChangingHealth(Creature creature)
     {
         // If we're already changing the health of one creature, make it so that nothing happens if we happen to click on any other ones
         if (_isChangingHealth) { return; }
@@ -305,7 +305,7 @@
         _isChangingHealth = true;
     }
 
-    public class Initiative
+    public class Creature
     {
         public string _name = "";
         public int _initiative = 0;
@@ -325,9 +325,9 @@
         public int _damageTaken = 0;
         public int _damageHealed = 0;
 
-        public Initiative() { }
+        public Creature() { }
 
-        public Initiative(string name, int initiative, int currentHealth)
+        public Creature(string name, int initiative, int currentHealth)
         {
             _name = name;
             _initiative = initiative;
