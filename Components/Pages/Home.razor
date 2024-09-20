@@ -98,15 +98,19 @@
     {
         <div class="container">
             <div class="row justify-content-sm-between">
-                <div class="col-4">
-                    <button @onclick="OnEndInitiative" class="btn btn-danger begin-initiative-button">End Initiative</button>
-                </div>
-                <div class="col-4">
-                    <button @onclick="() => _addingCreatureToMiddleOfInitiative = !_addingCreatureToMiddleOfInitiative" class="btn btn-warning begin-initiative-button">Add To Initiative</button>
-                </div>
-                <div class="col-4">
-                    <button @onclick="NextTurn" class="btn btn-info begin-initiative-button">End Turn</button>
-                </div>
+                @if (!_addingCreatureToMiddleOfInitiative)
+                {
+                    <div class="col-4">
+                        <button @onclick="OnEndInitiative" class="btn btn-danger begin-initiative-button">End Initiative</button>
+                    </div>
+                    <div class="col-4">
+                        <button @onclick="() => _addingCreatureToMiddleOfInitiative = !_addingCreatureToMiddleOfInitiative" class="btn btn-warning begin-initiative-button">Add To Initiative</button>
+                    </div>
+                    <div class="col-4">
+                        <button @onclick="NextTurn" class="btn btn-info begin-initiative-button">End Turn</button>
+                    </div>
+                }
+                
             </div>
             @if (_addingCreatureToMiddleOfInitiative)
             {
@@ -123,7 +127,13 @@
                         <label for="initiative">Current Health:</label>
                         <input id="initiative" @bind="_currentHealth" class="form-control" />
                     </div>
-                    <button @onclick="AddCreatureToInitiative" class="btn btn-primary col-2">Add Creature</button>
+
+                    <div class="col-3">
+                        <div class="row">
+                            <button @onclick="AddCreatureToInitiative" class="btn btn-primary my-1">Add Creature</button>
+                            <button @onclick="() => {_addingCreatureToMiddleOfInitiative = !_addingCreatureToMiddleOfInitiative;}" class="btn btn-danger text-center my-1">Cancel</button>
+                        </div>
+                    </div>
                 </div>
             }
         </div>
