@@ -92,18 +92,25 @@
                 <button @onclick="AddCreatureToInitiative" class="btn sm btn-primary col-2">Add Creature</button>
             </div>
             <div class="row mt-3">
-                <div class="col-6">
-                    <label for="name">Available Monsters</label>
-                    <select @bind="selectedCreature">
-                        <option value="">Select a Creature</option>
-                        @foreach(Monster monster in monsterLoaderService.GetData())
-                        {
-                            <option value="@monster.Name">@monster.Name</option>
-                        }
-                    </select>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="monsterSelect">Available Monsters</label>
+                        <select id="monsterSelect" class="form-select" @bind="_selectedCreature" @bind:after="OnSelectMonster" >
+                            <option value="">Select a Creature</option>
+                            @foreach (Monster monster in monsterLoaderService.GetData())
+                            {
+                                <option value="@monster.Name">@monster.Name</option>
+                            }
+                        </select>
+                    </div>
                 </div>
-                <button @onclick="OnBeginInitiative" class="btn btn-success begin-initiative-button col-6">Begin Initiative</button>
+                <div class="col-3">
+                    <label for="initiative">Monster Initiative Bonus</label>
+                    <input id="initiative" disabled @bind="_selectedMonster.InitiativeBonus" class="form-control" />
+                </div>
+                <button @onclick="OnConfirmSelectedMonster" class="btn btn-success begin-initiative-button col-6">Add Monster To Initiative</button>
             </div>
+            <button @onclick="OnBeginInitiative" class="btn btn-success begin-initiative-button col align-self-center mt-4">Begin Initiative</button>
         </div>
     }
     else
@@ -179,7 +186,8 @@
     public bool _hasEncounterEnded = false;
     public int _totalNumberOfRoundsOfCombat = 0;
     public bool _addingCreatureToMiddleOfInitiative = false;
-    public string selectedCreature = "";
+    public string _selectedCreature = "";
+    public Monster _selectedMonster = new Monster("", 0, new CurrentHealth(0, 0));
 
     public List<Creature> creaturesInEncounter = new List<Creature>{};
     public List<Creature> deadCreatures = new List<Creature>();
@@ -315,6 +323,43 @@
 
         // Change the global setting health check
         _isChangingHealth = true;
+    }
+
+    public void OnSelectMonster()
+    {
+        // Loop through all the monster list and set the selectedMonster to be the same as the selectedCreature
+        foreach(Monster monster in monsterLoaderService.GetData())
+        {
+            if (_selectedCreature.Equals(monster.Name))
+            {
+                _selectedMonster = monster;
+                return;
+            }
+        }
+    }
+
+    public void OnConfirmSelectedMonster()
+    {
+        // Once the monster is confirmed to be the one selected, we need to roll the initiative of the monster + its current health
+        // Check if the monster is even selected in the first place
+        if (_selectedMonster.Name == "" || _selectedMonster.CurrentHealth.NumberOfDice == 0 || _selectedMonster.CurrentHealth.MaxNumberOnDice == 0)
+        {
+            return;
+        }
+
+        // Set the fields to the selected monster
+        int monsterCurrentHealth = 0;
+        for (int i = 0; i < _selectedMonster.CurrentHealth.NumberOfDice; i++)
+        {
+            monsterCurrentHealth += roll(1, _selectedMonster.CurrentHealth.MaxNumberOnDice);
+        }
+        _nameValue = _selectedMonster.Name;
+        _initiativeValue = roll(1, 20) + _selectedMonster.InitiativeBonus;
+        _currentHealth = monsterCurrentHealth;
+
+        // Reset the associated fields
+        _selectedCreature = "";
+        _selectedMonster = new Monster("", 0, new CurrentHealth(0, 0));
     }
 
     public int roll(int minimumValue, int maximumValue)
