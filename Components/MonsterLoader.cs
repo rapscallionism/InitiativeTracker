@@ -23,9 +23,26 @@ namespace Turn_Based_Game.Components
     {
         public int NumberOfDice { get; set; }
         public int MaxNumberOnDice { get; set; }
-        public CurrentHealth(int NumberOfDice,  int MaxNumberOnDice) {
+        public int OtherHealthBonuses { get; set; }
+        public string healthRollValueAsString { get; set; }
+        public CurrentHealth(int NumberOfDice,  int MaxNumberOnDice, int otherHealthBonuses)
+        {
             this.NumberOfDice = NumberOfDice;
             this.MaxNumberOnDice = MaxNumberOnDice;
+            this.OtherHealthBonuses = otherHealthBonuses;
+            this.setHealthRollValueAsString();
+        }
+
+        public void setHealthRollValueAsString()
+        {
+            this.healthRollValueAsString = $"{NumberOfDice}d{MaxNumberOnDice}";
+            if (this.OtherHealthBonuses > 0)
+            {
+                this.healthRollValueAsString += $"+{OtherHealthBonuses}";
+            } else if (this.OtherHealthBonuses < 0)
+            {
+                this.healthRollValueAsString += OtherHealthBonuses;
+            } 
         }
     }
 

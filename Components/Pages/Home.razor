@@ -108,7 +108,11 @@
                     <label for="initiative">Monster Initiative Bonus</label>
                     <input id="initiative" disabled @bind="_selectedMonster.InitiativeBonus" class="form-control" />
                 </div>
-                <button @onclick="OnConfirmSelectedMonster" class="btn btn-success begin-initiative-button col-6">Add Monster To Initiative</button>
+                <div class="col-3">
+                    <label for="initiative">Monster's Rolled Health Value</label>
+                    <input id="initiative" disabled @bind="_selectedMonster.CurrentHealth.healthRollValueAsString" class="form-control" />
+                </div>
+                <button @onclick="OnConfirmSelectedMonster" class="btn btn-success begin-initiative-button col-3">Add Monster To Initiative</button>
             </div>
             <button @onclick="OnBeginInitiative" class="btn btn-success begin-initiative-button col align-self-center mt-4">Begin Initiative</button>
         </div>
@@ -194,7 +198,7 @@
     public bool _addingCreatureToMiddleOfInitiative = false;
     public string _selectedCreature = "";
     public bool _unableToAddCreatureToInitiativeError = false;
-    public Monster _selectedMonster = new Monster("", 0, new CurrentHealth(0, 0));
+    public Monster _selectedMonster = new Monster("", 0, new CurrentHealth(0, 0, 0));
 
     public List<Creature> creaturesInEncounter = new List<Creature>{};
     public List<Creature> deadCreatures = new List<Creature>();
@@ -396,11 +400,12 @@
         {
             monsterCurrentHealth += roll(1, _selectedMonster.CurrentHealth.MaxNumberOnDice);
         }
+        monsterCurrentHealth += _selectedMonster.CurrentHealth.OtherHealthBonuses;
         _currentHealth = monsterCurrentHealth;
 
         // Reset the associated fields
         _selectedCreature = "";
-        _selectedMonster = new Monster("", 0, new CurrentHealth(0, 0));
+        _selectedMonster = new Monster("", 0, new CurrentHealth(0, 0, 0));
     }
 
     public int roll(int minimumValue, int maximumValue)

@@ -3,6 +3,7 @@
   "InitiativeBonus": 2,
   "CurrentHealth": {
     "NumberOfDice": 2,
-    "MaxNumberOnDice": 6
+    "MaxNumberOnDice": 6,
+    "OtherHealthBonuses": 0
   }
 }
