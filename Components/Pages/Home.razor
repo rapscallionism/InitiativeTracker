@@ -49,15 +49,15 @@
                 @if (creature._hasMovement) { <td class="text-success"><button class="btn btn-primary" @onclick="creature.UseMovement">Yes</button></td> } else { 
                     <td class="text-danger"><button class="btn btn-danger" @onclick="creature.ResetMovement">No</button></td>
                 }
-                @if (creature._isDead == 1) { <td id="clickable" class="text-success"><a @onclick=creature.UpdateDeathStatus>Alive</a></td> } 
-                else if (creature._isDead == 0) { <td id="clickable" class="text-secondary"><a @onclick=creature.UpdateDeathStatus>Unconscious</a></td> }
-                else if (creature._isDead == -1) { <td id="clickable" class="text-danger"><a @onclick=creature.UpdateDeathStatus>Dead</a></td> }
+                @if (creature._isDead == 1) { <td  class="text-success"><a id="clickable" @onclick=creature.UpdateDeathStatus>Alive</a></td> } 
+                else if (creature._isDead == 0) { <td  class="text-secondary"><a id="clickable" @onclick=creature.UpdateDeathStatus>Unconscious</a></td> }
+                else if (creature._isDead == -1) { <td  class="text-danger"><a id="clickable" @onclick=creature.UpdateDeathStatus>Dead</a></td> }
 
                     @if (!creature._isCurrentlyChangingHealth) { <td id="clickable" class="text-danger" @onclick="() => setCurrentlyChangingHealth(creature)">@creature._currentHealth</td> }
                     else
                     {
                         <td class="text-danger">
-                            <div class="row">
+                            <div class="ml-0 row">
                                 <label for="Health">Current Health:</label>
                                 <input id="damageTaken" @bind="_currentHealth" class="form-control w-25" />
                                 <button type="submit" @onclick="() => TakeDamage(creature, _currentHealth)" class="btn btn-primary col-3">Submit</button>
@@ -170,6 +170,26 @@
     public List<Initiative> deadCreatures = new List<Initiative>();
 
     public bool _addingCreatureToMiddleOfInitiative = false;
+
+    protected override void OnInitialized()
+    {
+        // TODO: REMOVE THIS ONCE DONE WITH TESTING
+        creaturesInEncounter = AddTestCreatures();
+    }
+
+    public List<Initiative> AddTestCreatures()
+    {
+        Initiative Netari = new Initiative("Netari", 19, 37);
+        Initiative Vahgon = new Initiative("Vahgon", 21, 35);
+        Initiative Bart = new Initiative("Bart", 13, 27);
+        Initiative Tempo = new Initiative("Tempo", 20, 31);
+        List<Initiative> creaturesToAdd = new List<Initiative>();
+        creaturesToAdd.Add(Netari);
+        creaturesToAdd.Add(Vahgon);
+        creaturesToAdd.Add(Bart);
+        creaturesToAdd.Add(Tempo);
+        return creaturesToAdd;
+    }
 
     public void NextTurn()
     {
