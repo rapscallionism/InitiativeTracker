@@ -2,6 +2,7 @@
 @rendermode InteractiveServer
 @inject IConfiguration Configuration
 @inject MonsterLoaderService monsterLoaderService
+@using static UserGuide
 
 <PageTitle>Initiative Tracker</PageTitle>
 
@@ -28,8 +29,8 @@
                 <tr>
                 @if (creature._isCurrentTurn)
                 {
-                    <td class="text-dark font-weight-bold">@creature._name</td>
-                    <td class="text-dark font-weight-bold">@creature._initiative</td>
+                    <td class="text-dark border border-secondary font-weight-bold">@creature._name</td>
+                    <td class="text-dark border border-secondary font-weight-bold">@creature._initiative</td>
                 }
                 else
                 {
@@ -184,6 +185,8 @@
     }
 </div>
 
+<UserGuide/>
+
 
 @code {
 
@@ -236,7 +239,6 @@
     {
         // Set the current creature's turn to false
         creaturesInEncounter[_currentTurnIndex]._isCurrentTurn = false;
-        creaturesInEncounter[_currentTurnIndex].Reset();
 
         // To Stop Out of Bounds Exceptions
         try
@@ -249,6 +251,7 @@
             _currentTurnIndex = 0;
             creaturesInEncounter[_currentTurnIndex]._isCurrentTurn = true;
         }
+        creaturesInEncounter[_currentTurnIndex].Reset();
     }
 
     public void AddCreatureToInitiative() {
