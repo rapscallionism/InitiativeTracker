@@ -1,5 +1,6 @@
 ﻿@page "/"
 @rendermode InteractiveServer
+@inject IConfiguration Configuration
 
 <PageTitle>Initiative Tracker</PageTitle>
 
@@ -174,7 +175,11 @@
     protected override void OnInitialized()
     {
         // TODO: REMOVE THIS ONCE DONE WITH TESTING
-        creaturesInEncounter = AddTestCreatures();
+        string environment = Configuration["Environment"] ?? "";
+        if (environment.Equals("Development"))
+        {
+            creaturesInEncounter = AddTestCreatures();
+        }
     }
 
     public List<Initiative> AddTestCreatures()
