@@ -1,0 +1,9 @@
+{
+  "Name": "Gelatinous Cube",
+  "InitiativeBonus": -4,
+  "CurrentHealth": {
+    "NumberOfDice": 8,
+    "MaxNumberOnDice": 10,
+    "OtherHealthBonuses": 40
+  }
+}

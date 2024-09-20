@@ -1,0 +1,9 @@
+{
+  "Name": "Rust Monster",
+  "InitiativeBonus": 1,
+  "CurrentHealth": {
+    "NumberOfDice": 5,
+    "MaxNumberOnDice": 8,
+    "OtherHealthBonuses": 5
+  }
+}

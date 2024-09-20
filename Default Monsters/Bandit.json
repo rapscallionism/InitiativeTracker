@@ -1,0 +1,9 @@
+{
+  "Name": "Bandit",
+  "InitiativeBonus": 1,
+  "CurrentHealth": {
+    "NumberOfDice": 2,
+    "MaxNumberOnDice": 8,
+    "OtherHealthBonuses": 2
+  }
+}
