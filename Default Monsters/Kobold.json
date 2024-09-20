@@ -1,0 +1,9 @@
+{
+  "Name": "Kobold",
+  "InitiativeBonus": 2,
+  "CurrentHealth": {
+    "NumberOfDice": 2,
+    "MaxNumberOnDice": 6,
+    "OtherHealthBonuses": -2
+  }
+}

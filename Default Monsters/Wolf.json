@@ -1,0 +1,9 @@
+{
+  "Name": "Wolf",
+  "InitiativeBonus": 2,
+  "CurrentHealth": {
+    "NumberOfDice": 2,
+    "MaxNumberOnDice": 8,
+    "OtherHealthBonuses": 2
+  }
+}

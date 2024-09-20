@@ -1,0 +1,9 @@
+{
+  "Name": "Zombie",
+  "InitiativeBonus": -2,
+  "CurrentHealth": {
+    "NumberOfDice": 3,
+    "MaxNumberOnDice": 8,
+    "OtherHealthBonuses": 9
+  }
+}

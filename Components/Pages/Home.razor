@@ -1,6 +1,8 @@
 ﻿@page "/"
 @rendermode InteractiveServer
 @inject IConfiguration Configuration
+@inject MonsterLoaderService monsterLoaderService
+@using static UserGuide
 
 <PageTitle>Initiative Tracker</PageTitle>
 
@@ -27,8 +29,8 @@
                 <tr>
                 @if (creature._isCurrentTurn)
                 {
-                    <td class="text-dark font-weight-bold">@creature._name</td>
-                        <td class="text-dark font-weight-bold">@creature._initiative</td>
+                    <td class="text-dark border border-secondary font-weight-bold">@creature._name</td>
+                    <td class="text-dark border border-secondary font-weight-bold">@creature._initiative</td>
                 }
                 else
                 {
@@ -91,8 +93,29 @@
                 <button @onclick="AddCreatureToInitiative" class="btn sm btn-primary col-2">Add Creature</button>
             </div>
             <div class="row mt-3">
-                <button @onclick="OnBeginInitiative" class="btn btn-success begin-initiative-button col-2">Begin Initiative</button>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="monsterSelect">Available Monsters</label>
+                        <select id="monsterSelect" class="form-select" @bind="_selectedCreature" @bind:after="OnSelectMonster" >
+                            <option value="">Select a Creature</option>
+                            @foreach (Monster monster in monsterLoaderService.GetData())
+                            {
+                                <option value="@monster.Name">@monster.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <label for="initiative">Monster Initiative Bonus</label>
+                    <input id="initiative" disabled @bind="_selectedMonster.InitiativeBonus" class="form-control" />
+                </div>
+                <div class="col-3">
+                    <label for="initiative">Monster's Rolled Health Value</label>
+                    <input id="initiative" disabled @bind="_selectedMonster.CurrentHealth.healthRollValueAsString" class="form-control" />
+                </div>
+                <button @onclick="OnConfirmSelectedMonster" class="btn btn-success begin-initiative-button col-3">Add Monster To Initiative</button>
             </div>
+            <button @onclick="OnBeginInitiative" class="btn btn-success begin-initiative-button col align-self-center mt-4">Begin Initiative</button>
         </div>
     }
     else
@@ -141,8 +164,14 @@
     }
 </div>
 
-
-
+@if(_unableToAddCreatureToInitiativeError)
+{
+    <div class="container pt-5">
+        <div class="alert alert-info mt-3">
+            Unable to add the creature to the initiative. Please double check all information is correct.
+        </div>
+    </div>
+}
 
 <div class="container pt-5">
     @if (_hasEncounterEnded)
@@ -156,6 +185,8 @@
     }
 </div>
 
+<UserGuide/>
+
 
 @code {
 
@@ -168,9 +199,13 @@
     public bool _hasEncounterEnded = false;
     public int _totalNumberOfRoundsOfCombat = 0;
     public bool _addingCreatureToMiddleOfInitiative = false;
+    public string _selectedCreature = "";
+    public bool _unableToAddCreatureToInitiativeError = false;
+    public Monster _selectedMonster = new Monster("", 0, new CurrentHealth(0, 0, 0));
 
     public List<Creature> creaturesInEncounter = new List<Creature>{};
     public List<Creature> deadCreatures = new List<Creature>();
+    public Dictionary<string, int> creatureNamesUniquenessDictionary = new Dictionary<string, int>();
 
     protected override void OnInitialized()
     {
@@ -193,6 +228,10 @@
         creaturesToAdd.Add(Vahgon);
         creaturesToAdd.Add(Bart);
         creaturesToAdd.Add(Tempo);
+        creatureNamesUniquenessDictionary.Add(Netari._name, 1);
+        creatureNamesUniquenessDictionary.Add(Vahgon._name, 1);
+        creatureNamesUniquenessDictionary.Add(Bart._name, 1);
+        creatureNamesUniquenessDictionary.Add(Tempo._name, 1);
         return creaturesToAdd;
     }
 
@@ -200,7 +239,6 @@
     {
         // Set the current creature's turn to false
         creaturesInEncounter[_currentTurnIndex]._isCurrentTurn = false;
-        creaturesInEncounter[_currentTurnIndex].Reset();
 
         // To Stop Out of Bounds Exceptions
         try
@@ -213,6 +251,7 @@
             _currentTurnIndex = 0;
             creaturesInEncounter[_currentTurnIndex]._isCurrentTurn = true;
         }
+        creaturesInEncounter[_currentTurnIndex].Reset();
     }
 
     public void AddCreatureToInitiative() {
@@ -222,11 +261,25 @@
             return;
         }
 
+        // Check if that creature already exists in the table; if so, then reject it and raise an error
+        if (creatureNamesUniquenessDictionary.TryGetValue(_nameValue, out _))
+        {
+            _unableToAddCreatureToInitiativeError = true;
+            return;
+        } else
+        {
+            _unableToAddCreatureToInitiativeError = false;
+        }
+
+        // Keep track of the unique amount of names within the initiative order;
+        creatureNamesUniquenessDictionary.Add(_nameValue, 1);
+
         // Grab the name value and the initiative values 
         Creature newInitiative = new Creature(_nameValue, _initiativeValue, _currentHealth);
 
         // Add it to the initiative
         creaturesInEncounter.Add(newInitiative);
+
         // Reset the name value and initiative value
         _nameValue = "";
         _initiativeValue = 0;
@@ -305,94 +358,70 @@
         _isChangingHealth = true;
     }
 
-    public class Creature
+    public void OnSelectMonster()
     {
-        public string _name = "";
-        public int _initiative = 0;
-        public bool _isCurrentTurn = false;
-        public bool _hasMovement = true;
-        public bool _hasBonusAction = true;
-        public bool _hasAction = true;
-        public bool _hasReaction = true;
-        /// <summary>
-        ///     1 = Alive
-        ///     0 = Unconscious
-        ///     -1 = Dead
-        /// </summary>
-        public int _isDead = 1;
-        public int _currentHealth = 0;
-        public bool _isCurrentlyChangingHealth = false;
-        public int _damageTaken = 0;
-        public int _damageHealed = 0;
-
-        public Creature() { }
-
-        public Creature(string name, int initiative, int currentHealth)
+        // Loop through all the monster list and set the selectedMonster to be the same as the selectedCreature
+        foreach(Monster monster in monsterLoaderService.GetData())
         {
-            _name = name;
-            _initiative = initiative;
-            _currentHealth = currentHealth;
-        }
-
-        public void Reset()
-        {
-            _hasMovement = true;
-            _hasBonusAction = true;
-            _hasAction = true;
-            _hasReaction = true;
-        }
-
-        public void UseMovement()
-        {
-            this._hasMovement = false;
-        }
-
-        public void UseAction()
-        {
-            this._hasAction = false;
-        }
-
-        public void UseBonusAction()
-        {
-            this._hasBonusAction = false;
-        }
-
-        public void UseReaction()
-        {
-            this._hasReaction = false;
-        }
-
-        public void ResetMovement()
-        {
-            this._hasMovement = true;
-        }
-
-        public void ResetAction()
-        {
-            this._hasAction = true;
-        }
-
-        public void ResetBonusAction()
-        {
-            this._hasBonusAction = true;
-        }
-
-        public void ResetReaction()
-        {
-            this._hasReaction = true;
-        }
-
-        public void UpdateDeathStatus()
-        {
-            if (this._isDead == -1)
+            if (_selectedCreature.Equals(monster.Name))
             {
-                this._isDead = 1;
-            } else
-            {
-                this._isDead -= 1;
+                _selectedMonster = monster;
+                return;
             }
         }
-
     }
+
+    public void OnConfirmSelectedMonster()
+    {
+        // Once the monster is confirmed to be the one selected, we need to roll the initiative of the monster + its current health
+        // Check if the monster is even selected in the first place
+        if (_selectedMonster.Name == "" || _selectedMonster.CurrentHealth.NumberOfDice == 0 || _selectedMonster.CurrentHealth.MaxNumberOnDice == 0)
+        {
+            return;
+        }
+
+        // Check if the monster's name is unique in the dictionary of uniqueness to make sure that its name is unique when being added to the 
+        // initiative tracker
+        int numberOfTimesTheMonsterIsInInitiative = 1;
+        // Could honestly refactor/use the bottom logic for ensuring that names are unique in the encounter table
+        // Weird edge case: if I add a goblin, click add monster to initiative, then add creature, and do it a couple of times, 
+        // then I attempt to add someone just named "Goblin" it will actually fail..
+        bool hasMonsterNameBeenUsed = creatureNamesUniquenessDictionary.TryGetValue(_selectedMonster.Name, out numberOfTimesTheMonsterIsInInitiative);
+        numberOfTimesTheMonsterIsInInitiative = hasMonsterNameBeenUsed ? numberOfTimesTheMonsterIsInInitiative + 1 : 1;
+        if (hasMonsterNameBeenUsed) { creatureNamesUniquenessDictionary[_selectedMonster.Name] += 1; } else { creatureNamesUniquenessDictionary.Add(_selectedMonster.Name, 1); }
+        _nameValue = _selectedMonster.Name + " " + numberOfTimesTheMonsterIsInInitiative;
+        _initiativeValue = roll(1, 20) + _selectedMonster.InitiativeBonus;
+
+        // Set the fields to the selected monster
+        int monsterCurrentHealth = 0;
+        for (int i = 0; i < _selectedMonster.CurrentHealth.NumberOfDice; i++)
+        {
+            monsterCurrentHealth += roll(1, _selectedMonster.CurrentHealth.MaxNumberOnDice);
+        }
+        monsterCurrentHealth += _selectedMonster.CurrentHealth.OtherHealthBonuses;
+        _currentHealth = monsterCurrentHealth;
+
+        // Reset the associated fields
+        _selectedCreature = "";
+        _selectedMonster = new Monster("", 0, new CurrentHealth(0, 0, 0));
+    }
+
+    public int roll(int minimumValue, int maximumValue)
+    {
+        Random random = new Random();
+        return random.Next(minimumValue, maximumValue);
+    }
+
+    /// <summary>
+    ///     Will automatically roll the initiative of a specific creature, given its initiative bonus
+    /// </summary>
+    /// <param name="initiativeBonus"></param>
+    /// <returns></returns>
+    public int rollInitiative(int initiativeBonus)
+    {
+        Random random = new Random();
+        return roll(1, 20) + initiativeBonus;
+    }
+
 
 }

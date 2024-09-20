@@ -23,6 +23,8 @@ From here, you can choose to run it locally or through the docker image. Refer t
 2. Ensure that the .NET SDK was properly installed: `dotnet --version`
 	- Should print out the version of .NET that you have currently installed. This should be >= 8.0
 3. Run the application by using `dotnet run`
+	- To run the application for development, simply use `dotnet run --environment "Development"` to enable test data to fill the table automatically on 
+	application startup 
 
 #### Docker
 

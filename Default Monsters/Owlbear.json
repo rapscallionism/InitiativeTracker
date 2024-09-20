@@ -1,0 +1,9 @@
+{
+  "Name": "Owlbear",
+  "InitiativeBonus": 1,
+  "CurrentHealth": {
+    "NumberOfDice": 7,
+    "MaxNumberOnDice": 10,
+    "OtherHealthBonuses": 21
+  }
+}

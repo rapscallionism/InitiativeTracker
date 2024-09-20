@@ -2,11 +2,17 @@ using Turn_Based_Game.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddSingleton<MonsterLoaderService>();
+
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 var app = builder.Build();
+
+var monsterLoaderService = app.Services.GetRequiredService<MonsterLoaderService>();
+string folderPathForMonsters = @"./Default Monsters";
+MonstersReader.ReadAllMonstersData(folderPathForMonsters, monsterLoaderService);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
