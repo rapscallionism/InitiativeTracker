@@ -1,6 +1,7 @@
 ﻿@page "/"
 @rendermode InteractiveServer
 @inject IConfiguration Configuration
+@inject MonsterLoaderService monsterLoaderService
 
 <PageTitle>Initiative Tracker</PageTitle>
 
@@ -28,7 +29,7 @@
                 @if (creature._isCurrentTurn)
                 {
                     <td class="text-dark font-weight-bold">@creature._name</td>
-                        <td class="text-dark font-weight-bold">@creature._initiative</td>
+                    <td class="text-dark font-weight-bold">@creature._initiative</td>
                 }
                 else
                 {
@@ -91,7 +92,17 @@
                 <button @onclick="AddCreatureToInitiative" class="btn sm btn-primary col-2">Add Creature</button>
             </div>
             <div class="row mt-3">
-                <button @onclick="OnBeginInitiative" class="btn btn-success begin-initiative-button col-2">Begin Initiative</button>
+                <div class="col-6">
+                    <label for="name">Available Monsters</label>
+                    <select @bind="selectedCreature">
+                        <option value="">Select a Creature</option>
+                        @foreach(Monster monster in monsterLoaderService.GetData())
+                        {
+                            <option value="@monster.Name">@monster.Name</option>
+                        }
+                    </select>
+                </div>
+                <button @onclick="OnBeginInitiative" class="btn btn-success begin-initiative-button col-6">Begin Initiative</button>
             </div>
         </div>
     }
@@ -168,6 +179,7 @@
     public bool _hasEncounterEnded = false;
     public int _totalNumberOfRoundsOfCombat = 0;
     public bool _addingCreatureToMiddleOfInitiative = false;
+    public string selectedCreature = "";
 
     public List<Creature> creaturesInEncounter = new List<Creature>{};
     public List<Creature> deadCreatures = new List<Creature>();

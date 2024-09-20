@@ -1,0 +1,8 @@
+{
+  "Name": "Goblin",
+  "InitiativeBonus": 2,
+  "CurrentHealth": {
+    "NumberOfDice": 2,
+    "MaxNumberOnDice": 6
+  }
+}
