@@ -191,6 +191,7 @@
 
     public List<Creature> creaturesInEncounter = new List<Creature>{};
     public List<Creature> deadCreatures = new List<Creature>();
+    public Dictionary<string, int> monsterNamesUniquenessDictionary = new Dictionary<string, int>();
 
     protected override void OnInitialized()
     {
@@ -347,14 +348,20 @@
             return;
         }
 
+        // Check if the monster's name is unique in the dictionary of uniqueness to make sure that its name is unique when being added to the 
+        // initiative tracker
+        int numberOfTimesTheMonsterIsInInitiative = 1;
+        // Could honestly refactor/use the bottom logic for ensuring that names are unique in the encounter table
+        monsterNamesUniquenessDictionary.TryGetValue(_selectedMonster.Name, out numberOfTimesTheMonsterIsInInitiative);
+        _nameValue = _selectedMonster.Name + numberOfTimesTheMonsterIsInInitiative;
+        _initiativeValue = roll(1, 20) + _selectedMonster.InitiativeBonus;
+
         // Set the fields to the selected monster
         int monsterCurrentHealth = 0;
         for (int i = 0; i < _selectedMonster.CurrentHealth.NumberOfDice; i++)
         {
             monsterCurrentHealth += roll(1, _selectedMonster.CurrentHealth.MaxNumberOnDice);
         }
-        _nameValue = _selectedMonster.Name;
-        _initiativeValue = roll(1, 20) + _selectedMonster.InitiativeBonus;
         _currentHealth = monsterCurrentHealth;
 
         // Reset the associated fields
