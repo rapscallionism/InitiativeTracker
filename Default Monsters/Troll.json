@@ -1,0 +1,9 @@
+{
+    "Name": "Troll",
+    "InitiativeBonus": 1,
+    "CurrentHealth": {
+      "NumberOfDice": 8,
+      "MaxNumberOnDice": 10,
+      "OtherHealthBonuses": 40
+    }
+}

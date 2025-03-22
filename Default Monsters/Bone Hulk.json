@@ -1,0 +1,9 @@
+{
+    "Name": "Bone Hulk",
+    "InitiativeBonus": 0,
+    "CurrentHealth": {
+      "NumberOfDice": 24,
+      "MaxNumberOnDice": 10,
+      "OtherHealthBonuses": -6
+    }
+}
