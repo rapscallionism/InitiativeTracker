@@ -1,0 +1,18 @@
+{
+  "Description": "Feeling along its material, the armor flexes and tenses instinctively",
+  "Tags": {
+    "Rarity": "Very Rare",
+    "ArmorType": "Medium",
+    "RequiresAttunement": true
+  },
+  "OnAction": "",
+  "OnBonusAction": "",
+  "OnReaction": "*Electric Discharge*: When hit, the wielder can choose to release a shockwave of lightning energy around them in a 10 ft. radius. Creatures in the radius must make a DC 14 Dex Save or take **1d6 Lightning Damage** per charge used or half as much on a save. When this feature is used, it cannot be used until the next short rest.",
+  "Effects": [
+    "AC: 16 + Dex Modifier (Max 2)",
+    "Disadvantage on Stealth Checks",
+    "*Charge Accumulation*: When struck, gain 1 charge.",
+    "*Conditional Lightning Resistance*: While this object has charges, gain resistance against **Lightning Damage**"
+  ],
+  "ResetsOn": "Short_Rest"
+}

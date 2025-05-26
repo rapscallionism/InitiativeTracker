@@ -1,6 +1,8 @@
-﻿namespace Turn_Based_Game.Interfaces
+﻿namespace InitiativeTracker.Interfaces
 {
-    public class ItemInterface
+    public interface ItemInterface
     {
+        public Boolean OnShortRest();
+        public Boolean OnLongRest();
     }
 }

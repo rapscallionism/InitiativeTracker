@@ -1,4 +1,4 @@
-using Turn_Based_Game.Components;
+using InitiativeTracker.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 

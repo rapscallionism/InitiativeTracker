@@ -396,16 +396,16 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-/.vs/Turn Based Game/v17/.suo
-/.vs/Turn Based Game/v17/DocumentLayout.json
-/bin/Debug/net8.0/Turn_Based_Game.dll
-/bin/Debug/net8.0/Turn_Based_Game.exe
-/bin/Debug/net8.0/Turn_Based_Game.pdb
-/obj/Debug/net8.0/ref/Turn_Based_Game.dll
-/obj/Debug/net8.0/refint/Turn_Based_Game.dll
+/.vs/InitiativeTracker/v17/.suo
+/.vs/InitiativeTracker/v17/DocumentLayout.json
+/bin/Debug/net8.0/InitiativeTracker.dll
+/bin/Debug/net8.0/InitiativeTracker.exe
+/bin/Debug/net8.0/InitiativeTracker.pdb
+/obj/Debug/net8.0/ref/InitiativeTracker.dll
+/obj/Debug/net8.0/refint/InitiativeTracker.dll
 /obj/Debug/net8.0/apphost.exe
-/obj/Debug/net8.0/Turn_Based_Game.AssemblyInfoInputs.cache
-/obj/Debug/net8.0/Turn_Based_Game.dll
-/obj/Debug/net8.0/Turn_Based_Game.AssemblyInfo.cs
-/obj/Debug/net8.0/Turn_Based_Game.pdb
-/obj/Debug/net8.0/Turn_Based_Game.csproj.CoreCompileInputs.cache
+/obj/Debug/net8.0/InitiativeTracker.AssemblyInfoInputs.cache
+/obj/Debug/net8.0/InitiativeTracker.dll
+/obj/Debug/net8.0/InitiativeTracker.AssemblyInfo.cs
+/obj/Debug/net8.0/InitiativeTracker.pdb
+/obj/Debug/net8.0/InitiativeTracker.csproj.CoreCompileInputs.cache

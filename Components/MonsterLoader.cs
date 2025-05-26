@@ -4,7 +4,7 @@ using System.Text.Json;
 using System.Collections.Generic;
 
 
-namespace Turn_Based_Game.Components
+namespace InitiativeTracker.Components
 {
     public class Monster
     {
