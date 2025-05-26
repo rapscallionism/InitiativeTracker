@@ -20,14 +20,7 @@
     {
     }
 
-    public enum ResetsOn
-    {
-        ALWAYS,
-        SHORT_REST,
-        LONG_REST,
-        SINGLE_USE,
-        CUSTOM
-    }
+
 
     public enum Type
     {
