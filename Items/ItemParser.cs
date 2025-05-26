@@ -6,11 +6,22 @@ namespace InitiativeTracker.Items
     // of the application
     public class ItemParser
     {
-        public static Item ParseJsonToObject(string FilePath)
+        public static Item ParseJsonToItem(string FilePath)
         {
             string jsonString = File.ReadAllText(FilePath);
             Item item = JsonSerializer.Deserialize<Item>(jsonString)!;
             return item;
+        }
+
+        public static List<Item> ParseAllJsonToItems(string folderPath)
+        {
+            List<Item> items = new List<Item>();
+            string[] files = Directory.GetFiles(folderPath);
+            foreach (string file in files)
+            {
+                Item item = ParseJsonToItem(folderPath + file);
+            }
+            return items;
         }
 
     }

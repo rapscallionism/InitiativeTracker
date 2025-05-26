@@ -1,33 +1,18 @@
 ﻿@page "/items";
-@* @using Component *@
+@using InitiativeTracker.Components
+
 
 <PageTitle>Item Tracker</PageTitle>
 
 <div>
-    <div id="Character">
-
-    </div>
-
-    <div>
-        <ul>
-            <li id="helmet"></li>
-            <li id="armor"></li>
-            <li id="boots"></li>
-            <li id="weaponOne"></li>
-            <li id="weaponTwo"></li>
-            <li id="gauntlets"></li>
-            <li id="cape"></li>
-            <li id="rangedWeaponOne"></li>
-            <li id="rangedWeaponTwo"></li>
-            <li id="necklace"></li>
-            <li id="ringOne"></li>
-            <li id="ringTwo"></li>
-        </ul>
-    </div>
+    asdl;kjfal;ksdf
 </div>
 
 @code {
     // Page is supposed to be about for custom items to be able to keep track of the users' items for us and resets on short rest and long rest
+    List<Item> items = ItemParser.ParseAllJsonToItems("../../ItemsJson");
+    
+    protected override void OnInitialized() {
 
-
+    }
 }
