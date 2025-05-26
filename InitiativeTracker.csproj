@@ -9,11 +9,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Components\Pages\Items.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Components\Pages\Items.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Update="Default Monsters\Skeleton.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>
