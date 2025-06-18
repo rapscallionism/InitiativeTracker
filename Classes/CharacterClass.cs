@@ -4,7 +4,7 @@
     {
         public int id;
         public string name;
-        public string characterImageUrl = "https://cdn2.thecatapi.com/images/ebv.jpg";
+        public string characterImageUrl = "https://www.dndbeyond.com/avatars/44177/291/1581111423-125044981.jpeg?width=150&height=150&fit=crop&quality=95&auto=webp";
         public Armor? helm;
         public Clothing? cape;
         public Armor? chest;

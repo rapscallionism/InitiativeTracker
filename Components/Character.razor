@@ -2,65 +2,65 @@
 
 <style>
     body {
-        background-color: #f5f5f5;
-        font-family: sans-serif;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 40px;
+    background-color: #f5f5f5;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
     }
 
     .layout {
-        display: flex;
-        gap: 80px; /* space between left and right sections */
-        align-items: flex-end;
+    display: flex;
+    gap: 80px; /* space between left and right sections */
+    align-items: flex-end;
     }
 
     .stack-vertical {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 10px;
     }
 
     .stack-horizontal {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 50px;
     }
 
     .image-frame {
-        width: 80px;
-        height: 80px;
-        padding: 10px;
-        background: white;
-        border: 6px solid #ccc;
-        outline: 3px solid #999;
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-        box-sizing: border-box;
+    width: 80px;
+    height: 80px;
+    padding: 10px;
+    background: white;
+    border: 6px solid #ccc;
+    outline: 3px solid #999;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
     }
 
-        .image-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    .image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    }
 
     .center-image {
-        margin: 40px 0;
+    margin: 40px 0;
     }
 
-        .center-image img {
-            width: 300px;
-            height: auto;
-            display: block;
-        }
+    .center-image img {
+    width: 300px;
+    height: auto;
+    display: block;
+    }
 
     .column {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     }
 </style>
 
@@ -109,37 +109,37 @@
 </h1>
 
 <div class="layout">
-    
+
     <!-- Left side: 5 stacked frames + 2 horizontal -->
     <div class="column">
         <div class="stack-vertical">
-            <div class="image-frame"><img src="https://placekitten.com/240/240" alt=""></div>
-            <div class="image-frame"><img src="https://placekitten.com/241/240" alt=""></div>
-            <div class="image-frame"><img src="https://placekitten.com/242/240" alt=""></div>
-            <div class="image-frame"><img src="https://placekitten.com/243/240" alt=""></div>
-            <div class="image-frame"><img src="https://placekitten.com/244/240" alt=""></div>
+            <div class="image-frame" id="helm"><img src="@character.helm?.imageUrl" alt=""></div>
+            <div class="image-frame" id="cape"><img src="@character.cape?.imageUrl" alt=""></div>
+            <div class="image-frame" id="chest"><img src="@character.chest?.imageUrl" alt=""></div>
+            <div class="image-frame" id="gloves"><img src="@character.gloves?.imageUrl" alt=""></div>
+            <div class="image-frame" id="boots"><img src="@character.boots?.imageUrl" alt=""></div>
         </div>
         <div class="stack-horizontal">
-            <div class="image-frame"><img src="https://placekitten.com/245/240" alt=""></div>
-            <div class="image-frame"><img src="https://placekitten.com/246/240" alt=""></div>
+            <div class="image-frame" id="main hand melee"><img src="@character.mainMelee?.imageUrl" alt=""></div>
+            <div class="image-frame" id="off hand melee"><img src="@character.offMelee?.imageUrl" alt=""></div>
         </div>
     </div>
 
     <!-- Center image (no frame) -->
     <div class="center-image">
-        <img src="https://placekitten.com/300/400" alt="Center image">
+        <img src="@character.characterImageUrl?" alt="Character Image">
     </div>
 
     <!-- Right side: 3 stacked frames + 2 horizontal -->
     <div class="column">
         <div class="stack-vertical">
-            <div class="image-frame"><img src="https://placekitten.com/247/240" alt=""></div>
-            <div class="image-frame"><img src="https://placekitten.com/248/240" alt=""></div>
-            <div class="image-frame"><img src="https://placekitten.com/249/240" alt=""></div>
+            <div class="image-frame" id="necklace"><img src="@character.necklace?.imageUrl" alt=""></div>
+            <div class="image-frame" id="ring one"><img src="@character.ringOne?.imageUrl" alt=""></div>
+            <div class="image-frame" id="ring two"><img src="@character.ringTwo?.imageUrl" alt=""></div>
         </div>
         <div class="stack-horizontal">
-            <div class="image-frame"><img src="https://placekitten.com/250/240" alt=""></div>
-            <div class="image-frame"><img src="https://placekitten.com/251/240" alt=""></div>
+            <div class="image-frame" id="main hand ranged"><img src="@character.mainRanged?.imageUrl" alt=""></div>
+            <div class="image-frame" id="off hand ranged"><img src="@character.offRanged?.imageUrl" alt=""></div>
         </div>
     </div>
 </div>
@@ -154,16 +154,43 @@
             .Id(1)
             .Name("Vahgon")
             .CharacterImageUrl("https://google.com")
-            .Helm(new MediumArmor())
+            .Helm(new MediumArmor()
+            {
+                    imageUrl = "https://bg3.wiki/w/images/1/1b/Helm_of_Balduran_Icon.png"
+            })
             .Cape(new Clothing())
-            .Chest(new MediumArmor())
-            .Gloves(new MediumArmor())
-            .Boots(new MediumArmor())
-            .RingOne(new Ring())
-            .RingTwo(new Ring())
-            .Necklace(new Necklace())
-            .MainMelee(new MartialMelee())
-            .MainRanged(new MartialRanged())
+            .Chest(new MediumArmor()
+            {
+                    imageUrl = "https://bg3.wiki/w/images/5/59/Reaper%27s_Embrace_Icon.png"
+            })
+            .Gloves(new MediumArmor()
+            {
+                    imageUrl = "https://bg3.wiki/w/images/1/19/Gauntlets_of_Hill_Giant_Strength_Icon.png"
+            })
+            .Boots(new MediumArmor()
+            {
+                    imageUrl = "https://bg3.wiki/w/images/4/4f/Disintegrating_Nightwalkers_Icon.png"
+            })
+            .RingOne(new Ring()
+            {
+                    imageUrl = "https://bg3.wiki/w/images/5/5d/Ring_F_Silver_A_1_Faded.png"
+            })
+            .RingTwo(new Ring()
+            {
+                    imageUrl = "https://bg3.wiki/w/images/3/3d/Ring_A_Simple_Gold_1_Faded.png"
+            })
+            .Necklace(new Necklace()
+            {
+                    imageUrl = "https://bg3.wiki/w/images/2/27/Amulet_of_Greater_Health_Icon.png"
+            })
+            .MainMelee(new MartialMelee()
+            {
+                    imageUrl = "https://bg3.wiki/w/images/thumb/2/21/Knife_of_the_Undermountain_King_Faded.webp/380px-Knife_of_the_Undermountain_King_Faded.webp.png"
+            })
+            .MainRanged(new MartialRanged()
+            {
+                    imageUrl = "https://bg3.wiki/w/images/3/36/Longbow_PlusOne_Icon.png"
+            })
             .Build();
     }
 
