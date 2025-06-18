@@ -2,11 +2,11 @@
 {
     public class Enchantment
     {
-        string name;
-        string description;
-        int numberOfCharges;
-        string AsAction;
-        string AsBonusAction;
-        string AsReaction;
+        public string name;
+        public string description;
+        public int numberOfCharges;
+        public string AsAction;
+        public string AsBonusAction;
+        public string AsReaction;
     }
 }

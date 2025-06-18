@@ -2,6 +2,6 @@
 {
     public abstract class Armor : ItemClass
     {
-        int baseArmorClass;
+        public int baseArmorClass;
     }
 }

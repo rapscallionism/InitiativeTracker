@@ -2,7 +2,7 @@
 {
     public class MediumArmor : Armor
     {
-        int maxDexToAdd;
-        bool hasDisadvantageOnStealth;
+        public int maxDexToAdd;
+        public bool hasDisadvantageOnStealth;
     }
 }

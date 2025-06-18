@@ -4,11 +4,12 @@ namespace InitiativeTracker.Classes
 {
     public abstract class ItemClass
     {
-        int id;
-        string description;
-        Slot slot;
-        Enchantment enchantment;
-        bool isMagical;
-        int? enhancement;
+        public int id;
+        public string description;
+        public Slot slot;
+        public Enchantment enchantment;
+        public bool isMagical;
+        public int? enhancement;
+        public string imageUrl; 
     }
 }

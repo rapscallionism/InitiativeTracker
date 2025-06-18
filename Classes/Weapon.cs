@@ -4,9 +4,9 @@ namespace InitiativeTracker.Classes
 {
     public class Weapon : ItemClass
     {
-        int maxRollForDamage;
-        int maxDiceForDamage;
-        int range;
-        List<WeaponTags> weaponTags = new();
+        public int maxRollForDamage;
+        public int maxDiceForDamage;
+        public int range;
+        public List<WeaponTags> weaponTags = new();
     }
 }

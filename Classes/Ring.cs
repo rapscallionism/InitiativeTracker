@@ -4,6 +4,6 @@ namespace InitiativeTracker.Classes
 {
     public class Ring : Jewelry
     {
-        Slot slot = Slot.RING;
+        public Slot slot = Slot.RING;
     }
 }

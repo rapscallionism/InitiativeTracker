@@ -1,46 +1,149 @@
 ﻿@using InitiativeTracker.Classes
 
+<style>
+    body {
+        background-color: #f5f5f5;
+        font-family: sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px;
+    }
+
+    .layout {
+        display: flex;
+        gap: 80px; /* space between left and right sections */
+        align-items: flex-end;
+    }
+
+    .stack-vertical {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 10px;
+    }
+
+    .stack-horizontal {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 50px;
+    }
+
+    .image-frame {
+        width: 80px;
+        height: 80px;
+        padding: 10px;
+        background: white;
+        border: 6px solid #ccc;
+        outline: 3px solid #999;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+    }
+
+        .image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    .center-image {
+        margin: 40px 0;
+    }
+
+        .center-image img {
+            width: 300px;
+            height: auto;
+            display: block;
+        }
+
+    .column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+
+
+
+@* <img src="@character.characterImageUrl" /> *@
+@* <div class="slot" id="helm"> *@
+@*     Helm *@
+@* </div> *@
+@* <div class="slot" id="Cape"> *@
+@*     Cape *@
+@* </div> *@
+@* <div class="slot" id="Chest"> *@
+@*     Chest *@
+@* </div> *@
+@* <div class="slot" id="Gloves"> *@
+@*     Gloves *@
+@* </div> *@
+@* <div class="slot" id="Boots"> *@
+@*     Boots *@
+@* </div> *@
+@* <div class="slot" id="Main Melee"> *@
+@*     Main Melee *@
+@* </div> *@
+@* <div class="slot" id="Offhand Melee"> *@
+@*     Offhand Melee *@
+@* </div> *@
+@* <div class="slot" id="Necklace"> *@
+@*     Necklace *@
+@* </div> *@
+@* <div class="slot" id="Ring One"> *@
+@*     Ring One *@
+@* </div> *@
+@* <div class="slot" id="Ring Two"> *@
+@*     Ring Two *@
+@* </div> *@
+@* <div class="slot" id="Main Ranged"> *@
+@*     Main Ranged *@
+@* </div> *@
+@* <div class="slot" id="Offhand Ranged"> *@
+@*     Offhand Ranged *@
+@* </div> *@
+
 <h1>
     @character.name
 </h1>
 
-<img src="@character.characterImageUrl" />
-<div class="slot" id="helm">
-    Helm
+<div class="layout">
+    
+    <!-- Left side: 5 stacked frames + 2 horizontal -->
+    <div class="column">
+        <div class="stack-vertical">
+            <div class="image-frame"><img src="https://placekitten.com/240/240" alt=""></div>
+            <div class="image-frame"><img src="https://placekitten.com/241/240" alt=""></div>
+            <div class="image-frame"><img src="https://placekitten.com/242/240" alt=""></div>
+            <div class="image-frame"><img src="https://placekitten.com/243/240" alt=""></div>
+            <div class="image-frame"><img src="https://placekitten.com/244/240" alt=""></div>
+        </div>
+        <div class="stack-horizontal">
+            <div class="image-frame"><img src="https://placekitten.com/245/240" alt=""></div>
+            <div class="image-frame"><img src="https://placekitten.com/246/240" alt=""></div>
+        </div>
+    </div>
+
+    <!-- Center image (no frame) -->
+    <div class="center-image">
+        <img src="https://placekitten.com/300/400" alt="Center image">
+    </div>
+
+    <!-- Right side: 3 stacked frames + 2 horizontal -->
+    <div class="column">
+        <div class="stack-vertical">
+            <div class="image-frame"><img src="https://placekitten.com/247/240" alt=""></div>
+            <div class="image-frame"><img src="https://placekitten.com/248/240" alt=""></div>
+            <div class="image-frame"><img src="https://placekitten.com/249/240" alt=""></div>
+        </div>
+        <div class="stack-horizontal">
+            <div class="image-frame"><img src="https://placekitten.com/250/240" alt=""></div>
+            <div class="image-frame"><img src="https://placekitten.com/251/240" alt=""></div>
+        </div>
+    </div>
 </div>
-<div class="slot" id="Cape">
-    Cape
-</div>
-<div class="slot" id="Chest">
-    Chest
-</div>
-<div class="slot" id="Gloves">
-    Gloves
-</div>
-<div class="slot" id="Boots">
-    Boots
-</div>
-<div class="slot" id="Main Melee">
-    Main Melee
-</div>
-<div class="slot" id="Offhand Melee">
-    Offhand Melee
-</div>
-<div class="slot" id="Necklace">
-    Necklace
-</div>
-<div class="slot" id="Ring One">
-    Ring One
-</div>
-<div class="slot" id="Ring Two">
-    Ring Two
-</div>
-<div class="slot" id="Main Ranged">
-    Main Ranged
-</div>
-<div class="slot" id="Offhand Ranged">
-    Offhand Ranged
-</div>
+
 
 @code {
     public CharacterClass character;

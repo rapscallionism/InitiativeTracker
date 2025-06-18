@@ -2,6 +2,6 @@
 {
     public class Ranged : Weapon
     {
-        int longRange;
+        public int longRange;
     }
 }
