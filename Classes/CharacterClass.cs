@@ -4,7 +4,7 @@
     {
         public int id;
         public string name;
-        public string characterImageUrl = "";
+        public string characterImageUrl = "https://cdn2.thecatapi.com/images/ebv.jpg";
         public Armor? helm;
         public Clothing? cape;
         public Armor? chest;
