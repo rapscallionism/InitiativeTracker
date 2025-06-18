@@ -1,15 +1,67 @@
-﻿
+﻿@using InitiativeTracker.Classes
 
-<h3>Character</h3>
+<h1>
+    @character.name
+</h1>
 
-
+<img href="@character.characterImageUrl" />
+<div class="slot" id="helm">
+    Helm
+</div>
+<div class="slot" id="Cape">
+    Cape
+</div>
+<div class="slot" id="Chest">
+    Chest
+</div>
+<div class="slot" id="Gloves">
+    Gloves
+</div>
+<div class="slot" id="Boots">
+    Boots
+</div>
+<div class="slot" id="Main Melee">
+    Main Melee
+</div>
+<div class="slot" id="Offhand Melee">
+    Offhand Melee
+</div>
+<div class="slot" id="Necklace">
+    Necklace
+</div>
+<div class="slot" id="Ring One">
+    Ring One
+</div>
+<div class="slot" id="Ring Two">
+    Ring Two
+</div>
+<div class="slot" id="Main Ranged">
+    Main Ranged
+</div>
+<div class="slot" id="Offhand Ranged">
+    Offhand Ranged
+</div>
 
 @code {
-    [Parameter]
-    public string characterImage { get; set; }
+    public CharacterClass character;
 
-    [Parameter]
-    public 
-
+    protected override void OnInitialized()
+    {
+        character = new CharacterBuilder()
+            .Id(1)
+            .Name("Vahgon")
+            .CharacterImageUrl("https://google.com")
+            .Helm(new MediumArmor())
+            .Cape(new Clothing())
+            .Chest(new MediumArmor())
+            .Gloves(new MediumArmor())
+            .Boots(new MediumArmor())
+            .RingOne(new Ring())
+            .RingTwo(new Ring())
+            .Necklace(new Necklace())
+            .MainMelee(new MartialMelee())
+            .MainRanged(new MartialRanged())
+            .Build();
+    }
 
 }
