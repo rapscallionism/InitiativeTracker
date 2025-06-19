@@ -1,24 +1,29 @@
 version: '3.8'
+
 services:
-  db:
-    image: postgres:alpine
+  mongo:
+    image: mongo:latest
     restart: always
-    environment:
-      POSTGRES_USER: test
-      POSTGRES_PASSWORD: test
-      POSTGRES_DB: testdb
     ports:
-      - "5432:5432"
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: testdb
+      MONGO_INITDB_ROOT_USERNAME: testuser
+      MONGO_INITDB_ROOT_PASSWORD: testpass
     tmpfs:
-      - /var/lib/postgresql/data  # Makes it ephemeral (in-memory)
-  
+      - /data/db  # Ephemeral, in-memory database
+
   backend:
     build:
       context: .
-      dockerfile: Dockerfile  # or the path to your Dockerfile
+      dockerfile: Dockerfile
+    environment:
+      - MongoDbSettings__Host=mongo
+      - MongoDbSettings__Port=27017
+      - MongoDbSettings__Database=testdb
+      - MongoDbSettings__Username=testuser
+      - MongoDbSettings__Password=testpass
     ports:
       - "5000:8080"
-    environment:
-      - ConnectionStrings__Default=Host=db;Database=testdb;Username=test;Password=test
     depends_on:
-      - db
+      - mongo
