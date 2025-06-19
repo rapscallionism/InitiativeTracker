@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:alpine
+    restart: always
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: testdb
+    ports:
+      - "5432:5432"
+    tmpfs:
+      - /var/lib/postgresql/data  # Makes it ephemeral (in-memory)
+  
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile  # or the path to your Dockerfile
+    ports:
+      - "5000:8080"
+    environment:
+      - ConnectionStrings__Default=Host=db;Database=testdb;Username=test;Password=test
+    depends_on:
+      - db
