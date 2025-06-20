@@ -25,6 +25,11 @@ namespace InitiativeTrackerBackend.Database
             return await _collection.Find(e => e.Name == equipmentName).FirstOrDefaultAsync();
         }
 
+        public async Task<Equipment> GetEquipmentById(string id)
+        {
+            return await _collection.Find(e => e.Id == id).FirstOrDefaultAsync();
+        }
+
         public async Task<Equipment> CreateEquipmentAsync(Equipment equipment)
         {
             await _collection.InsertOneAsync(equipment);
