@@ -12,9 +12,9 @@ namespace InitiativeTrackerBackend.Models.DTOs
         public required string Name { get; set; }
         public required string Description { get; set; }
         public required Tags Tags { get; set; }
-        public required string OnAction { get; set; }
-        public required string OnBonusAction { get; set; }
-        public required string OnReaction { get; set; }
+        public List<Action>? OnAction { get; set; }
+        public List<Action>? OnBonusAction { get; set; }
+        public List<Action>? OnReaction { get; set; }
         public required string[] Effects { get; set; }
         public required ResetsOn ResetsOn { get; set; }
     }
