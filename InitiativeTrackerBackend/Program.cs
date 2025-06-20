@@ -1,3 +1,5 @@
+using InitiativeTracker.Services;
+using InitiativeTrackerBackend.Database;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
@@ -23,6 +25,10 @@ builder.Services.AddSingleton<IMongoClient>(sp =>
 
     return new MongoClient(mongoSettings);
 });
+
+builder.Services.AddSingleton<EquipmentRepository>();
+builder.Services.AddScoped<EquipmentService>();
+builder.Services.AddScoped<Logger<EquipmentService>>();
 
 var app = builder.Build();
 

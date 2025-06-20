@@ -19,6 +19,7 @@ namespace InitiativeTracker.Controllers
         }
 
         [Route("all")]
+        [HttpGet]
         public async Task<ActionResult<List<Equipment>>> GetAll()
         {
             try
@@ -34,6 +35,7 @@ namespace InitiativeTracker.Controllers
         }
 
         [Route("get/{name}")]
+        [HttpGet]
         public async Task<ActionResult<Equipment>> GetOne([FromQuery] string name)
         {
             try
@@ -50,6 +52,7 @@ namespace InitiativeTracker.Controllers
 
         [Route("create")]
         [Consumes("application/json")]
+        [HttpPost]
         public async Task<ActionResult<Equipment>> Create([FromBody] Equipment equipment)
         {
             try
@@ -68,6 +71,7 @@ namespace InitiativeTracker.Controllers
 
         [Route("update/{id}")]
         [Consumes("application/json")]
+        [HttpPost]
         public async Task<ActionResult<Equipment>> Update([FromQuery] string id, [FromBody] Equipment equipment)
         {
             try
