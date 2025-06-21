@@ -8,7 +8,7 @@ namespace InitiativeTrackerBackend.Models.DTOs
     {
         [BsonId] // MongoDB requires this for the _id field
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; } = default!;
+        public string? Id { get; set; } = default!;
         public required string Name { get; set; }
         public required string Description { get; set; }
         public required Tags Tags { get; set; }

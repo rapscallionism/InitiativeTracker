@@ -1,5 +1,6 @@
 ﻿using InitiativeTrackerBackend.Interfaces;
 using InitiativeTrackerBackend.Models.DTOs;
+using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
 namespace InitiativeTrackerBackend.Database
@@ -9,9 +10,9 @@ namespace InitiativeTrackerBackend.Database
 
         private readonly IMongoCollection<Equipment> _collection;
 
-        public EquipmentRepository(IMongoClient mongoClient, MongoDbSettings settings)
+        public EquipmentRepository(IMongoClient mongoClient, IOptions<MongoDbSettings> settings)
         {
-            var database = mongoClient.GetDatabase(settings.Database);
+            var database = mongoClient.GetDatabase(settings.Value.Database);
             _collection = database.GetCollection<Equipment>("equipment");
         }
 

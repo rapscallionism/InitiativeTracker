@@ -1,3 +1,4 @@
+
 public class MongoDbSettings
 {
     public string Host { get; set; }
