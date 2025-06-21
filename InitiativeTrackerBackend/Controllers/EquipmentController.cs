@@ -34,7 +34,7 @@ namespace InitiativeTracker.Controllers
             }
         }
 
-        [Route("get/{name}")]
+        [Route("")]
         [HttpGet]
         public async Task<ActionResult<Equipment>> GetOne([FromQuery] string name)
         {

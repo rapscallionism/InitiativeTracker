@@ -1,6 +1,3 @@
-GET http://localhost:5000/api/equipment/all
-
-###
 
 POST http://localhost:5000/api/equipment/create
 Content-Type: application/json
@@ -27,3 +24,14 @@ Content-Type: application/json
   ],
   "ResetsOn": "ALWAYS"
 }
+
+
+###
+
+GET http://localhost:5000/api/equipment/all
+
+### 
+GET http://localhost:5000/api/equipment?name=Scale%20of%20the%20Bronze%20Tyrant
+Content-Type: application/json
+
+
