@@ -25,8 +25,8 @@ def test_create_equipment():
         ],
         "ResetsOn": "ALWAYS"
     }
-    response = requests.post(BASE_URL, json=data)
+    response = requests.post(BASE_URL + "/create", json=data)
     assert response.status_code == 200 or response.status_code == 201
-    json = response.json
-    assert json["Name"] == "Scale of the Bronze Tyrant"
+    json = response.json()
+    assert json["name"] == "Scale of the Bronze Tyrant"
 
