@@ -24,10 +24,17 @@ public class Tags
 
 public enum ResetsOn
 {
+    /// <summary>
+    ///     Indicates that it is always available
+    /// </summary>
     ALWAYS,
     SHORT_REST,
     LONG_REST,
     SINGLE_USE,
+
+    /// <summary>
+    ///     Indicates a custom reset timer
+    /// </summary>
     CUSTOM
 }
 

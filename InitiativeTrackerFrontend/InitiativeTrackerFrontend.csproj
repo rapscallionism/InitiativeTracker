@@ -4,17 +4,9 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>Turn Based Game</RootNamespace>
+    <RootNamespace>InitiativeTracker</RootNamespace>
     <AssemblyName>$(AssemblyName.Replace(' ', '_'))</AssemblyName>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Content Remove="Components\Pages\Items.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="Components\Pages\Items.razor" />
-  </ItemGroup>
 
   <ItemGroup>
     <Content Update="Default Monsters\Skeleton.json">
@@ -22,6 +14,10 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>

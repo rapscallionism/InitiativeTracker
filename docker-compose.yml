@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: testdb
+      MONGO_INITDB_ROOT_USERNAME: testuser
+      MONGO_INITDB_ROOT_PASSWORD: testpass
+    tmpfs:
+      - /data/db
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - MongoDbSettings__Host=mongo
+      - MongoDbSettings__Port=27017
+      - MongoDbSettings__Database=testdb
+      - MongoDbSettings__Username=testuser
+      - MongoDbSettings__Password=testpass
+    ports:
+      - "5000:8080"
+    depends_on:
+      - mongo
