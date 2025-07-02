@@ -69,7 +69,7 @@ namespace InitiativeTracker.Controllers
         }
 
 
-        [Route("update/{id}")]
+        [Route("update")]
         [Consumes("application/json")]
         [HttpPost]
         public async Task<ActionResult<Equipment>> Update([FromQuery] string id, [FromBody] Equipment equipment)
