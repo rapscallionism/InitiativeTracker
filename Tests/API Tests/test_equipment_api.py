@@ -30,3 +30,15 @@ def test_create_equipment():
     json = response.json()
     assert json["name"] == "Scale of the Bronze Tyrant"
 
+# TODO: figure out if this test is run one after the other or is run indep. of each other
+# If it's run indep of each other, then we should create multiple objects to get all 
+def test_get_all_equipment():
+    response = requests.get(BASE_URL + "/all")
+    assert response.status_code == 200 or response.status_code == 201
+
+def test_get_equipment():
+    pass
+
+def test_update_equipment():
+    pass
+
