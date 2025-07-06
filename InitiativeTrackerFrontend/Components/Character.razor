@@ -1,4 +1,6 @@
-﻿@using InitiativeTracker.Classes
+﻿@using BlazorBootstrap
+@using InitiativeTracker.Classes
+@inject IJSRuntime JS
 
 <style>
     body {
@@ -69,15 +71,46 @@
 </h1>
 
 <div class="layout">
-
+    <Tooltip Class="me-4" Title="Tooltip Left" Placement="TooltipPlacement.Left">Tooltip Left</Tooltip>
     <!-- Left side: 5 stacked frames + 2 horizontal -->
     <div class="column">
         <div class="stack-vertical">
-            <div class="image-frame" id="helm"><img src="@character.helm?.imageUrl" alt=""></div>
-            <div class="image-frame" id="cape"><img src="@character.cape?.imageUrl" alt=""></div>
-            <div class="image-frame" id="chest"><img src="@character.chest?.imageUrl" alt=""></div>
-            <div class="image-frame" id="gloves"><img src="@character.gloves?.imageUrl" alt=""></div>
-            <div class="image-frame" id="boots"><img src="@character.boots?.imageUrl" alt=""></div>
+
+            <button 
+            type="button" 
+            class="btn btn-secondary" 
+            data-toggle="tooltip" 
+            data-placement="left" 
+            title="Tooltip on top">
+                <div class="image-frame"
+                id="helm"
+                data-toggle="tooltip" 
+                data-placement="right"
+                title="Stuff"
+                alt="">
+                    <img src="@character.helm?.imageUrl">
+                </div>
+            </button>
+            <div class="image-frame" id="cape"
+            >
+                <img 
+                src="@character.cape?.imageUrl" >
+            </div>
+            <div class="image-frame" id="chest"
+            >
+                <img 
+                src="@character.chest?.imageUrl" >
+            </div>
+            <div class="image-frame" id="gloves"
+            >
+                <img 
+                src="@character.gloves?.imageUrl" >
+            </div>
+            <div class="image-frame" id="boots"
+            >
+                <img 
+                src="@character.boots?.imageUrl" >
+            </div>
         </div>
         <div class="stack-horizontal">
             <div class="image-frame" id="main hand melee"><img src="@character.mainMelee?.imageUrl" alt=""></div>
@@ -104,7 +137,6 @@
     </div>
 </div>
 
-
 @code {
     public CharacterClass character;
 
@@ -115,43 +147,51 @@
             .Name("Vahgon")
             .CharacterImageUrl("https://google.com")
             .Helm(new MediumArmor()
-            {
+                {
                     imageUrl = "https://bg3.wiki/w/images/1/1b/Helm_of_Balduran_Icon.png"
-            })
+                })
             .Cape(new Clothing())
             .Chest(new MediumArmor()
-            {
+                {
                     imageUrl = "https://bg3.wiki/w/images/5/59/Reaper%27s_Embrace_Icon.png"
-            })
+                })
             .Gloves(new MediumArmor()
-            {
+                {
                     imageUrl = "https://bg3.wiki/w/images/1/19/Gauntlets_of_Hill_Giant_Strength_Icon.png"
-            })
+                })
             .Boots(new MediumArmor()
-            {
+                {
                     imageUrl = "https://bg3.wiki/w/images/4/4f/Disintegrating_Nightwalkers_Icon.png"
-            })
+                })
             .RingOne(new Ring()
-            {
+                {
                     imageUrl = "https://bg3.wiki/w/images/5/5d/Ring_F_Silver_A_1_Faded.png"
-            })
+                })
             .RingTwo(new Ring()
-            {
+                {
                     imageUrl = "https://bg3.wiki/w/images/3/3d/Ring_A_Simple_Gold_1_Faded.png"
-            })
+                })
             .Necklace(new Necklace()
-            {
+                {
                     imageUrl = "https://bg3.wiki/w/images/2/27/Amulet_of_Greater_Health_Icon.png"
-            })
+                })
             .MainMelee(new MartialMelee()
-            {
+                {
                     imageUrl = "https://bg3.wiki/w/images/thumb/2/21/Knife_of_the_Undermountain_King_Faded.webp/380px-Knife_of_the_Undermountain_King_Faded.webp.png"
-            })
+                })
             .MainRanged(new MartialRanged()
-            {
+                {
                     imageUrl = "https://bg3.wiki/w/images/3/36/Longbow_PlusOne_Icon.png"
-            })
+                })
             .Build();
     }
 
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("initializeTooltips");
+        }
+    }
 }
