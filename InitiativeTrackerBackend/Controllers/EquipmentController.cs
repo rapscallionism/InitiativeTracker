@@ -69,14 +69,32 @@ namespace InitiativeTracker.Controllers
         }
 
 
-        [Route("update")]
+        [Route("update/id")]
         [Consumes("application/json")]
         [HttpPost]
-        public async Task<ActionResult<Equipment>> Update([FromQuery] string id, [FromBody] Equipment equipment)
+        public async Task<ActionResult<Equipment>> UpdateById([FromQuery] string id, [FromBody] Equipment equipment)
         {
             try
             {
                 var updated = await _service.UpdateEquipment(id, equipment);
+                return Ok(updated);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                _logger.LogError(e.StackTrace);
+                return StatusCode(500, "Something went wrong...");
+            }
+        }
+
+        [Route("update/name")]
+        [Consumes("application/json")]
+        [HttpPost]
+        public async Task<ActionResult<Equipment>> UpdateByName([FromQuery] string name, [FromBody] Equipment equipment)
+        {
+            try
+            {
+                var updated = await _service.UpdateEquipment(name, equipment);
                 return Ok(updated);
             }
             catch (Exception e)
