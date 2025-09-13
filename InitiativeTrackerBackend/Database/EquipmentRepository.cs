@@ -16,33 +16,41 @@ namespace InitiativeTrackerBackend.Database
             _collection = database.GetCollection<Equipment>("equipment");
         }
 
+        /// <inheritdoc/>
         public async Task<List<Equipment>> GetAllEquipmentAsync()
         {
             return await _collection.Find(_ => true).ToListAsync();
         }
 
+        /// <inheritdoc/>
         public async Task<Equipment> GetEquipmentByNameAsync(string equipmentName)
         {
             return await _collection.Find(e => e.Name == equipmentName).FirstOrDefaultAsync();
         }
 
+        /// <inheritdoc/>
         public async Task<Equipment> GetEquipmentById(string id)
         {
             return await _collection.Find(e => e.Id == id).FirstOrDefaultAsync();
         }
 
+        /// <inheritdoc/>
         public async Task<Equipment> CreateEquipmentAsync(Equipment equipment)
         {
             await _collection.InsertOneAsync(equipment);
             return equipment;
         }
 
-        public async Task<Equipment> UpdateEquipmentAsync(string equipmentToUpdateId, Equipment equipmentToUpdate)
+        /// <inheritdoc/>
+        public async Task<Equipment> UpdateEquipmentByIdAsync(string equipmentToUpdateId, Equipment equipmentToUpdate)
         {
             // To ensure that the id is correct
             equipmentToUpdate.Id = equipmentToUpdateId;
             await _collection.ReplaceOneAsync(e => e.Id == equipmentToUpdate.Id, equipmentToUpdate);
             return equipmentToUpdate;
         }
+
+        /// <inheritdoc/>
+        public async Task<Equipment> UpdateEquipmentByNameAsync(string originalEquipmentName, Equipment equipmentToUpdate);
     }
 }

@@ -35,6 +35,6 @@ public class EquipmentService : IEquipmentService
 
     public async Task<Equipment> UpdateEquipment(string id, Equipment equipment)
     {
-        return await _equipmentRepository.UpdateEquipmentAsync(id, equipment);
+        return await _equipmentRepository.UpdateEquipmentByIdAsync(id, equipment);
     }
 }
