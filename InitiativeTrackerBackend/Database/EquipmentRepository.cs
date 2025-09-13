@@ -29,7 +29,7 @@ namespace InitiativeTrackerBackend.Database
         }
 
         /// <inheritdoc/>
-        public async Task<Equipment> GetEquipmentById(string id)
+        public async Task<Equipment> GetEquipmentByIdAsync(string id)
         {
             return await _collection.Find(e => e.Id == id).FirstOrDefaultAsync();
         }

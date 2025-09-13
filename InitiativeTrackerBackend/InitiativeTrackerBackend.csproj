@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <Folder Include="Models\Entities\" />
+    <Folder Include="Models\Responses\" />
   </ItemGroup>
 
 </Project>

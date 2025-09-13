@@ -1,4 +1,6 @@
-﻿using InitiativeTrackerBackend.Models.DTOs;
+﻿using InitiativeTrackerBackend.Interfaces;
+using InitiativeTrackerBackend.Models.DTOs;
+using InitiativeTrackerBackend.Models.Requests;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -34,15 +36,32 @@ namespace InitiativeTracker.Controllers
             }
         }
 
-        [Route("")]
+        [Route("name")]
         [HttpGet]
-        public async Task<ActionResult<Equipment>> GetOne([FromQuery] string name)
+        public async Task<ActionResult<Equipment>> GetOne([FromBody] NameRequest name)
         {
             try
             {
                 var equipment = await _service.GetEquipment(name);
                 return Ok(equipment);
             } catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                _logger.LogError(e.StackTrace);
+                return StatusCode(500, "Something went wrong...");
+            }
+        }
+
+        [Route("id")]
+        [HttpGet]
+        public async Task<ActionResult<Equipment>> GetOne([FromBody] IdRequest id)
+        {
+            try
+            {
+                var equipment = await _service.GetEquipment(id);
+                return Ok(equipment);
+            }
+            catch (Exception e)
             {
                 _logger.LogError(e.Message);
                 _logger.LogError(e.StackTrace);
@@ -68,15 +87,14 @@ namespace InitiativeTracker.Controllers
             }
         }
 
-
         [Route("update/id")]
         [Consumes("application/json")]
         [HttpPost]
-        public async Task<ActionResult<Equipment>> UpdateById([FromQuery] string id, [FromBody] Equipment equipment)
+        public async Task<ActionResult<Equipment>> Update([FromBody] IdRequest idRequest, [FromBody] Equipment equipment)
         {
             try
             {
-                var updated = await _service.UpdateEquipment(id, equipment);
+                var updated = await _service.UpdateEquipment(idRequest, equipment);
                 return Ok(updated);
             }
             catch (Exception e)
@@ -90,11 +108,11 @@ namespace InitiativeTracker.Controllers
         [Route("update/name")]
         [Consumes("application/json")]
         [HttpPost]
-        public async Task<ActionResult<Equipment>> UpdateByName([FromQuery] string name, [FromBody] Equipment equipment)
+        public async Task<ActionResult<Equipment>> Update([FromBody] NameRequest nameRequest, [FromBody] Equipment equipment)
         {
             try
             {
-                var updated = await _service.UpdateEquipment(name, equipment);
+                var updated = await _service.UpdateEquipment(nameRequest, equipment);
                 return Ok(updated);
             }
             catch (Exception e)

@@ -1,6 +1,7 @@
 
 using InitiativeTrackerBackend.Interfaces;
 using InitiativeTrackerBackend.Models.DTOs;
+using InitiativeTrackerBackend.Models.Requests;
 
 namespace InitiativeTracker.Services;
 
@@ -22,9 +23,16 @@ public class EquipmentService : IEquipmentService
         return await _equipmentRepository.GetAllEquipmentAsync();
     }
 
-    public async Task<Equipment> GetEquipment(string name)
+    public async Task<Equipment> GetEquipment(NameRequest nameRequest)
     {
+        string name = nameRequest.Name;
         return await _equipmentRepository.GetEquipmentByNameAsync(name);
+    }
+
+    public async Task<Equipment> GetEquipment(IdRequest idRequest)
+    {
+        string id = idRequest.Id;
+        return await _equipmentRepository.GetEquipmentByIdAsync(id);
     }
 
     public async Task<Equipment> CreateEquipment(Equipment equipment)
@@ -33,8 +41,15 @@ public class EquipmentService : IEquipmentService
         return created;
     }
 
-    public async Task<Equipment> UpdateEquipment(string id, Equipment equipment)
+    public async Task<Equipment> UpdateEquipment(NameRequest nameRequest, Equipment equipment)
     {
+        string name = nameRequest.Name;
+        return await _equipmentRepository.UpdateEquipmentByIdAsync(name, equipment);
+    }
+
+    public async Task<Equipment> UpdateEquipment(IdRequest idRequest, Equipment equipment)
+    {
+        string id = idRequest.Id;
         return await _equipmentRepository.UpdateEquipmentByIdAsync(id, equipment);
     }
 }

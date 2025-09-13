@@ -25,7 +25,7 @@ namespace InitiativeTrackerBackend.Interfaces
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Task<Equipment> GetEquipmentById(string id);
+        public Task<Equipment> GetEquipmentByIdAsync(string id);
 
         /// <summary>
         ///     Creates an entry with the provided <paramref name="equipment"/>
