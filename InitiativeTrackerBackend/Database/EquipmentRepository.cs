@@ -45,12 +45,17 @@ namespace InitiativeTrackerBackend.Database
         public async Task<Equipment> UpdateEquipmentByIdAsync(string equipmentToUpdateId, Equipment equipmentToUpdate)
         {
             // To ensure that the id is correct
+            // TODO: double check if this doesn't just leave the previous entry in the DB still
             equipmentToUpdate.Id = equipmentToUpdateId;
             await _collection.ReplaceOneAsync(e => e.Id == equipmentToUpdate.Id, equipmentToUpdate);
             return equipmentToUpdate;
         }
 
         /// <inheritdoc/>
-        public async Task<Equipment> UpdateEquipmentByNameAsync(string originalEquipmentName, Equipment equipmentToUpdate);
+        public async Task<Equipment> UpdateEquipmentByNameAsync(string originalEquipmentName, Equipment equipmentToUpdate)
+        {
+            await _collection.ReplaceOneAsync(e => e.Name == originalEquipmentName, equipmentToUpdate);
+            return equipmentToUpdate;
+        }
     }
 }
