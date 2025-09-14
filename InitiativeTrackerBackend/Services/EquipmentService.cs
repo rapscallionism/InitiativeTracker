@@ -2,6 +2,8 @@
 using InitiativeTrackerBackend.Interfaces;
 using InitiativeTrackerBackend.Models.DTOs;
 using InitiativeTrackerBackend.Models.Requests;
+using Microsoft.AspNetCore.DataProtection.XmlEncryption;
+using Microsoft.AspNetCore.Mvc;
 
 namespace InitiativeTracker.Services;
 
@@ -23,7 +25,7 @@ public class EquipmentService : IEquipmentService
         return await _equipmentRepository.GetAllEquipmentAsync();
     }
 
-    public async Task<Equipment> GetEquipment(NameRequest nameRequest)
+    public async Task<Equipment?> GetEquipment(NameRequest nameRequest)
     {
         // Since all names are stored as upper case, need to query via upper casing
         string name = nameRequest.Name.ToUpperInvariant();
@@ -31,7 +33,7 @@ public class EquipmentService : IEquipmentService
         return await _equipmentRepository.GetEquipmentByNameAsync(name);
     }
 
-    public async Task<Equipment> GetEquipment(IdRequest idRequest)
+    public async Task<Equipment?> GetEquipment(IdRequest idRequest)
     {
         string id = idRequest.Id;
         return await _equipmentRepository.GetEquipmentByIdAsync(id);
@@ -46,13 +48,24 @@ public class EquipmentService : IEquipmentService
         return created;
     }
 
-    public async Task<Equipment> UpdateEquipment(NameRequest nameRequest, Equipment equipment)
+    public async Task<Equipment?> UpdateEquipment(NameRequest nameRequest, Equipment equipment)
     {
-        string name = nameRequest.Name;
-        return await _equipmentRepository.UpdateEquipmentByIdAsync(name, equipment);
+        string name = nameRequest.Name.ToUpperInvariant();
+
+        // Check if it exists already; if not, throw an argument exception
+        Equipment? existingEquipment = await GetEquipment(nameRequest);
+
+        if (existingEquipment is null)
+        {
+            return null;
+        }
+
+        // Otherwise, bind with the id
+        equipment.Id = existingEquipment.Id;
+        return await _equipmentRepository.UpdateEquipmentByNameAsync(name, equipment);
     }
 
-    public async Task<Equipment> UpdateEquipment(IdRequest idRequest, Equipment equipment)
+    public async Task<Equipment?> UpdateEquipment(IdRequest idRequest, Equipment equipment)
     {
         string id = idRequest.Id;
         return await _equipmentRepository.UpdateEquipmentByIdAsync(id, equipment);

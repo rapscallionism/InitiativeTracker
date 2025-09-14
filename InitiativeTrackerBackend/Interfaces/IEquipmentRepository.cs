@@ -17,7 +17,7 @@ namespace InitiativeTrackerBackend.Interfaces
         /// </summary>
         /// <param name="equipmentName"></param>
         /// <returns></returns>
-        public Task<Equipment> GetEquipmentByNameAsync(string equipmentName);
+        public Task<Equipment?> GetEquipmentByNameAsync(string equipmentName);
 
         /// <summary>
         ///     Returns the first <see cref="Equipment"/> that matches the
@@ -25,7 +25,7 @@ namespace InitiativeTrackerBackend.Interfaces
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Task<Equipment> GetEquipmentByIdAsync(string id);
+        public Task<Equipment?> GetEquipmentByIdAsync(string id);
 
         /// <summary>
         ///     Creates an entry with the provided <paramref name="equipment"/>

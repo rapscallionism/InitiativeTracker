@@ -1,6 +1,7 @@
 ﻿using InitiativeTrackerBackend.Interfaces;
 using InitiativeTrackerBackend.Models.DTOs;
 using InitiativeTrackerBackend.Models.Requests;
+using InitiativeTrackerBackend.Utilities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InitiativeTracker.Controllers
@@ -40,7 +41,19 @@ namespace InitiativeTracker.Controllers
         {
             try
             {
+                if (name is null || string.IsNullOrEmpty(name.Name))
+                {
+                    throw new ArgumentNullException("Name is not provided in the request body.");
+                }
+
                 var equipment = await _service.GetEquipment(name);
+
+                if (equipment is null)
+                {
+                    return new NotFoundObjectResult($"Unable to find any equipment with the " +
+                        $"given name of {GlobalUtils.Sanitize(name.Name)}");
+                }
+
                 return Ok(equipment);
             } catch (Exception e)
             {
@@ -88,14 +101,36 @@ namespace InitiativeTracker.Controllers
         [Route("update/id")]
         [Consumes("application/json")]
         [HttpPost]
-        public async Task<ActionResult<Equipment>> Update([FromBody] (IdRequest idRequest, Equipment equipment) request)
+        public async Task<ActionResult<Equipment>> Update([FromBody] UpdateRequestById request)
         {
             try
             {
-                IdRequest requestedId = request.idRequest;
-                Equipment requestedEquipment = request.equipment;
+                if (request.RequestedId is null || request.RequestedId.Id is null)
+                {
+                    throw new ArgumentNullException("Missing Id from Update Request.");
+                }
+
+                if (request.EquipmentToBeUpdatedTo is null)
+                {
+                    throw new ArgumentNullException("Missing Equpment from Update Request.");
+                }
+
+                IdRequest requestedId = request.RequestedId;
+                Equipment requestedEquipment = request.EquipmentToBeUpdatedTo;
                 var updated = await _service.UpdateEquipment(requestedId, requestedEquipment);
                 return Ok(updated);
+            }
+            catch (ArgumentNullException e)
+            {
+                _logger.LogError(e.Message);
+                _logger.LogError(e.StackTrace);
+                return BadRequest(e);
+            }
+            catch (ArgumentException e)
+            {
+                _logger.LogError(e.Message);
+                _logger.LogError(e.StackTrace);
+                return BadRequest(e);
             }
             catch (Exception e)
             {
@@ -108,14 +143,36 @@ namespace InitiativeTracker.Controllers
         [Route("update/name")]
         [Consumes("application/json")]
         [HttpPost]
-        public async Task<ActionResult<Equipment>> Update([FromBody] (NameRequest nameRequest, Equipment equipment) request)
+        public async Task<ActionResult<Equipment>> Update([FromBody] UpdateRequestByName request)
         {
             try
             {
-                NameRequest requestedName = request.nameRequest;
-                Equipment requestedEquipment = request.equipment;
+                if (request.RequestedName is null || request.RequestedName.Name is null)
+                {
+                    throw new ArgumentNullException("Missing Name from Update Request.");
+                }
+
+                if (request.EquipmentToBeUpdatedTo is null)
+                {
+                    throw new ArgumentNullException("Missing Equpment from Update Request.");
+                }
+
+                NameRequest requestedName = request.RequestedName;
+                Equipment requestedEquipment = request.EquipmentToBeUpdatedTo;
                 var updated = await _service.UpdateEquipment(requestedName, requestedEquipment);
                 return Ok(updated);
+            }
+            catch (ArgumentNullException e)
+            {
+                _logger.LogError(e.Message);
+                _logger.LogError(e.StackTrace);
+                return BadRequest(e);
+            }
+            catch (ArgumentException e)
+            {
+                _logger.LogError(e.Message);
+                _logger.LogError(e.StackTrace);
+                return BadRequest(e);
             }
             catch (Exception e)
             {
