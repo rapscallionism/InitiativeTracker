@@ -2,8 +2,6 @@
 using InitiativeTrackerBackend.Models.DTOs;
 using InitiativeTrackerBackend.Models.Requests;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace InitiativeTracker.Controllers
 {
@@ -37,7 +35,7 @@ namespace InitiativeTracker.Controllers
         }
 
         [Route("name")]
-        [HttpGet]
+        [HttpPost]
         public async Task<ActionResult<Equipment>> GetOne([FromBody] NameRequest name)
         {
             try
@@ -53,7 +51,7 @@ namespace InitiativeTracker.Controllers
         }
 
         [Route("id")]
-        [HttpGet]
+        [HttpPost]
         public async Task<ActionResult<Equipment>> GetOne([FromBody] IdRequest id)
         {
             try
@@ -90,11 +88,13 @@ namespace InitiativeTracker.Controllers
         [Route("update/id")]
         [Consumes("application/json")]
         [HttpPost]
-        public async Task<ActionResult<Equipment>> Update([FromBody] IdRequest idRequest, [FromBody] Equipment equipment)
+        public async Task<ActionResult<Equipment>> Update([FromBody] (IdRequest idRequest, Equipment equipment) request)
         {
             try
             {
-                var updated = await _service.UpdateEquipment(idRequest, equipment);
+                IdRequest requestedId = request.idRequest;
+                Equipment requestedEquipment = request.equipment;
+                var updated = await _service.UpdateEquipment(requestedId, requestedEquipment);
                 return Ok(updated);
             }
             catch (Exception e)
@@ -108,11 +108,13 @@ namespace InitiativeTracker.Controllers
         [Route("update/name")]
         [Consumes("application/json")]
         [HttpPost]
-        public async Task<ActionResult<Equipment>> Update([FromBody] NameRequest nameRequest, [FromBody] Equipment equipment)
+        public async Task<ActionResult<Equipment>> Update([FromBody] (NameRequest nameRequest, Equipment equipment) request)
         {
             try
             {
-                var updated = await _service.UpdateEquipment(nameRequest, equipment);
+                NameRequest requestedName = request.nameRequest;
+                Equipment requestedEquipment = request.equipment;
+                var updated = await _service.UpdateEquipment(requestedName, requestedEquipment);
                 return Ok(updated);
             }
             catch (Exception e)
