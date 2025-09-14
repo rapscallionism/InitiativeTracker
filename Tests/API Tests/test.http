@@ -30,9 +30,22 @@ Content-Type: application/json
 GET http://localhost:5000/api/equipment/all
 
 ### 
-GET http://localhost:5000/api/equipment?name=Scale%20of%20the%20Bronze%20Tyrant
+POST http://localhost:5000/api/equipment/name
 Content-Type: application/json
 
+{
+  "Name": "Scale of the Bronze Tyrant"
+}
+
+###
+
+# NEED TO FIX THIS TEST, ID REQUEST IS NOT IMPL
+POST http://localhost:5000/api/equipment/id
+Content-Type: application/json
+
+{
+  "Name": "Scale of the Bronze Tyrant"
+}
 
 ###
 
