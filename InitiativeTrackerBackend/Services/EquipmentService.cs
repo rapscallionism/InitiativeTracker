@@ -25,7 +25,9 @@ public class EquipmentService : IEquipmentService
 
     public async Task<Equipment> GetEquipment(NameRequest nameRequest)
     {
-        string name = nameRequest.Name;
+        // Since all names are stored as upper case, need to query via upper casing
+        string name = nameRequest.Name.ToUpperInvariant();
+
         return await _equipmentRepository.GetEquipmentByNameAsync(name);
     }
 
@@ -37,6 +39,9 @@ public class EquipmentService : IEquipmentService
 
     public async Task<Equipment> CreateEquipment(Equipment equipment)
     {
+        // Need to capitalize the name so its unique on all 
+        equipment.Name = equipment.Name.ToUpperInvariant();
+
         Equipment created = await _equipmentRepository.CreateEquipmentAsync(equipment);
         return created;
     }
