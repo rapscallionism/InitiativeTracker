@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0" version="29.1.1">
   <diagram name="Page-1" id="UpxA_jMciYmowAoziGZk">
-    <mxGraphModel dx="2766" dy="1693" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2645" dy="1625" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -95,7 +95,7 @@
         <mxCell id="g6_84N8c9P5bqx3azn3d-34" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;align=left;" value="&amp;nbsp;Character Table&lt;div&gt;&amp;nbsp;- int id&lt;/div&gt;&lt;div&gt;&amp;nbsp;- string name&lt;/div&gt;&lt;div&gt;&amp;nbsp;- string characterImageUrl&lt;/div&gt;&lt;div&gt;&amp;nbsp;- string helm (FK)&lt;/div&gt;&lt;div&gt;&amp;nbsp;- string cape (FK)&lt;/div&gt;&lt;div&gt;&amp;nbsp;- string gauntlets (FK)&lt;/div&gt;&lt;div&gt;&amp;nbsp;- string boots (FK)&lt;/div&gt;&lt;div&gt;&amp;nbsp;- string ringOne (FK)&lt;/div&gt;&lt;div&gt;&amp;nbsp;- string ringTwo (FK)&lt;/div&gt;&lt;div&gt;&amp;nbsp;- string necklace (FK)&lt;/div&gt;&lt;div&gt;&amp;nbsp;- string mainMelee (FK)&lt;/div&gt;&lt;div&gt;&amp;nbsp;- string offMelee (FK)&lt;/div&gt;&lt;div&gt;&amp;nbsp;- string mainRanged (FK)&lt;/div&gt;&lt;div&gt;&amp;nbsp;- string offRanged (FK)&lt;/div&gt;" vertex="1">
           <mxGeometry height="230" width="210" x="485" y="470" as="geometry" />
         </mxCell>
-        <mxCell id="g6_84N8c9P5bqx3azn3d-36" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;align=left;" value="&amp;nbsp;Equipment Table&lt;div&gt;&amp;nbsp;- string id&lt;/div&gt;&lt;div&gt;&amp;nbsp;- string name&lt;/div&gt;&lt;div&gt;&amp;nbsp;- string description&lt;/div&gt;&lt;div&gt;&amp;nbsp;- string tags*&lt;/div&gt;&lt;div&gt;&amp;nbsp;- string resetsOn&lt;/div&gt;&lt;div&gt;&amp;nbsp;- int? charges&lt;/div&gt;&lt;div&gt;&amp;nbsp;- int? maxCharges&lt;/div&gt;" vertex="1">
+        <mxCell id="g6_84N8c9P5bqx3azn3d-36" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;align=left;" value="&amp;nbsp;Equipment Table&lt;div&gt;&amp;nbsp;- string id&lt;/div&gt;&lt;div&gt;&amp;nbsp;- string name&lt;/div&gt;&lt;div&gt;&amp;nbsp;- string description&lt;/div&gt;&lt;div&gt;&amp;nbsp;- Enum tags*&lt;/div&gt;&lt;div&gt;&amp;nbsp;- Enum equipSlot&lt;/div&gt;&lt;div&gt;&amp;nbsp;- string resetsOn&lt;/div&gt;&lt;div&gt;&amp;nbsp;- int? charges&lt;/div&gt;&lt;div&gt;&amp;nbsp;- int? maxCharges&lt;/div&gt;" vertex="1">
           <mxGeometry height="190" width="120" x="800" y="470" as="geometry" />
         </mxCell>
         <mxCell id="g6_84N8c9P5bqx3azn3d-39" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Initial Page Load" vertex="1">
