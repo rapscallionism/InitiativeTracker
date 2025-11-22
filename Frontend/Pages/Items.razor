@@ -4,7 +4,13 @@
 <PageTitle>Items</PageTitle>
 
 <div class="mb-3">
-    <MudTextField @bind-Value="SearchedEquipment" />
+    @* <MudTextField @bind-Value="SearchedEquipment" /> *@
+    <MudTextField @bind-Value="SearchedEquipment" 
+        Label="Search" 
+        Variant="Variant.Outlined" 
+        Adornment="Adornment.End" 
+        AdornmentIcon="@Icons.Material.Filled.Search" 
+        AdornmentColor="Color.Info" />
 </div>
 
 @code {
