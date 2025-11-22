@@ -39,8 +39,8 @@ builder.Services.AddSingleton<IMongoClient>(sp =>
 
 builder.Services.AddSingleton<EquipmentRepository>();
 builder.Services.AddScoped<IEquipmentRepository, EquipmentRepository>();
-builder.Services.AddScoped<IEquipmentService, EquipmentService>();
-builder.Services.AddScoped<ILogger, Logger<EquipmentService>>();
+builder.Services.AddScoped<IEquipmentNoSQLService, EquipmentNoSQLService>();
+builder.Services.AddScoped<ILogger, Logger<EquipmentNoSQLService>>();
 
 var app = builder.Build();
 
