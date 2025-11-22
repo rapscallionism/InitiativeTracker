@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InitiativeTrackerBackend", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InitiativeTrackerFrontend", "InitiativeTrackerFrontend\InitiativeTrackerFrontend.csproj", "{7663D1C1-1000-20CF-BB5B-BAC05DF89145}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{EC54D8AC-BDB5-46D3-A12A-7ADA30AC0A68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7663D1C1-1000-20CF-BB5B-BAC05DF89145}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7663D1C1-1000-20CF-BB5B-BAC05DF89145}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7663D1C1-1000-20CF-BB5B-BAC05DF89145}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC54D8AC-BDB5-46D3-A12A-7ADA30AC0A68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC54D8AC-BDB5-46D3-A12A-7ADA30AC0A68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC54D8AC-BDB5-46D3-A12A-7ADA30AC0A68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC54D8AC-BDB5-46D3-A12A-7ADA30AC0A68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
