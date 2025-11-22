@@ -10,31 +10,6 @@
 <PageTitle>Items</PageTitle>
 
 <MudContainer>
-    @* <MudGrid> *@
-    @* <MudItem id="Search Box"> *@
-    @*     <MudTextField @bind-Value="_searchedEquipment" *@
-    @*     Label="Search" *@
-    @*     Variant="Variant.Outlined" *@
-    @*     Adornment="Adornment.End" *@
-    @*     AdornmentIcon="@Icons.Material.Filled.Search" *@
-    @*     AdornmentColor="Color.Info" /> *@
-    @* </MudItem> *@
-
-    @* <MudItem id="Filter Options + Misc"> *@
-    @*     <MudSelect T="string" *@
-    @*     Label="Filter By" *@
-    @*     MultiSelection="true" *@
-    @*     @bind-Value="_defaultSelectedFilter" *@
-    @*     @bind-SelectedValues="_selectedFilterOptions"> *@
-    @*         @foreach (var options in _filterOptions) *@
-    @*         { *@
-    @*             <MudSelectItem T="string" Value="@options">@options</MudSelectItem> *@
-    @*         } *@
-    @*     </MudSelect> *@
-    @* </MudItem> *@
-
-    @* <MudFlexBreak /> *@
-
     <MudItem id="ResultsTable">
         <MudTable 
             Items="@_allItemsCompact" 
