@@ -1,9 +1,7 @@
 
 using Backend.Interfaces;
-using Backend.Models.DTOs;
+using Backend.Models.Entities;
 using Backend.Models.Requests;
-using Microsoft.AspNetCore.DataProtection.XmlEncryption;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Services;
 

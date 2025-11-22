@@ -1,4 +1,4 @@
-﻿namespace Backend.Models.Utilities.Enums
+﻿namespace Core.Models.Utilities
 {
     /// <summary>
     ///     Enum representation of all the valid tags that

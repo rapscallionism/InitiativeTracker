@@ -1,13 +1,21 @@
 ﻿using Core.Models.Utilities;
 
-namespace Backend.Models.Entities
+namespace Core.Models.DTOs
 {
-    public class EquipmentEntity
+    /// <summary>
+    ///     The downstream consumed version of the <see cref="Backend.Entities.EquipmentEntity"/>.
+    /// </summary>
+    public class EquipmentDTO
     {
         /// <summary>
         ///     Unique Identifier
         /// </summary>
         public string Id { get; set; }
+
+        /// <summary>
+        ///     Unique name of the equipment.
+        /// </summary>
+        public string Name { get; set; }
 
         /// <summary>
         ///     Short description of the equipment
@@ -29,7 +37,7 @@ namespace Backend.Models.Entities
         ///     Enumerator which indicates how this equipments' charges
         ///     will reset (if at all).
         /// </summary>
-        public Core.Models.Utilities.ResetsOn?[] ResetsOn { get; set; } = [];
+        public Core.Models.Utilities.ResetsOn[] ResetsOn { get; set; } = [];
 
         /// <summary>
         ///     The number of current charges the equipment has.

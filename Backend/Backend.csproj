@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <Folder Include="Models\Responses\" />
+    <Folder Include="Models\Utilities\" />
   </ItemGroup>
 
   <ItemGroup>

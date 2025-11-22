@@ -1,4 +1,4 @@
-﻿namespace Backend.Models.DTOs
+﻿namespace Core.Models.DTOs
 {
     public class Action
     {

@@ -1,5 +1,5 @@
 ﻿using Backend.Interfaces;
-using Backend.Models.DTOs;
+using Backend.Models.Entities;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
