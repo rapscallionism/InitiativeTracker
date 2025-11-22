@@ -1,0 +1,27 @@
+﻿@page "/campaign";
+@using Components
+
+<PageTitle>Campaign</PageTitle>
+
+<Character />
+
+@code {
+    // Page is supposed to be about for custom items to be able to keep track of the users' items for us and resets on short rest and long rest
+    // List<Item> items = ItemParser.ParseAllJsonToItems("../../ItemsJson");
+
+    // [Parameter]
+    // public
+
+
+    protected override void OnInitialized()
+    {
+        Console.WriteLine("Running!");
+    }
+
+    protected override Task OnInitializedAsync()
+    {
+        return Task.Run(() => Task.CompletedTask);
+        // On initial render, call the users api to get the character and the items of a specific character
+        // This should be based off of the character parameter
+    }
+}
