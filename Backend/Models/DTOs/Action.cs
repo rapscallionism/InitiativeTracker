@@ -1,4 +1,4 @@
-﻿namespace InitiativeTrackerBackend.Models.DTOs
+﻿namespace Backend.Models.DTOs
 {
     public class Action
     {

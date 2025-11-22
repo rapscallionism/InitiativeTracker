@@ -1,10 +1,10 @@
-﻿using InitiativeTrackerBackend.Interfaces;
-using InitiativeTrackerBackend.Models.DTOs;
-using InitiativeTrackerBackend.Models.Requests;
-using InitiativeTrackerBackend.Utilities;
+﻿using Backend.Interfaces;
+using Backend.Models.DTOs;
+using Backend.Models.Requests;
+using Backend.Utilities;
 using Microsoft.AspNetCore.Mvc;
 
-namespace InitiativeTracker.Controllers
+namespace Backend.Controllers
 {
     [ApiController]
     [Route("api/equipment")]

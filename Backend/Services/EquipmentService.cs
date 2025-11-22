@@ -1,11 +1,11 @@
 
-using InitiativeTrackerBackend.Interfaces;
-using InitiativeTrackerBackend.Models.DTOs;
-using InitiativeTrackerBackend.Models.Requests;
+using Backend.Interfaces;
+using Backend.Models.DTOs;
+using Backend.Models.Requests;
 using Microsoft.AspNetCore.DataProtection.XmlEncryption;
 using Microsoft.AspNetCore.Mvc;
 
-namespace InitiativeTracker.Services;
+namespace Backend.Services;
 
 public class EquipmentService : IEquipmentService
 {

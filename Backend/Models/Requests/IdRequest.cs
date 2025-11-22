@@ -1,4 +1,4 @@
-﻿namespace InitiativeTrackerBackend.Models.Requests
+﻿namespace Backend.Models.Requests
 {
     /// <summary>
     ///     Request format to be used when querying anything via Id

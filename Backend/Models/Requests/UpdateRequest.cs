@@ -1,6 +1,6 @@
-﻿using InitiativeTrackerBackend.Models.DTOs;
+﻿using Backend.Models.DTOs;
 
-namespace InitiativeTrackerBackend.Models.Requests
+namespace Backend.Models.Requests
 {
     public class UpdateRequest
     {

@@ -1,4 +1,4 @@
-﻿namespace InitiativeTrackerBackend.Models.Requests
+﻿namespace Backend.Models.Requests
 {
     public class UpdateRequestById : UpdateRequest
     {
