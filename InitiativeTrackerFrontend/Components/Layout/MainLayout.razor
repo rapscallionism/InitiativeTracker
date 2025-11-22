@@ -1,4 +1,15 @@
-﻿@inherits LayoutComponentBase
+﻿@using MudBlazor
+@inherits LayoutComponentBase
+
+@* Required *@
+<MudThemeProvider @rendermode="InteractiveServer" />
+<MudPopoverProvider @rendermode="InteractiveServer" />
+
+@* Needed for dialogs *@
+<MudDialogProvider @rendermode="InteractiveServer" />
+
+@* Needed for snackbars *@
+<MudSnackbarProvider @rendermode="InteractiveServer" />
 
 <div class="page">
 
