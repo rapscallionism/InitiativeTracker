@@ -1,9 +1,13 @@
 using InitiativeTracker.Components;
+using MudBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSingleton<MonsterLoaderService>();
-builder.Services.AddBlazorBootstrap();
+//builder.Services.AddBlazorBootstrap();
+
+// Register MudBlazor services
+builder.Services.AddMudServices();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
