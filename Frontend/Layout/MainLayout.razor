@@ -1,4 +1,15 @@
 ﻿@inherits LayoutComponentBase
+
+@* Required *@
+<MudThemeProvider  @rendermode="new InteractiveWebAssemblyRenderMode(false)"/>
+<MudPopoverProvider  @rendermode="new InteractiveWebAssemblyRenderMode(false)" />
+
+@* Needed for dialogs *@
+<MudDialogProvider  @rendermode="new InteractiveWebAssemblyRenderMode(false)" />
+
+@* Needed for snackbars *@
+<MudSnackbarProvider  @rendermode="new InteractiveWebAssemblyRenderMode(false)" />
+
 <div class="page">
     <div class="sidebar">
         <NavMenu />
