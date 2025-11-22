@@ -1,4 +1,4 @@
-﻿namespace Backend.Models.Utilities.Enums
+﻿namespace Core.Models.Utilities
 {
     /// <summary>
     ///     Represents where this piece of equipment will slot onto the player.

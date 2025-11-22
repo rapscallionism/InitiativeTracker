@@ -1,5 +1,5 @@
 ﻿using Backend.Interfaces;
-using Backend.Models.DTOs;
+using Backend.Models.Entities;
 using Backend.Models.Requests;
 using Backend.Utilities;
 using Microsoft.AspNetCore.Mvc;

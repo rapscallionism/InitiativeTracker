@@ -1,38 +1,74 @@
 ﻿@page "/items";
+@using Core.Models.DTOs
+@using Core.Models.Utilities
+@using Frontend.Models
 @using MudBlazor;
+@using System;
+@using System.Collections.Generic;
+@using System.Reflection;
 
 <PageTitle>Items</PageTitle>
 
 <MudContainer>
-    <MudGrid>
-        <MudItem id="Search Box">
-            <MudTextField @bind-Value="SearchedEquipment"
-            Label="Search"
-            Variant="Variant.Outlined"
-            Adornment="Adornment.End"
-            AdornmentIcon="@Icons.Material.Filled.Search"
-            AdornmentColor="Color.Info" />
-        </MudItem>
+    @* <MudGrid> *@
+    @* <MudItem id="Search Box"> *@
+    @*     <MudTextField @bind-Value="_searchedEquipment" *@
+    @*     Label="Search" *@
+    @*     Variant="Variant.Outlined" *@
+    @*     Adornment="Adornment.End" *@
+    @*     AdornmentIcon="@Icons.Material.Filled.Search" *@
+    @*     AdornmentColor="Color.Info" /> *@
+    @* </MudItem> *@
 
-        <MudItem id="Filter Options + Misc">
-            <MudSelect T="string" 
-                Label="Filter By" 
-                MultiSelection="true" 
-                @bind-Value="_defaultSelectedFilter"
-                @bind-SelectedValues="_selectedFilterOptions">
-                @foreach (var options in _filterOptions)
+    @* <MudItem id="Filter Options + Misc"> *@
+    @*     <MudSelect T="string" *@
+    @*     Label="Filter By" *@
+    @*     MultiSelection="true" *@
+    @*     @bind-Value="_defaultSelectedFilter" *@
+    @*     @bind-SelectedValues="_selectedFilterOptions"> *@
+    @*         @foreach (var options in _filterOptions) *@
+    @*         { *@
+    @*             <MudSelectItem T="string" Value="@options">@options</MudSelectItem> *@
+    @*         } *@
+    @*     </MudSelect> *@
+    @* </MudItem> *@
+
+    @* <MudFlexBreak /> *@
+
+    <MudItem id="ResultsTable">
+        <MudTable 
+            Items="@_allItemsCompact" 
+            Hover="true" 
+            Bordered="true"
+            Filter="new Func<Compact,bool>(FindItem)"
+            >
+            <ToolBarContent>
+                <MudText Typo="Typo.h6">Item Catalogue</MudText>
+                <MudSpacer />
+                <MudTextField @bind-Value="_searchedEquipment" 
+                Placeholder="Search" 
+                Adornment="Adornment.Start" 
+                AdornmentIcon="@Icons.Material.Filled.Search" 
+                IconSize="Size.Medium" Class="mt-0"></MudTextField>
+            </ToolBarContent>
+            <HeaderContent>
+                @foreach (var header in _headersForAllItems)
                 {
-                    <MudSelectItem T="string" Value="@options">@options</MudSelectItem>
+                    <MudTh>@header</MudTh>
                 }
-            </MudSelect>
-        </MudItem>
-
-        <MudFlexBreak/>
-
-        <MudItem id="ResultsTable">
-
-        </MudItem>
-    </MudGrid>
+            </HeaderContent>
+            <RowTemplate >
+                <MudTd DataLabel="@context.ToString()">@context.Name</MudTd>
+                <MudTd>@context.Tags.ToString()</MudTd>
+                <MudTd>@context.EquipmentSlot.ToString()</MudTd>
+                <MudTd>@context.ResetsOn.ToString()</MudTd>
+            </RowTemplate>
+            <PagerContent>
+                <MudTablePager />
+            </PagerContent>
+        </MudTable>
+    </MudItem>
+    @* </MudGrid> *@
 </MudContainer>
 
 @code {
@@ -50,10 +86,120 @@
         "Rarity",
     ];
 
-    public string? SearchedEquipment { get; set; } = string.Empty;
+    public string? _searchedEquipment { get; set; } = string.Empty;
+
+    public List<Item> _allItems { get; set; } = [];
+    public List<Compact> _allItemsCompact { get; set; } = [];
+    public List<string> _headersForAllItems { get; set; } = ["Name", "Tags", "EquipmentSlot", "ResetsOn"];
+    public Item? _selectedItem { get; set; } = null;
+
+    List<EquipmentDTO> mockEquipmentList = new List<EquipmentDTO>
+        {
+            new EquipmentDTO
+            {
+                Id = "1",
+                Name = "Iron Helm",
+                Description = "A sturdy iron helmet for basic protection.",
+                Tags = new[] { Tags.HEAVY_ARMOR },
+                EquipmentSlot = new[] { EquipmentSlot.HELM },
+                ResetsOn = new[] { ResetsOn.PASSIVE },
+                MaxCharges = null
+            },
+            new EquipmentDTO
+            {
+                Id = "2",
+                Name = "Cloak of Shadows",
+                Description = "A dark cloak that helps the wearer blend into the night.",
+                Tags = new[] { Tags.LIGHT, Tags.FINESSE },
+                EquipmentSlot = new[] { EquipmentSlot.CAPE },
+                ResetsOn = new[] { ResetsOn.AT_DAWN },
+                MaxCharges = 3
+            },
+            new EquipmentDTO
+            {
+                Id = "3",
+                Name = "Gauntlets of Ogre Power",
+                Description = "These gauntlets grant immense strength to the wearer.",
+                Tags = new[] { Tags.HEAVY },
+                EquipmentSlot = new[] { EquipmentSlot.GAUNTLETS },
+                ResetsOn = new[] { ResetsOn.LONG_REST },
+                MaxCharges = 1
+            },
+            new EquipmentDTO
+            {
+                Id = "4",
+                Name = "Ring of Quickness",
+                Description = "A magical ring that increases the wearer's speed.",
+                Tags = new[] { Tags.LIGHT, Tags.VERSATILE },
+                EquipmentSlot = new[] { EquipmentSlot.RING },
+                ResetsOn = new[] { ResetsOn.SHORT_REST },
+                MaxCharges = 5
+            },
+            new EquipmentDTO
+            {
+                Id = "5",
+                Name = "Throwing Axe",
+                Description = "A balanced axe designed for throwing.",
+                Tags = new[] { Tags.THROWN, Tags.MELEE, Tags.LIGHT },
+                EquipmentSlot = new[] { EquipmentSlot.MELEE_MAIN, EquipmentSlot.RANGED_MAIN },
+                ResetsOn = new[] { ResetsOn.SINGLE_USE },
+                MaxCharges = null
+            }
+        };
 
     protected override void OnInitialized()
     {
         Console.WriteLine("Running!");
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        // TODO: IMPLEMENT THIS; Grab all the items from the DB
+        foreach(var equipment in mockEquipmentList)
+        {
+            Item toAdd = new(equipment);
+            _allItems.Add(toAdd);
+            _allItemsCompact.Add(toAdd.Compact);
+        }
+    }
+
+    private bool FindItem(Compact item) => FindItem(item, _searchedEquipment);
+
+    /// <summary>
+    ///     Enables search capability by checking if the <see cref="_searchedEquipment"/>
+    ///     fits in any of the strings provided from the compact view of the item
+    ///     in the table.
+    /// </summary>
+    /// <param name="item"></param>
+    /// <param name="search"></param>
+    /// <returns></returns>
+    private bool FindItem(Compact item, string? search)
+    {
+        if (string.IsNullOrEmpty(search) || string.IsNullOrWhiteSpace(search))
+        {
+            return true;
+        }
+
+        if (item.Name.Contains(search, StringComparison.OrdinalIgnoreCase))
+        {
+            return true;   
+        }
+
+        if (item.EquipmentSlot.Contains(search, StringComparison.OrdinalIgnoreCase))
+        {
+            return true;   
+        }
+
+        if (item.ResetsOn.Contains(search, StringComparison.OrdinalIgnoreCase))
+        {
+            return true;   
+        }
+
+        if (item.Tags.Contains(search, StringComparison.OrdinalIgnoreCase))
+        {
+            return true;
+        }
+
+        return false;
     }
 }
