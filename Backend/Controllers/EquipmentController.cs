@@ -11,9 +11,9 @@ namespace Backend.Controllers
     public class EquipmentController : ControllerBase
     {
         private readonly ILogger<EquipmentController> _logger;
-        private readonly IEquipmentService _service;
+        private readonly IEquipmentNoSQLService _service;
 
-        public EquipmentController(ILogger<EquipmentController> logger, IEquipmentService service)
+        public EquipmentController(ILogger<EquipmentController> logger, IEquipmentNoSQLService service)
         {
             _logger = logger;
             _service = service;

@@ -3,7 +3,7 @@ using Backend.Models.Requests;
 
 namespace Backend.Interfaces
 {
-    public interface IEquipmentService
+    public interface IEquipmentNoSQLService
     {
         public Task<List<Equipment>> GetAllEquipment();
         public Task<Equipment?> GetEquipment(NameRequest nameRequest);
