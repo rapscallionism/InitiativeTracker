@@ -2,7 +2,7 @@
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace InitiativeTrackerBackend.Models.DTOs
+namespace Backend.Models.DTOs
 {
     public class Equipment
     {

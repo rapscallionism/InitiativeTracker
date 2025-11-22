@@ -1,9 +1,9 @@
-﻿using InitiativeTrackerBackend.Interfaces;
-using InitiativeTrackerBackend.Models.DTOs;
+﻿using Backend.Interfaces;
+using Backend.Models.DTOs;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
-namespace InitiativeTrackerBackend.Database
+namespace Backend.Database
 {
     public class EquipmentRepository : IEquipmentRepository
     {

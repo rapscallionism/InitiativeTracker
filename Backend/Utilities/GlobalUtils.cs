@@ -1,4 +1,4 @@
-﻿namespace InitiativeTrackerBackend.Utilities
+﻿namespace Backend.Utilities
 {
     public static class GlobalUtils
     {

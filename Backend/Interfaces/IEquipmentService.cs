@@ -1,7 +1,7 @@
-﻿using InitiativeTrackerBackend.Models.DTOs;
-using InitiativeTrackerBackend.Models.Requests;
+﻿using Backend.Models.DTOs;
+using Backend.Models.Requests;
 
-namespace InitiativeTrackerBackend.Interfaces
+namespace Backend.Interfaces
 {
     public interface IEquipmentService
     {

@@ -1,7 +1,11 @@
 ﻿@page "/items";
-@using Components
+@using MudBlazor;
 
 <PageTitle>Items</PageTitle>
+
+<div class="mb-3">
+    <MudTextField @bind-Value="SearchedEquipment" />
+</div>
 
 @code {
     // Page is supposed to be about for custom items to be able to keep track of the users' items for us and resets on short rest and long rest

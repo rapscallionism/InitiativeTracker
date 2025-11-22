@@ -1,6 +1,6 @@
-﻿using InitiativeTrackerBackend.Models.DTOs;
+﻿using Backend.Models.DTOs;
 
-namespace InitiativeTrackerBackend.Interfaces
+namespace Backend.Interfaces
 {
     public interface IEquipmentRepository
     {
