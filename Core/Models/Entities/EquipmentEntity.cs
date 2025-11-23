@@ -7,7 +7,7 @@ namespace Core.Models.Entities
         /// <summary>
         ///     Unique Identifier
         /// </summary>
-        public string Id { get; set; }
+        public Guid? Id { get; set; } = Guid.NewGuid();
 
         /// <summary>
         ///     Name of the Equipment
@@ -46,6 +46,6 @@ namespace Core.Models.Entities
         ///     the effects (activatable or not) that this equipment
         ///     has access to.
         /// </summary>
-        public List<Feature> Features { get; set; }
+        public List<FeatureEntity> Features { get; set; }
     }
 }

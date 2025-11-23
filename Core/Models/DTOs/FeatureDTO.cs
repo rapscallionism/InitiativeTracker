@@ -1,18 +1,14 @@
-﻿using Core.Models.Utilities;
+﻿using Core.Models.Entities;
+using Core.Models.Utilities;
 
-namespace Core.Models.Entities
+namespace Core.Models.DTOs
 {
-    /// <summary>
-    ///     Represents that feature that an equipment has access to,
-    ///     whether that be activatble or not as well as what
-    ///     it costs action-economy-wise.
-    /// </summary>
-    public class Feature
+    public class FeatureDTO
     {
         /// <summary>
         ///     Unique identifier.
         /// </summary>
-        public string Id { get; set; }
+        public string? Id { get; set; }
 
         /// <summary>
         ///     The unique name of this specific action economy.
@@ -35,7 +31,7 @@ namespace Core.Models.Entities
         ///     Representation of when this feature resets, if at all.
         /// </summary>
         public Core.Models.Utilities.ResetsOn[] ResetsOn { get; set; }
-        
+
         /// <summary>
         ///     A numerical value indicating how much charge this will
         ///     cost the item if this action is utilized. By default,
@@ -52,10 +48,5 @@ namespace Core.Models.Entities
         ///     to.
         /// </summary>
         public string? EquipmentId { get; set; }
-
-        /// <summary>
-        ///     The navigation entity.
-        /// </summary>
-        public EquipmentEntity Equipment { get; set; }
     }
 }

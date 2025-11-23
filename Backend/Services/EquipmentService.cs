@@ -52,7 +52,7 @@ namespace Backend.Services
 
             // Return the object, with the id now; at this point, the object should not be null
             var addedEntity = addedValue.Entity;
-            validation.Source.Id = addedEntity.Id;
+            validation.Source.Id = addedEntity.Id.ToString();
             return validation.Source;
         }
 
