@@ -38,18 +38,11 @@ namespace Frontend.Models
         /// </summary>
         public string EquipmentSlot { get; set; }
 
-        /// <summary>
-        ///     Enumerator which indicates how this equipments' charges
-        ///     will reset (if at all).
-        /// </summary>
-        public string ResetsOn { get; set; }
-
         public Compact(EquipmentDTO equipment)
         {
             this.Name = equipment.Name;
             this.Tags = string.Join(", ", equipment.Tags);
             this.EquipmentSlot = string.Join(", ", equipment.EquipmentSlot);
-            this.ResetsOn = string.Join(", ", equipment.ResetsOn);
         }
     }
 
@@ -82,12 +75,6 @@ namespace Frontend.Models
         public EquipmentSlot[] EquipmentSlot { get; set; } = [];
 
         /// <summary>
-        ///     Enumerator which indicates how this equipments' charges
-        ///     will reset (if at all).
-        /// </summary>
-        public Core.Models.Utilities.ResetsOn[] ResetsOn { get; set; } = [];
-
-        /// <summary>
         ///     The number of maximum charges a piece of equipment
         ///     may have.
         /// </summary>
@@ -99,7 +86,6 @@ namespace Frontend.Models
             this.Description = equipment.Description;
             this.Tags = equipment.Tags;
             this.EquipmentSlot = equipment.EquipmentSlot;
-            this.ResetsOn = equipment.ResetsOn;
 
             // We don't map charges since we don't care how many charges it currently has
             // that is information for the character, not the item itself.

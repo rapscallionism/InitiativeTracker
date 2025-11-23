@@ -30,6 +30,11 @@ namespace Core.Models.Entities
         ///     This is determined through <see cref="ActionEconomyType"/>.
         /// </summary>
         public ActionEconomyType ActionEconomyType { get; set; }
+
+        /// <summary>
+        ///     Representation of when this feature resets, if at all.
+        /// </summary>
+        public Core.Models.Utilities.ResetsOn[] ResetsOn { get; set; }
         
         /// <summary>
         ///     A numerical value indicating how much charge this will

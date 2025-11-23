@@ -72,15 +72,6 @@ namespace Backend.Database
                     )
                     .Metadata.SetValueComparer(slotArrayComparer);
 
-                entity.Property(e => e.ResetsOn)
-                      .HasConversion(
-                          v => string.Join(",", v.Select(x => x.ToString())),
-                          v => v.Split(',', StringSplitOptions.RemoveEmptyEntries)
-                                .Select(s => Enum.Parse<Core.Models.Utilities.ResetsOn>(s))
-                                .ToArray()
-                      )
-                      .Metadata.SetValueComparer(resetArrayComparer);
-
                 // Relationship: Equipment has many Features
                 entity.HasMany(e => e.Features)
                       .WithOne(f => f.Equipment)
@@ -107,6 +98,15 @@ namespace Backend.Database
                 // Enum → string or int (your choice)
                 entity.Property(f => f.ActionEconomyType)
                       .HasConversion<string>();
+
+                entity.Property(e => e.ResetsOn)
+                      .HasConversion(
+                          v => string.Join(",", v.Select(x => x.ToString())),
+                          v => v.Split(',', StringSplitOptions.RemoveEmptyEntries)
+                                .Select(s => Enum.Parse<Core.Models.Utilities.ResetsOn>(s))
+                                .ToArray()
+                      )
+                      .Metadata.SetValueComparer(resetArrayComparer);
 
                 // Optional FK handled by relationship above
                 entity.Property(f => f.EquipmentId)

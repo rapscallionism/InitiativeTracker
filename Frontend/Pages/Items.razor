@@ -36,7 +36,6 @@
                 <MudTd DataLabel="@context.ToString()">@context.Name</MudTd>
                 <MudTd>@context.Tags.ToString()</MudTd>
                 <MudTd>@context.EquipmentSlot.ToString()</MudTd>
-                <MudTd>@context.ResetsOn.ToString()</MudTd>
             </RowTemplate>
             <PagerContent>
                 <MudTablePager />
@@ -65,7 +64,7 @@
 
     public List<Item> _allItems { get; set; } = [];
     public List<Compact> _allItemsCompact { get; set; } = [];
-    public List<string> _headersForAllItems { get; set; } = ["Name", "Tags", "EquipmentSlot", "ResetsOn"];
+    public List<string> _headersForAllItems { get; set; } = ["Name", "Tags", "EquipmentSlot"];
     public Item? _selectedItem { get; set; } = null;
 
     List<EquipmentDTO> mockEquipmentList = new List<EquipmentDTO>
@@ -77,7 +76,6 @@
                 Description = "A sturdy iron helmet for basic protection.",
                 Tags = new[] { Tags.HEAVY_ARMOR },
                 EquipmentSlot = new[] { EquipmentSlot.HELM },
-                ResetsOn = new[] { ResetsOn.PASSIVE },
                 MaxCharges = null
             },
             new EquipmentDTO
@@ -87,7 +85,6 @@
                 Description = "A dark cloak that helps the wearer blend into the night.",
                 Tags = new[] { Tags.LIGHT, Tags.FINESSE },
                 EquipmentSlot = new[] { EquipmentSlot.CAPE },
-                ResetsOn = new[] { ResetsOn.AT_DAWN },
                 MaxCharges = 3
             },
             new EquipmentDTO
@@ -97,7 +94,6 @@
                 Description = "These gauntlets grant immense strength to the wearer.",
                 Tags = new[] { Tags.HEAVY },
                 EquipmentSlot = new[] { EquipmentSlot.GAUNTLETS },
-                ResetsOn = new[] { ResetsOn.LONG_REST },
                 MaxCharges = 1
             },
             new EquipmentDTO
@@ -107,7 +103,6 @@
                 Description = "A magical ring that increases the wearer's speed.",
                 Tags = new[] { Tags.LIGHT, Tags.VERSATILE },
                 EquipmentSlot = new[] { EquipmentSlot.RING },
-                ResetsOn = new[] { ResetsOn.SHORT_REST },
                 MaxCharges = 5
             },
             new EquipmentDTO
@@ -117,7 +112,6 @@
                 Description = "A balanced axe designed for throwing.",
                 Tags = new[] { Tags.THROWN, Tags.MELEE, Tags.LIGHT },
                 EquipmentSlot = new[] { EquipmentSlot.MELEE_MAIN, EquipmentSlot.RANGED_MAIN },
-                ResetsOn = new[] { ResetsOn.SINGLE_USE },
                 MaxCharges = null
             }
         };
@@ -161,11 +155,6 @@
         }
 
         if (item.EquipmentSlot.Contains(search, StringComparison.OrdinalIgnoreCase))
-        {
-            return true;   
-        }
-
-        if (item.ResetsOn.Contains(search, StringComparison.OrdinalIgnoreCase))
         {
             return true;   
         }

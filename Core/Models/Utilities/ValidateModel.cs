@@ -9,16 +9,16 @@
         
         public ValidateModel(DTO source, Entity destination)
         {
-            this.Source = Source;
-            this.Destination = Destination;
+            this.Source = source;
+            this.Destination = destination;
         }
 
         public ValidateModel(bool isValid, List<string> failedValidationMsgs, DTO source, Entity destination)
         {
             this.IsValid = isValid;
             this.FailedValidations = failedValidationMsgs;
-            this.Source = Source;
-            this.Destination = Destination;
+            this.Source = source;
+            this.Destination = destination;
         }
     }
 }

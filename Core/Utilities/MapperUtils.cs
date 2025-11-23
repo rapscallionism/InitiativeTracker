@@ -12,7 +12,6 @@ namespace Core.Utilities
             dto.Name = entity.Name;
             dto.Description = entity.Description;
             dto.Tags = entity.Tags;
-            dto.ResetsOn = entity.ResetsOn;
             dto.EquipmentSlot = entity.EquipmentSlot;
             dto.Charges = entity.Charges;
             dto.MaxCharges = entity.MaxCharges;
@@ -22,11 +21,13 @@ namespace Core.Utilities
         public static EquipmentEntity Map(EquipmentDTO dto)
         {
             EquipmentEntity entity = new();
-            entity.Id = dto.Id;
+            entity.Id = string.IsNullOrEmpty(dto.Id) || 
+                string.IsNullOrWhiteSpace(dto.Id) ? 
+                string.Empty : 
+                dto.Id;
             entity.Name = dto.Name;
             entity.Description = dto.Description;
             entity.Tags = dto.Tags;
-            entity.ResetsOn = dto.ResetsOn;
             entity.EquipmentSlot = dto.EquipmentSlot;
             entity.Charges = dto.Charges;
             entity.MaxCharges = dto.MaxCharges;
