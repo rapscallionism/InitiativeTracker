@@ -6,6 +6,7 @@
     public enum EquipmentSlot
     {
         HELM,
+        CHEST,
         CAPE,
         GAUNTLETS,
         BOOTS,

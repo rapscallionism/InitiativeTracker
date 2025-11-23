@@ -10,7 +10,7 @@ namespace Core.Models.DTOs
         /// <summary>
         ///     Unique Identifier
         /// </summary>
-        public string Id { get; set; }
+        public string? Id { get; set; }
 
         /// <summary>
         ///     Unique name of the equipment.
@@ -32,12 +32,6 @@ namespace Core.Models.DTOs
         ///     on the player.
         /// </summary>
         public EquipmentSlot[] EquipmentSlot { get; set; } = [];
-
-        /// <summary>
-        ///     Enumerator which indicates how this equipments' charges
-        ///     will reset (if at all).
-        /// </summary>
-        public Core.Models.Utilities.ResetsOn[] ResetsOn { get; set; } = [];
 
         /// <summary>
         ///     The number of current charges the equipment has.

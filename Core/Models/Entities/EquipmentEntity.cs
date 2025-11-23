@@ -31,12 +31,6 @@ namespace Core.Models.Entities
         public EquipmentSlot[] EquipmentSlot { get; set; } = [];
 
         /// <summary>
-        ///     Enumerator which indicates how this equipments' charges
-        ///     will reset (if at all).
-        /// </summary>
-        public ResetsOn[] ResetsOn { get; set; } = [];
-
-        /// <summary>
         ///     The number of current charges the equipment has.
         /// </summary>
         public int? Charges { get; set; }

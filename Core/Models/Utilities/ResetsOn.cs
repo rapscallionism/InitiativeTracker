@@ -13,7 +13,7 @@
         SINGLE_USE,
 
         /// <summary>
-        ///     Indicates that the effectis always on; 
+        ///     Indicates that the effect is always on; 
         /// </summary>
         PASSIVE,
         
