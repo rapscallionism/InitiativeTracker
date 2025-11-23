@@ -38,5 +38,10 @@
         ///     to.
         /// </summary>
         public string EquipmentId { get; set; }
+
+        /// <summary>
+        ///     The navigation entity.
+        /// </summary>
+        public EquipmentEntity Equipment { get; set; }
     }
 }
