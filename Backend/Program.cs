@@ -3,14 +3,15 @@ using Backend.Services;
 using Backend.Utilities;
 using Core.Interfaces;
 using Frontend;
+using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.Hosting.StaticWebAssets;
+using Microsoft.AspNetCore.Antiforgery;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// --- Services ---
 builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
-
-// Add services to the container.
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
@@ -18,66 +19,68 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
     });
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Bind settings
-//builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("MongoDbSettings"));
-
-//builder.Services.AddSingleton<IMongoClient>(sp =>
-//{
-//    var settings = sp.GetRequiredService<IOptions<MongoDbSettings>>().Value;
-
-//    var credential = MongoCredential.CreateCredential("admin", settings.Username, settings.Password);
-//    var mongoSettings = MongoClientSettings.FromUrl(new MongoUrl($"mongodb://{settings.Host}:{settings.Port}"));
-//    mongoSettings.Credential = credential;
-
-//    return new MongoClient(mongoSettings);
-//});
-
-//builder.Services.AddSingleton<EquipmentRepository>();
-//builder.Services.AddScoped<IEquipmentRepository, EquipmentRepository>();
+// Bind services / DI - keep your existing registrations
 builder.Services.AddScoped<IEquipmentService, EquipmentService>();
 builder.Services.AddScoped<IEquipmentEntityValidator, EquipmentEntityValidator>();
-//builder.Services.AddScoped<IEquipmentNoSQLService, EquipmentNoSQLService>();
-//builder.Services.AddScoped<ILogger, Logger<EquipmentNoSQLService>>();
 
+// Antiforgery & DataProtection
+builder.Services.AddAntiforgery(options =>
+{
+    // Optionally tune header name or cookie name
+    options.HeaderName = "X-CSRF-TOKEN";
+});
 
+// Persist keys to mounted directory (must exist in container or as a volume)
+builder.Services.AddDataProtection()
+    .PersistKeysToFileSystem(new DirectoryInfo("/var/dpkeys"));
+
+// --- Build ---
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Static web assets loader MUST run early to register static resources
+StaticWebAssetsLoader.UseStaticWebAssets(builder.Environment, builder.Configuration);
+
+// --- Middleware & pipeline ordering ---
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-}
-
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
     app.UseWebAssemblyDebugging();
 }
 else
 {
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 
+// Serve static files (wwwroot that will include the published Blazor assets)
 app.UseStaticFiles();
+
+// Antiforgery middleware should be added after static files but before endpoints that require tokens.
+// In .NET 8 the antiforgery middleware can validate tokens automatically on endpoints that require it.
 app.UseAntiforgery();
 
+// Optional: Authentication/Authorization if you use them
+app.UseAuthorization();
+
+// --- Provide an endpoint that issues an antiforgery token to the client ---
+app.MapGet("/__antiforgery/token", (IAntiforgery antiforgery, HttpContext http) =>
+{
+    var tokens = antiforgery.GetAndStoreTokens(http);
+    // Return token value in JSON; client can send it back in e.g. X-CSRF-TOKEN header
+    return Results.Json(new { token = tokens.RequestToken });
+});
+
+// Map interactive components (root component) --- interactive WASM render mode
 app.MapRazorComponents<App>()
     .AddInteractiveWebAssemblyRenderMode();
 
-//app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
+// Map controllers / API endpoints
 app.MapControllers();
 
 app.Run();
