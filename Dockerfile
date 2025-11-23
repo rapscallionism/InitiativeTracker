@@ -1,30 +1,29 @@
-# See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
-
-# This stage is used when running from VS in fast mode (Default for Debug configuration)
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-USER $APP_UID
-WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
-
-
-# This stage is used to build the service project
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-ARG BUILD_CONFIGURATION=Release
+# Build Frontend (Blazor WASM)
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-frontend
 WORKDIR /src
-COPY ["InitiativeTrackerBackend/InitiativeTrackerBackend.csproj", "InitiativeTrackerBackend/"]
-RUN dotnet restore "./InitiativeTrackerBackend/InitiativeTrackerBackend.csproj"
-COPY . .
-WORKDIR "/src/InitiativeTrackerBackend"
-RUN dotnet build "./InitiativeTrackerBackend.csproj" -c $BUILD_CONFIGURATION -o /app/build
+COPY Frontend/ ./Frontend/
+COPY Core/ ./Core/
+COPY Backend/ ./Backend/
+RUN dotnet publish Frontend/Frontend.csproj -c Release -o /frontend-publish
 
-# This stage is used to publish the service project to be copied to the final stage
-FROM build AS publish
-ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./InitiativeTrackerBackend.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+# Build Backend (ASP.NET Core)
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-backend
+WORKDIR /src
+COPY Backend/ ./Backend/
+COPY Frontend/ ./Frontend/
+COPY Core/ ./Core/
+RUN dotnet publish Backend/Backend.csproj -c Release -o /backend-publish
 
-# This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
-FROM base AS final
+# Combine: Copy Frontend static files into Backend wwwroot
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS combine
 WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "InitiativeTrackerBackend.dll"]
+COPY --from=build-backend /backend-publish ./
+COPY --from=build-frontend /frontend-publish/wwwroot ./wwwroot
+
+# Runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+WORKDIR /app
+COPY --from=combine /app ./
+ENV ASPNETCORE_URLS=http://+:8080
+EXPOSE 8080
+ENTRYPOINT ["dotnet", "Backend.dll"]
