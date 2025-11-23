@@ -1,4 +1,4 @@
-﻿namespace Backend.Models.Requests
+﻿namespace Core.Models.Requests
 {
     public class UpdateRequestByName : UpdateRequest
     {

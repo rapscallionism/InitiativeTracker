@@ -1,4 +1,4 @@
-﻿namespace Backend.Models.Requests
+﻿namespace Core.Models.Requests
 {
     /// <summary>
     ///     Request format to be used when querying anything via Id
