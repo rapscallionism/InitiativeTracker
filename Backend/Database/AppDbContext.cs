@@ -45,6 +45,11 @@ namespace Backend.Database
 
                 entity.HasKey(e => e.Id);
 
+                // Optional: specify column type for Postgres
+                entity.Property(e => e.Id)
+                       .HasColumnType("uuid")
+                       .ValueGeneratedOnAdd(); // EF Core will not override the GUID we set in C#
+
                 entity.Property(e => e.Description)
                       .HasMaxLength(500);
 
@@ -82,11 +87,16 @@ namespace Backend.Database
             // -------------------------
             // Feature Config
             // -------------------------
-            modelBuilder.Entity<Feature>(entity =>
+            modelBuilder.Entity<FeatureEntity>(entity =>
             {
                 entity.ToTable("features");
 
                 entity.HasKey(f => f.Id);
+
+                // Optional: specify column type for Postgres
+                entity.Property(f => f.Id)
+                       .HasColumnType("uuid")
+                       .ValueGeneratedOnAdd(); // EF Core will not override the GUID we set in C#
 
                 entity.Property(f => f.Name)
                       .IsRequired()
@@ -114,7 +124,7 @@ namespace Backend.Database
             });
         }
 
-        public DbSet<Feature> Features { get; set; }
+        public DbSet<FeatureEntity> Features { get; set; }
         public DbSet<EquipmentEntity> Equipments { get; set; }
     }
 }

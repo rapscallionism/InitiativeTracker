@@ -8,7 +8,7 @@ namespace Core.Utilities
         public static EquipmentDTO Map(EquipmentEntity entity)
         {
             EquipmentDTO dto = new();
-            dto.Id = entity.Id;
+            dto.Id = entity.Id.ToString();
             dto.Name = entity.Name;
             dto.Description = entity.Description;
             dto.Tags = entity.Tags;
@@ -21,10 +21,13 @@ namespace Core.Utilities
         public static EquipmentEntity Map(EquipmentDTO dto)
         {
             EquipmentEntity entity = new();
-            entity.Id = string.IsNullOrEmpty(dto.Id) || 
-                string.IsNullOrWhiteSpace(dto.Id) ? 
-                string.Empty : 
-                dto.Id;
+
+            // If the dto provided has no id, there's no need to map it
+            // since the dto should not have the id anyways
+            entity.Id = string.IsNullOrEmpty(dto.Id) ||
+                string.IsNullOrWhiteSpace(dto.Id) ?
+                null :
+                Guid.Parse(dto.Id);
             entity.Name = dto.Name;
             entity.Description = dto.Description;
             entity.Tags = dto.Tags;
