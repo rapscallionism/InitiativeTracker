@@ -22,7 +22,7 @@ namespace Backend.Controllers
 
         [Route("all")]
         [HttpGet]
-        public async Task<ActionResult<List<Equipment>>> GetAll()
+        public async Task<ActionResult<List<EquipmentDTO>>> GetAll()
         {
             try
             {
@@ -39,7 +39,7 @@ namespace Backend.Controllers
 
         [Route("name")]
         [HttpPost]
-        public async Task<ActionResult<Equipment>> GetOne([FromBody] NameRequest name)
+        public async Task<ActionResult<EquipmentDTO>> GetOne([FromBody] NameRequest name)
         {
             try
             {
@@ -68,7 +68,7 @@ namespace Backend.Controllers
 
         [Route("id")]
         [HttpPost]
-        public async Task<ActionResult<Equipment>> GetById([FromBody] IdRequest id)
+        public async Task<ActionResult<EquipmentDTO>> GetById([FromBody] IdRequest id)
         {
             try
             {
@@ -109,7 +109,7 @@ namespace Backend.Controllers
         [Route("update/id")]
         [Consumes("application/json")]
         [HttpPost]
-        public async Task<ActionResult<Equipment>> Update([FromBody] UpdateRequestById request)
+        public async Task<ActionResult<EquipmentDTO>> Update([FromBody] UpdateRequestById request)
         {
             try
             {
@@ -153,7 +153,7 @@ namespace Backend.Controllers
         [Route("update/name")]
         [Consumes("application/json")]
         [HttpPost]
-        public async Task<ActionResult<Equipment>> Update([FromBody] UpdateRequestByName request)
+        public async Task<ActionResult<EquipmentDTO>> Update([FromBody] UpdateRequestByName request)
         {
             try
             {
