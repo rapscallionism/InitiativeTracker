@@ -1,6 +1,8 @@
 using Backend.Database;
 using Backend.Interfaces;
 using Backend.Services;
+using Backend.Utilities;
+using Core.Interfaces;
 using Frontend;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
@@ -39,8 +41,11 @@ builder.Services.AddSingleton<IMongoClient>(sp =>
 
 builder.Services.AddSingleton<EquipmentRepository>();
 builder.Services.AddScoped<IEquipmentRepository, EquipmentRepository>();
-builder.Services.AddScoped<IEquipmentNoSQLService, EquipmentNoSQLService>();
-builder.Services.AddScoped<ILogger, Logger<EquipmentNoSQLService>>();
+builder.Services.AddScoped<IEquipmentService, EquipmentService>();
+builder.Services.AddScoped<IEquipmentEntityValidator, EquipmentEntityValidator>();
+//builder.Services.AddScoped<IEquipmentNoSQLService, EquipmentNoSQLService>();
+//builder.Services.AddScoped<ILogger, Logger<EquipmentNoSQLService>>();
+
 
 var app = builder.Build();
 

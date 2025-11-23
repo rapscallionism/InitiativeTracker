@@ -1,7 +1,8 @@
-﻿using Backend.Interfaces;
-using Backend.Models.Entities;
-using Backend.Models.Requests;
+﻿using Backend.Models.Entities;
 using Backend.Utilities;
+using Core.Interfaces;
+using Core.Models.DTOs;
+using Core.Models.Requests;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Controllers
@@ -11,9 +12,9 @@ namespace Backend.Controllers
     public class EquipmentController : ControllerBase
     {
         private readonly ILogger<EquipmentController> _logger;
-        private readonly IEquipmentNoSQLService _service;
+        private readonly IEquipmentService _service;
 
-        public EquipmentController(ILogger<EquipmentController> logger, IEquipmentNoSQLService service)
+        public EquipmentController(ILogger<EquipmentController> logger, IEquipmentService service)
         {
             _logger = logger;
             _service = service;
@@ -27,7 +28,8 @@ namespace Backend.Controllers
             {
                 var allEquipment = await _service.GetAllEquipment();
                 return Ok(allEquipment);
-            } catch (Exception e)
+            }   
+            catch (Exception e)
             {
                 _logger.LogError(e.Message);
                 _logger.LogError(e.StackTrace);
@@ -46,7 +48,7 @@ namespace Backend.Controllers
                     throw new ArgumentNullException("Name is not provided in the request body.");
                 }
 
-                var equipment = await _service.GetEquipment(name);
+                var equipment = await _service.GetEquipmentByNameAsync(name.Name);
 
                 if (equipment is null)
                 {
@@ -55,7 +57,8 @@ namespace Backend.Controllers
                 }
 
                 return Ok(equipment);
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 _logger.LogError(e.Message);
                 _logger.LogError(e.StackTrace);
@@ -65,11 +68,16 @@ namespace Backend.Controllers
 
         [Route("id")]
         [HttpPost]
-        public async Task<ActionResult<Equipment>> GetOne([FromBody] IdRequest id)
+        public async Task<ActionResult<Equipment>> GetById([FromBody] IdRequest id)
         {
             try
             {
-                var equipment = await _service.GetEquipment(id);
+                if (string.IsNullOrEmpty(id.Id) || string.IsNullOrWhiteSpace(id.Id))
+                {
+                    throw new ArgumentNullException("Id is not provided in the request body.");
+                }
+
+                var equipment = await _service.GetEquipmentByIdAsync(id.Id);
                 return Ok(equipment);
             }
             catch (Exception e)
@@ -83,7 +91,7 @@ namespace Backend.Controllers
         [Route("create")]
         [Consumes("application/json")]
         [HttpPost]
-        public async Task<ActionResult<Equipment>> Create([FromBody] Equipment equipment)
+        public async Task<ActionResult<EquipmentDTO>> Create([FromBody] EquipmentDTO equipment)
         {
             try
             {
@@ -105,7 +113,8 @@ namespace Backend.Controllers
         {
             try
             {
-                if (request.RequestedId is null || request.RequestedId.Id is null)
+                if (request.RequestedId is null || request.RequestedId.Id is null ||
+                    string.IsNullOrEmpty(request.RequestedId.Id) || string.IsNullOrWhiteSpace(request.RequestedId.Id))
                 {
                     throw new ArgumentNullException("Missing Id from Update Request.");
                 }
@@ -115,9 +124,10 @@ namespace Backend.Controllers
                     throw new ArgumentNullException("Missing Equpment from Update Request.");
                 }
 
-                IdRequest requestedId = request.RequestedId;
-                Equipment requestedEquipment = request.EquipmentToBeUpdatedTo;
-                var updated = await _service.UpdateEquipment(requestedId, requestedEquipment);
+                string id = request.RequestedId.Id;
+                EquipmentDTO requestedEquipment = request.EquipmentToBeUpdatedTo;
+                requestedEquipment.Id = id;
+                var updated = await _service.UpdateEquipment(requestedEquipment);
                 return Ok(updated);
             }
             catch (ArgumentNullException e)
@@ -147,7 +157,8 @@ namespace Backend.Controllers
         {
             try
             {
-                if (request.RequestedName is null || request.RequestedName.Name is null)
+                if (request.RequestedName is null || request.RequestedName.Name is null || 
+                    string.IsNullOrEmpty(request.RequestedName.Name) || string.IsNullOrWhiteSpace(request.RequestedName.Name))
                 {
                     throw new ArgumentNullException("Missing Name from Update Request.");
                 }
@@ -158,8 +169,8 @@ namespace Backend.Controllers
                 }
 
                 NameRequest requestedName = request.RequestedName;
-                Equipment requestedEquipment = request.EquipmentToBeUpdatedTo;
-                var updated = await _service.UpdateEquipment(requestedName, requestedEquipment);
+                EquipmentDTO requestedEquipment = request.EquipmentToBeUpdatedTo;
+                var updated = await _service.UpdateEquipment(requestedEquipment);
                 return Ok(updated);
             }
             catch (ArgumentNullException e)
