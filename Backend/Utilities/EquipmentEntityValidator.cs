@@ -1,7 +1,8 @@
 ﻿using Backend.Interfaces;
-using Backend.Models.Entities;
 using Core.Models.DTOs;
+using Core.Models.Entities;
 using Core.Models.Utilities;
+using Core.Utilities;
 
 namespace Backend.Utilities
 {
@@ -16,7 +17,10 @@ namespace Backend.Utilities
 
         public ValidateModel<EquipmentDTO, EquipmentEntity> ValidateEquipment(EquipmentDTO equipmentToValidate)
         {
-            throw new NotImplementedException();
+            _logger.LogCritical("IMPLEMENTED " + nameof(ValidateEquipment));
+
+            EquipmentEntity entity = MapperUtils.Map(equipmentToValidate);
+            return new ValidateModel<EquipmentDTO, EquipmentEntity>(isValid: true, [], equipmentToValidate, entity);
         }
     }
 }

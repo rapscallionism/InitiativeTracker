@@ -1,5 +1,5 @@
-﻿using Backend.Models.Entities;
-using Core.Models.DTOs;
+﻿using Core.Models.DTOs;
+using Core.Models.Entities;
 using Core.Models.Utilities;
 
 namespace Backend.Interfaces

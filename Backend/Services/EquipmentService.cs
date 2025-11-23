@@ -3,6 +3,8 @@ using Backend.Interfaces;
 using Backend.Utilities;
 using Core.Models.DTOs;
 using Core.Models.Utilities;
+using Core.Utilities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Services
 {
@@ -57,8 +59,8 @@ namespace Backend.Services
         /// <inheritdoc/>
         public async Task<List<EquipmentDTO>> GetAllEquipment()
         {
-            await Task.Run(() => Task.CompletedTask);
-            throw new NotImplementedException();
+            var allEquipment = await _context.Equipments.Select(e => MapperUtils.Map(e)).ToListAsync();
+            return allEquipment ?? [];
         }
 
         /// <inheritdoc/>

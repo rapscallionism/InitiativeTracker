@@ -1,4 +1,4 @@
-﻿using Backend.Models.Entities;
+﻿using Core.Models.Entities;
 using Core.Models.Utilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -47,6 +47,10 @@ namespace Backend.Database
 
                 entity.Property(e => e.Description)
                       .HasMaxLength(500);
+
+                entity.Property(e => e.Name)
+                      .IsRequired()
+                      .HasMaxLength(200);
 
                 // These are arrays – EF Core cannot store arrays natively.
                 // They will default to non-mapped unless configured as JSON.

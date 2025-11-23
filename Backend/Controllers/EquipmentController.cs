@@ -1,5 +1,4 @@
-﻿using Backend.Models.Entities;
-using Backend.Utilities;
+﻿using Backend.Utilities;
 using Core.Interfaces;
 using Core.Models.DTOs;
 using Core.Models.Requests;

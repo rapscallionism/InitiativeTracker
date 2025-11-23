@@ -1,6 +1,6 @@
 ﻿using Core.Models.Utilities;
 
-namespace Backend.Models.Entities
+namespace Core.Models.Entities
 {
     /// <summary>
     ///     Represents that feature that an equipment has access to,

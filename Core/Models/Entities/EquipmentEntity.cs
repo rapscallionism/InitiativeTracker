@@ -1,6 +1,6 @@
 ﻿using Core.Models.Utilities;
 
-namespace Backend.Models.Entities
+namespace Core.Models.Entities
 {
     public class EquipmentEntity
     {
@@ -10,6 +10,11 @@ namespace Backend.Models.Entities
         public string Id { get; set; }
 
         /// <summary>
+        ///     Name of the Equipment
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
         ///     Short description of the equipment
         /// </summary>
         public string Description { get; set; }
@@ -17,7 +22,7 @@ namespace Backend.Models.Entities
         /// <summary>
         ///     List of tags associated with this piece of equipment.
         /// </summary>
-        public Core.Models.Utilities.Tags[] Tags { get; set; } = [];
+        public Tags[] Tags { get; set; } = [];
 
         /// <summary>
         ///     Enumerator which indicates where this item will go
@@ -29,7 +34,7 @@ namespace Backend.Models.Entities
         ///     Enumerator which indicates how this equipments' charges
         ///     will reset (if at all).
         /// </summary>
-        public Core.Models.Utilities.ResetsOn[] ResetsOn { get; set; } = [];
+        public ResetsOn[] ResetsOn { get; set; } = [];
 
         /// <summary>
         ///     The number of current charges the equipment has.
