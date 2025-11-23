@@ -5,14 +5,14 @@ namespace Backend.Database
 {
     public class AppDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) 
-        { 
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        {
         }
 
-        public DbSet<ActionEntity> Actions;
-        public DbSet<BonusActionEntity> BonusActions;
-        public DbSet<EffectEntity> Effects;
-        public DbSet<ReactionEntity> Reactions;
-        public DbSet<EquipmentEntity> Equipments;
+        public DbSet<ActionEntity> Actions { get; set; }
+        public DbSet<BonusActionEntity> BonusActions { get; set; }
+        public DbSet<EffectEntity> Effects { get; set; }
+        public DbSet<ReactionEntity> Reactions { get; set; }
+        public DbSet<EquipmentEntity> Equipments { get; set; }
     }
 }
