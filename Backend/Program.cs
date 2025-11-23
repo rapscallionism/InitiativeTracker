@@ -6,6 +6,8 @@ using Frontend;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting.StaticWebAssets;
 using Microsoft.AspNetCore.Antiforgery;
+using Backend.Database;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +38,11 @@ builder.Services.AddAntiforgery(options =>
 // Persist keys to mounted directory (must exist in container or as a volume)
 builder.Services.AddDataProtection()
     .PersistKeysToFileSystem(new DirectoryInfo("/var/dpkeys"));
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new Exception("Missing connection string.");
+builder.Services.AddSingleton<ConnectionSettings>();
+
+builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));
 
 // --- Build ---
 var app = builder.Build();
