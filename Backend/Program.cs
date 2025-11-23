@@ -1,11 +1,8 @@
-using Backend.Database;
 using Backend.Interfaces;
 using Backend.Services;
 using Backend.Utilities;
 using Core.Interfaces;
 using Frontend;
-using Microsoft.Extensions.Options;
-using MongoDB.Driver;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,21 +23,21 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Bind settings
-builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("MongoDbSettings"));
+//builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("MongoDbSettings"));
 
-builder.Services.AddSingleton<IMongoClient>(sp =>
-{
-    var settings = sp.GetRequiredService<IOptions<MongoDbSettings>>().Value;
+//builder.Services.AddSingleton<IMongoClient>(sp =>
+//{
+//    var settings = sp.GetRequiredService<IOptions<MongoDbSettings>>().Value;
 
-    var credential = MongoCredential.CreateCredential("admin", settings.Username, settings.Password);
-    var mongoSettings = MongoClientSettings.FromUrl(new MongoUrl($"mongodb://{settings.Host}:{settings.Port}"));
-    mongoSettings.Credential = credential;
+//    var credential = MongoCredential.CreateCredential("admin", settings.Username, settings.Password);
+//    var mongoSettings = MongoClientSettings.FromUrl(new MongoUrl($"mongodb://{settings.Host}:{settings.Port}"));
+//    mongoSettings.Credential = credential;
 
-    return new MongoClient(mongoSettings);
-});
+//    return new MongoClient(mongoSettings);
+//});
 
-builder.Services.AddSingleton<EquipmentRepository>();
-builder.Services.AddScoped<IEquipmentRepository, EquipmentRepository>();
+//builder.Services.AddSingleton<EquipmentRepository>();
+//builder.Services.AddScoped<IEquipmentRepository, EquipmentRepository>();
 builder.Services.AddScoped<IEquipmentService, EquipmentService>();
 builder.Services.AddScoped<IEquipmentEntityValidator, EquipmentEntityValidator>();
 //builder.Services.AddScoped<IEquipmentNoSQLService, EquipmentNoSQLService>();
