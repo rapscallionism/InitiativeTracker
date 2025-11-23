@@ -29,7 +29,7 @@ namespace Backend.Models.Entities
         ///     Enumerator which indicates how this equipments' charges
         ///     will reset (if at all).
         /// </summary>
-        public Core.Models.Utilities.ResetsOn?[] ResetsOn { get; set; } = [];
+        public Core.Models.Utilities.ResetsOn[] ResetsOn { get; set; } = [];
 
         /// <summary>
         ///     The number of current charges the equipment has.
@@ -41,5 +41,12 @@ namespace Backend.Models.Entities
         ///     may have.
         /// </summary>
         public int? MaxCharges { get; set; }
+
+        /// <summary>
+        ///     Navigation entity that, as a list, represents
+        ///     the effects (activatable or not) that this equipment
+        ///     has access to.
+        /// </summary>
+        public List<Feature> Features { get; set; }
     }
 }

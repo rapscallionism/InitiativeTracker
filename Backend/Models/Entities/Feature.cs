@@ -1,10 +1,13 @@
-﻿namespace Backend.Models.Entities
+﻿using Core.Models.Utilities;
+
+namespace Backend.Models.Entities
 {
     /// <summary>
-    ///     Represents the basic structure of the entity for an action. In this case,
-    ///     the "action" refers to the action economy type (action, bonus action, reaction, etc.).
+    ///     Represents that feature that an equipment has access to,
+    ///     whether that be activatble or not as well as what
+    ///     it costs action-economy-wise.
     /// </summary>
-    public class BaseActionEntity
+    public class Feature
     {
         /// <summary>
         ///     Unique identifier.
@@ -21,6 +24,12 @@
         ///     will occur.
         /// </summary>
         public string Description { get; set; }
+
+        /// <summary>
+        ///     A representation of what this BaseActionEntity will cost to activate.
+        ///     This is determined through <see cref="ActionEconomyType"/>.
+        /// </summary>
+        public ActionEconomyType ActionEconomyType { get; set; }
         
         /// <summary>
         ///     A numerical value indicating how much charge this will
@@ -37,7 +46,7 @@
         ///     ties back to the equipment this entity belongs
         ///     to.
         /// </summary>
-        public string EquipmentId { get; set; }
+        public string? EquipmentId { get; set; }
 
         /// <summary>
         ///     The navigation entity.
