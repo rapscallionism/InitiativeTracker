@@ -43,5 +43,10 @@ namespace Core.Models.DTOs
         ///     may have.
         /// </summary>
         public int? MaxCharges { get; set; }
+
+        /// <summary>
+        ///     The attached features to this equipment.
+        /// </summary>
+        public List<FeatureDTO> Features { get; set; } = [];
     }
 }
